@@ -6,9 +6,19 @@
       <div class="question-cards white-box">
         <p><span class="category">Category:<%= @question.category_id %></span></p>
         <p><span class="title"><%= @question.title %></span></p>
-        <%= link_to "Edit", edit_question_path, class:"btn btn-primary" %>
-        <%= link_to "Delete", method: :delete, class:"btn btn-primary" %>
-        <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-primary" %>
+
+        <%# displaying the correct buttons for the respective user state %>
+        <% if current_user %>
+          <% if @question.user.id == current_user.id %>
+            <%= link_to "Edit", edit_question_path, class:"btn btn-primary" %>
+            <%= link_to "Delete", method: :delete, class:"btn btn-primary" %>
+          <% else %>
+            <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-primary" %>
+          <% end %>
+        <% else %>
+          <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-primary" %>
+        <% end %>
+
       </div>
     </div>
   </div>

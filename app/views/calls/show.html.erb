@@ -1,2 +1,20 @@
-<h1>Calls#show</h1>
-<p>Find me in app/views/calls/show.html.erb</p>
+<div class="container">
+
+  <div class="confirm-card white-box">
+    <h2>Confirm your Call</h2>
+
+    <p>Your question:</p>
+    <h3><%= @question.title %></h3>
+
+    <p>Question User Email: <%= @call.question.user.email %></p>
+    <p>Call User Email: <%= @call.reply.user.email %></p>
+    <p>Date: <%= @call.datetime %></p>
+    <p>Price: <%= @call.price_cents %></p>
+    <p>Call Status: <%= @call.call_status %></p>
+
+    <%= link_to "Confirm Call", question_call_confirm_path(@question, @call), class:"btn btn-primary" %>
+  </div>
+</div>
+
+
+

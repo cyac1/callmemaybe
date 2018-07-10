@@ -34,7 +34,8 @@ class RepliesController < ApplicationController
   end
 
   def show
-    @user = @question.user
+    @user = @reply.user
+    @call = Call.new
   end
 
   private

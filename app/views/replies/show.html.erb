@@ -5,7 +5,7 @@
   <p>User: <%= @user.email %></p>
   <p>Reply: <%= @reply.description %></p>
   <p>Price: <%= @reply.offer %></p>
-  <%= link_to "Book a Call", new_question_call_path(@question), class:"btn btn-primary" %>
+  <%= render "calls/form", question: @question, call: @call %>
   <br>
   <%= link_to "Go Back", question_path(@question), class:"btn btn-primary" %>
 </div>
