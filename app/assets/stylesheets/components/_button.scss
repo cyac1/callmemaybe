@@ -1,0 +1,51 @@
+.btn-big {
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 18px;
+  text-decoration: none;
+  width: 300px;
+}
+
+.btn-small {
+  width: 500px;
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.btn-orange {
+  background-color: $orange;
+  color: white;
+  opacity: 0.9;
+}
+
+.btn-orange:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-white {
+  background-color: white;
+  color: $orange;
+  border: 1px solid $orange;
+  opacity: 0.9;
+}
+
+.btn-white:hover {
+  opacity: 1;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-discrete {
+  color: $orange;
+  opacity: 0.9;
+  margin: 30px 0px;
+}
+.btn-discrete-orange:hover {
+  opacity: 1;
+  color: white;
+  text-decoration: none;
+}
