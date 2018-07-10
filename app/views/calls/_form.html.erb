@@ -1,0 +1,10 @@
+<%= simple_form_for [@question, @call] do |f| %>
+
+  <%= hidden_field_tag 'datetime', Date.today %>
+  <%= hidden_field_tag 'price_cents', @reply.offer %>
+  <%= hidden_field_tag 'call_status', "unconfirmed" %>
+  <%= hidden_field_tag 'reply_id', @reply.id %>
+
+  <%= f.submit "Book Call", class: "btn btn-primary" %>
+<% end %>
+

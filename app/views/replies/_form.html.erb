@@ -1,0 +1,6 @@
+<%= simple_form_for [@question, @reply] do |f| %>
+  <%= f.input :offer, label: "Pick a Price" %>
+  <%= f.input :description, label: "Your Reply" %>
+  <%= f.submit "Submit Reply", class: "btn btn-primary" %>
+<% end %>
+

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :questions  do
     resources :replies
     resources :calls do
+      get 'confirm', to: "calls#confirm"
       resources :reviews
     end
   end

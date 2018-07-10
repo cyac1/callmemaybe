@@ -1,2 +1,49 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<div class="container">
+  <h2>Your Question</h2>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
+      <div class="question-cards white-box">
+        <p><span class="category">Category: <%= @question.category.name %></span></p>
+        <p><span class="title"><%= @question.title %></span></p>
+        <p><span class="title"><%= @question.description %></span></p>
+
+        <%# displaying the correct buttons for the respective user state %>
+        <% if current_user %>
+          <% if @question.user.id == current_user.id %>
+            <%= link_to "Edit", edit_question_path, class:"btn btn-primary" %>
+            <%= link_to "Delete", method: :delete, class:"btn btn-primary" %>
+          <% else %>
+            <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-primary" %>
+          <% end %>
+        <% else %>
+          <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-primary" %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <% if @question.replies.count == 0 %>
+    <h3> Be the first to reply </h3>
+  <% elsif @question.replies.count == 1 %>
+    <h3><%= @question.replies.count %> Reply</h3>
+  <% else %>
+    <h3><%= @question.replies.count %> Replies</h3>
+  <% end %>
+
+  <div class="row">
+    <% @question.replies.each do |reply| %>
+      <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <div class="reply-cards white-box">
+          <p><%= reply.reply_status %></p>
+          <p><%= reply.user.email %></p>
+          <p><%= reply.offer %></p>
+          <p><%= reply.description %></p>
+          <%= link_to "Show Details", question_reply_path(@question, reply), class:"btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
