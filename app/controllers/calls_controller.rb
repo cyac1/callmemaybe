@@ -34,7 +34,7 @@ class CallsController < ApplicationController
   def confirm
     @call = Call.find(params[:call_id])
     @question = Question.find(@call.question_id)
-    @call.call_status = 1
+    @call.call_status = "confirmed"
     if @call.save
       redirect_to question_call_path(@question, @call)
     else

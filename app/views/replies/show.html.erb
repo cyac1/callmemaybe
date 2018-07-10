@@ -5,7 +5,12 @@
   <p>User: <%= @user.email %></p>
   <p>Reply: <%= @reply.description %></p>
   <p>Price: <%= @reply.offer %></p>
-  <%= render "calls/form", question: @question, call: @call %>
+  <% if current_user %>
+    <% if @question.user.id == current_user.id  %>
+      <%= render "calls/form", question: @question, call: @call %>
+    <% else %>
+    <% end %>
+  <% end %>
   <br>
   <%= link_to "Go Back", question_path(@question), class:"btn btn-primary" %>
 </div>

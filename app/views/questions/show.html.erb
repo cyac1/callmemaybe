@@ -4,8 +4,9 @@
   <div class="row">
     <div class="col-xs-12 col-md-10 col-md-offset-1">
       <div class="question-cards white-box">
-        <p><span class="category">Category:<%= @question.category_id %></span></p>
+        <p><span class="category">Category: <%= @question.category.name %></span></p>
         <p><span class="title"><%= @question.title %></span></p>
+        <p><span class="title"><%= @question.description %></span></p>
 
         <%# displaying the correct buttons for the respective user state %>
         <% if current_user %>

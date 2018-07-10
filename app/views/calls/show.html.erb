@@ -1,19 +1,44 @@
 <div class="container">
 
-  <div class="confirm-card white-box">
-    <h2>Confirm your Call</h2>
+  <% if @call.call_status == "unconfirmed" %>
 
-    <p>Your question:</p>
-    <h3><%= @question.title %></h3>
+    <div class="confirm-card white-box">
+      <h2>Confirm your Call</h2>
 
-    <p>Question User Email: <%= @call.question.user.email %></p>
-    <p>Call User Email: <%= @call.reply.user.email %></p>
-    <p>Date: <%= @call.datetime %></p>
-    <p>Price: <%= @call.price_cents %></p>
-    <p>Call Status: <%= @call.call_status %></p>
+      <p>Your question:</p>
+      <h3><%= @question.title %></h3>
 
-    <%= link_to "Confirm Call", question_call_confirm_path(@question, @call), class:"btn btn-primary" %>
-  </div>
+      <p>Question User Email: <%= @call.question.user.email %></p>
+      <p>Call User Email: <%= @call.reply.user.email %></p>
+      <p>Date: <%= @call.datetime %></p>
+      <p>Price: <%= @call.price_cents %></p>
+      <p>Call Status: <%= @call.call_status %></p>
+
+      <%= link_to "Confirm Call", question_call_confirm_path(@question, @call), class:"btn btn-primary" %>
+    </div>
+
+  <% else %>
+
+    <div class="confirm-card white-box">
+      <h2>Call Confirmed</h2>
+
+      <p>Your question:</p>
+      <h3><%= @question.title %></h3>
+
+      <p>Question User Email: <%= @call.question.user.email %></p>
+      <p>Call User Email: <%= @call.reply.user.email %></p>
+      <h4>Get in Touch</h4>
+      <p>Phone number: <%= @call.reply.user.phone_number %></p>
+      <p>Skype: <%= @call.reply.user.skype_username %></p>
+      <p>Email: <%= @call.reply.user.email %></p>
+      <p>Date: <%= @call.datetime %></p>
+      <p>Price: <%= @call.price_cents %></p>
+      <p>Call Status: <%= @call.call_status %></p>
+
+    </div>
+
+  <% end %>
+
 </div>
 
 
