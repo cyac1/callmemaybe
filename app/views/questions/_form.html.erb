@@ -1,6 +1,11 @@
-<%= simple_form_for [@question] do |f| %>
-  <%= f.association :category, label: "Pick a category", include_hidden: false %>
-  <%= f.input :title, label: "Your question" %>
-  <%= f.input :description, label: "Question Details (optional)" %>
-  <%= f.submit "Submit Question", class: "btn btn-primary" %>
-<% end %>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <%= simple_form_for [@question] do |f| %>
+      <div class="margin-bottom"><%= f.association :category, label: "Pick a category", include_hidden: false%></div>
+      <div class="margin-bottom"><%= f.input :title, label: "Your question" %></div>
+      <div class="margin-bottom"><%= f.input :description, label: "Question Details (optional)" %></div>
+      <div class="text-center margin-bottom"><%= f.submit "Submit Question", class: "btn btn-orange btn-big margin-top" %></div>
+    <% end %>
+  </div>
+</div>
+

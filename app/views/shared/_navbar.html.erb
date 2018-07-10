@@ -8,7 +8,7 @@
 
   <% # DESKTOP LINKS %>
   <div class="navbar-link-box hidden-xs hidden-sm">
-    <%= link_to 'Ask a question', root_path, class: "navbar-item navbar-link"%>
+    <%= link_to 'Ask a question', new_question_path, class: "navbar-item navbar-link"%>
     <% if user_signed_in?  %>
       <% # AVATAR on DESKTOP %>
       <div class="navbar-item hidden-xs">
