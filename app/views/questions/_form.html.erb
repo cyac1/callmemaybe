@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-6">
+  <div>
     <%= simple_form_for [@question] do |f| %>
       <div class="margin-bottom"><%= f.association :category, label: "Pick a category", include_hidden: false%></div>
       <div class="margin-bottom"><%= f.input :title, label: "Your question" %></div>
