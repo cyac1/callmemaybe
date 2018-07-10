@@ -1,2 +1,13 @@
-<h1>Replies#show</h1>
-<p>Find me in app/views/replies/show.html.erb</p>
+<div class="container">
+
+  <h2>Reply Details</h2>
+  <p>Question: <%= @question.title %></p>
+  <p>User: <%= @user.email %></p>
+  <p>Reply: <%= @reply.description %></p>
+  <p>Price: <%= @reply.offer %></p>
+  <%= render "calls/form", question: @question, call: @call %>
+  <br>
+  <%= link_to "Go Back", question_path(@question), class:"btn btn-primary" %>
+</div>
+
+

@@ -1,0 +1,6 @@
+<%= simple_form_for [@question] do |f| %>
+  <%= f.association :category, label: "Pick a category", include_hidden: false %>
+  <%= f.input :title, label: "Your question" %>
+  <%= f.input :description, label: "Question Details (optional)" %>
+  <%= f.submit "Submit Question", class: "btn btn-primary" %>
+<% end %>
