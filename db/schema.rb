@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_161845) do
+ActiveRecord::Schema.define(version: 2018_07_10_130139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "calls", force: :cascade do |t|
-    t.integer "call_status"
-    t.date "datetime"
+    t.integer "call_status", default: 0
+    t.datetime "datetime"
     t.bigint "question_id"
     t.bigint "reply_id"
     t.datetime "created_at", null: false
@@ -45,13 +45,14 @@ ActiveRecord::Schema.define(version: 2018_07_09_161845) do
   end
 
   create_table "replies", force: :cascade do |t|
-    t.integer "offer"
     t.text "description"
-    t.integer "reply_status"
+    t.integer "reply_status", default: 0
     t.bigint "user_id"
     t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "offer_cents", default: 0, null: false
+    t.string "offer_currency", default: "EUR", null: false
     t.index ["question_id"], name: "index_replies_on_question_id"
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
@@ -89,7 +90,7 @@ ActiveRecord::Schema.define(version: 2018_07_09_161845) do
     t.string "city"
     t.string "zipcode"
     t.string "country"
-    t.integer "role"
+    t.integer "role", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
