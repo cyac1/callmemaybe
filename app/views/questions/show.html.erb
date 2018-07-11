@@ -1,9 +1,9 @@
 <div class="container">
-  <h2>Your Question</h2>
 
   <div class="row">
-    <div class="col-xs-12 col-md-10 col-md-offset-1 question-card">
-      <div class="question-cards ">
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
+      <div class="flex-inline"><h2>Your Question</h2> <%= link_to "Dashboard", questions_path, class:"btn btn-white btn-small" %></div>
+      <div class="question-card ">
         <p><span class="category"><%= @question.category.name.upcase %></span></p>
         <p><span class="title"><%= @question.title %></span></p>
         <p><span class="description"><%= @question.description %></span></p>
@@ -38,15 +38,25 @@
     <% @question.replies.each do |reply| %>
       <div class="col-xs-12 col-md-10 col-md-offset-1 white-box reply-card">
         <div class="reply-cards">
-          <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar card-avatar">
-          <p><span class="status"><%= reply.reply_status.upcase %></span></p>
-          <p><span class="user-name"><%= reply.user.email %></span></p>
-          <div class="wraper-white">
-            <p><span class="description"><%= reply.description %></span></p>
+
+          <div class="header-question">
+
+            <div class="author-reply">
+              <div class="author-name">
+              <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar card-avatar">
+                <p><span class="user-name"><%= reply.user.email %></span></p>
+              </div>
+              <p><span class="status"><%= reply.reply_status.upcase %></span></p>
+            </div>
+
           </div>
-          <p><span class="offer"><%= reply.offer %></span></p>
-          <div class="button-container">
-            <%= link_to "Show Details", question_reply_path(@question, reply), class:"btn btn-orange btn-small" %>
+
+          <div class="reply-content">
+            <p><span class="description"><%= reply.description %></span></p>
+            <p><span class="offer"><%= reply.offer %></span></p>
+            <div class="button-container">
+              <%= link_to "Show Details", question_reply_path(@question, reply), class:"btn btn-orange btn-small" %>
+            </div>
           </div>
         </div>
       </div>
