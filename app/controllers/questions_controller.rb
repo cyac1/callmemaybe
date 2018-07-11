@@ -1,11 +1,12 @@
 class QuestionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :new]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_question, only: [:show, :update, :destroy, :edit]
 
   def create
     @question = Question.new(question_params)
     @question.user = current_user
     if @question.save
+      raise
       redirect_to question_path(@question)
     else
       render :new
