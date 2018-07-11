@@ -1,0 +1,19 @@
+<h1>Hello is this the dashboard</h1>
+<%= current_user.id %>
+
+<h2>All Questions</h2>
+<ul>
+  <% current_user.questions.each do |q|  %>
+  <li> <%= q.title %></li>
+  <% end %>
+</ul>
+
+
+
+<h2>All Replies</h2>
+<ul>
+<% current_user.replies.each do |r| %>
+    <% question = r.question %>
+<li> "Replied to <%= question.user.first_name %> <%= question.user.last_name %>'s question about <%= question.category.name %>" </li>
+<% end %>
+</ul>

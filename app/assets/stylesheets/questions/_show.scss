@@ -1,0 +1,14 @@
+.flex-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    display: inline;
+  }
+
+  .btn-white {
+    margin: 10px 0 10px 0;
+  }
+
+
+}

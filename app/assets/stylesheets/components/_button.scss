@@ -35,8 +35,9 @@
 
 .btn-white:hover {
   opacity: 1;
-  color: white;
+  color: $blue;
   text-decoration: none;
+  border: 1px solid $blue;
 }
 
 .btn-discrete {

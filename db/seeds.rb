@@ -68,13 +68,15 @@ User.create!(user_attributes)
 puts 'Creating users...'
 
 10.times do
+  full_name_array = Faker::RickAndMorty.character.split
   user_attributes = [
+
     { email: Faker::Internet.email,
       password: "password",
       password_confirmation: "password",
       phone_number: Faker::PhoneNumber.phone_number,
-      first_name: "Ben",
-      last_name: "Stuart",
+      first_name: full_name_array[0],
+      last_name: full_name_array[1],
       skype_username: Faker::Internet.user_name,
       whatsapp_number: Faker::PhoneNumber.phone_number,
       street: Faker::Address.street_address,

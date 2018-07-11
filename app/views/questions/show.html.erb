@@ -1,8 +1,9 @@
 <div class="container">
-  <h2>Your Question</h2>
+
 
   <div class="row">
     <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <div class="flex-inline"><h2>Your Question</h2> <%= link_to "Dashboard", dashboard_path, class:"btn btn-white" %></div>
       <div class="question-cards white-box">
         <p><span class="category">Category: <%= @question.category.name %></span></p>
         <p><span class="title"><%= @question.title %></span></p>
@@ -24,6 +25,9 @@
     </div>
   </div>
 
+
+  <div class="row">
+  <div class="col-xs-12 col-md-10 col-md-offset-1">
   <% if @question.replies.count == 0 %>
     <h3> Be the first to reply </h3>
   <% elsif @question.replies.count == 1 %>
@@ -31,8 +35,7 @@
   <% else %>
     <h3><%= @question.replies.count %> Replies</h3>
   <% end %>
-
-  <div class="row">
+</div>
     <% @question.replies.each do |reply| %>
       <div class="col-xs-12 col-md-10 col-md-offset-1">
         <div class="reply-cards white-box">
