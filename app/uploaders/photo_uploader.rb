@@ -5,8 +5,12 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   process convert: 'jpg'
 
-  version :thumnail do
+  version :thumbnail do
     resize_to_fit 256, 256
+  end
+
+  version :profile_lg do
+      cloudinary_transformation crop: :fill, height: 500, width: 500, gravity: :face, quality: :good
   end
 
   version :bright_face do

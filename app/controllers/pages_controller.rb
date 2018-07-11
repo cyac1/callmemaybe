@@ -6,7 +6,6 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    raise
 
   end
 end

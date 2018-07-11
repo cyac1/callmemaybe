@@ -1,1 +1,21 @@
-current_user
+<div class="diagonal-background">
+  <h1 class="banner-content" style="color: #f6f6f6">My Profile</h1>
+</div>
+
+<div class="container">
+  <img src="<%= current_user.avatar.url(:profile_lg) %>" class="profile-image-lg">
+  <div class="col-xs-6 col-xs-offset-3">
+    <h2 class="text-center"><%="#{current_user.first_name} #{current_user.last_name}"%></h2>
+  </div>
+</div>
+
+<!-- <div class="wrapper-white">
+
+
+      <h1><strong>Right Person.</strong></h1>
+      <h1><strong>Right Time.</strong></h1>
+      <p>Your answer is only one call away.</p>
+    </div>
+  </div>
+</div>
+ -->
