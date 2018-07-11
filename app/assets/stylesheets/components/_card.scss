@@ -24,44 +24,28 @@
 }
 
 // // CARD FOR THE REPLY
-// .reply-card {
-//   background-color: white;
-//   padding: 30px 10px 10px 30px;
-//   margin-bottom: 10px;
-//   margin-top: 10px;
-//   box-shadow: 0 0px 2px 0 rgba(0,0,0,0.10);
+.author-reply {
+  display:flex;
+  justify-content: space-between;
+}
 
-//   position: relative;
-//   padding-top: 10px;
-// }
+.author-name {
+  display: flex;
+}
 
-// .card-avatar {
-//   position: absolute;
-//   top: 18px;
-// }
+.user-name {
+  margin-left: 10px;
+}
 
-// .user-name {
-//   position: absolute;
-//   top: 15px;
-//   left: 90px;
-// }
+.offer {
+  position: absolute;
+  font-size: 16px;
+  bottom: 10px;
+}
 
-// .status {
-//   position: absolute;
-//   top: 10px;
-//   right: 20px;
-//   font-size: 12px;
-// }
-// .wraper-white {
-//   height: 80px;
-// }
-
-
-// .reply-card .description {
-//   font-size: 15px;
-//   color: red;
-//   // position: absolute;
-// }
+.status {
+  font-size: 16px;
+}
 
 // FOR BUTTONS
 .button-container {
