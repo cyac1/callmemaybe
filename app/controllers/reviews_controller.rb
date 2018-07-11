@@ -32,11 +32,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
-                            # ID of Review  = ID of @call
-                            # another way of writing but not good for security: ("call_id = @call.id")
     @reviews = Review.where("call_id = ?", @call.id)
-    #coalla.com/calls/call_id/reviews/id
-    #coalla.com/calls/2/reviews/1
   end
 
   private
