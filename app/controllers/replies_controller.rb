@@ -1,6 +1,6 @@
 class RepliesController < ApplicationController
-  before_action :set_question, only: [:new, :show, :create, :edit]
-  before_action :set_reply, only: [:show]
+  before_action :set_question, only: [:new, :show, :create, :edit, :accept, :reject]
+  before_action :set_reply, only: [:show, :accept, :reject]
   skip_before_action :authenticate_user!, only: [:show, :index]
 
   def create
@@ -35,6 +35,15 @@ class RepliesController < ApplicationController
 
   def show
     @user = @reply.user
+    if @user == current_user
+      response = params[:resp]
+      if response == "accept"
+        @reply.reply_status = 1
+      else response == "reject"
+        @reply.reply_status = 2
+      end
+      @reply.save
+    end
     @call = Call.new
   end
 
@@ -50,5 +59,9 @@ class RepliesController < ApplicationController
 
   def set_reply
     @reply = Reply.find(params[:id])
+  end
+
+  def respond_to_reply
+
   end
 end

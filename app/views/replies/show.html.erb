@@ -1,18 +1,37 @@
 <div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-10 col-md-offset-1 flex-inline">
+      <h2>Reply details</h2>
+      <%= link_to "Go Back", question_path(@question), class:"btn btn-white btn-small" %>
+    </div>
+  </div>
 
-  <h2>Reply Details</h2>
-  <p>Question: <%= @question.title %></p>
-  <p>User: <%= @user.email %></p>
-  <p>Reply: <%= @reply.description %></p>
-  <p>Price: <%= @reply.offer %></p>
-  <% if current_user %>
-    <% if @question.user.id == current_user.id  %>
-      <%= render "calls/form", question: @question, call: @call %>
-    <% else %>
-    <% end %>
-  <% end %>
-  <br>
-  <%= link_to "Go Back", question_path(@question), class:"btn btn-primary" %>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-10 col-md-offset-1 white-box reply-card">
+      <p>Your question:</p>
+      <p class="title"><%= @question.title %></p>
+      <div class="author-name">
+        <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar card-avatar">
+        <p><span class="user-name"><%= @user.email %></span></p>
+      </div>
+      <p class="description"><%= @reply.description %></p>
+      <p class="price"><%= @reply.offer %> $</p>
+      <% if current_user %>
+        <% if @question.user.id == current_user.id  %>
+          <%= render "calls/form", question: @question, call: @call %>
+        <% else %>
+        <% end %>
+      <% end %>
+      <br>
+      <div class="center-button-container">
+
+        <%= link_to "Accept Guy", question_reply_path(@question, @reply, resp: "accept"), class:"btn btn-orange btn-big" %>
+        <%= link_to "Reject Guy", question_reply_path(@question, @reply , resp: "reject"), class:"btn btn-white btn-big" %>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 
