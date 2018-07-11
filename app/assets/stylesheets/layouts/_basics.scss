@@ -1,14 +1,21 @@
 h2 {
+  margin: 25px 0px 25px 20px;
   font-size: 25px;
   font-weight: bold;
+  color: $font_color;
 }
 
 h3 {
   font-size: 17px;
   font-weight: bold;
+  color: $font_color;
 }
 
 p {
   margin: 5px;
+  color: $font_color;
 }
 
+i {
+  color: $font_color;
+}
