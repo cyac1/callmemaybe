@@ -1,101 +1,86 @@
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(69, 96, 141, 0.8) 30%, rgba(69, 96, 141, 0.5) 50%), url('<%= asset_path('call-banner.jpg') %>');">
+<div class="wrapper-white">
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(4, 43, 104, 0.7) 30%, rgba(4, 43, 104, 0.5) 50%), url('<%= asset_path('call-banner.jpg') %>');">
     <div class="banner-content">
       <h1><strong>Right Person.</strong></h1>
       <h1><strong>Right Time.</strong></h1>
       <p>Your answer is only one call away.</p>
     </div>
+  </div>
 </div>
 
-<div class="white-box-without-margin-top">
-  <div class="container">
-    <div class="calltoaction text-center">
-      <%=  link_to "Ask Your Question", new_question_path, class:"btn-orange btn-big"%>
-    </div>
-
-    <% # HARD CODED categories  %>
-    <div class="categories">
-      <div class="row">
-        <div class="col-xs-12 col-md-4 text-center">
-          <div class="icons-card">
-            <div class="content">
-              <i class="fas fa-globe"></i>
-              <p>All</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-4 text-center">
-          <div class="icons-card">
-            <div class="content">
-              <i class="fas fa-paw"></i>
-              <p>Pets</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-4 text-center">
-          <div class="icons-card">
-            <div class="content">
-              <i class="fas fa-book"></i>
-              <p>Literature</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-4 text-center">
-          <div class="icons-card">
-            <div class="content">
-              <i class="fas fa-basketball-ball"></i>
-              <p>Sport</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-md-4 text-center">
-          <div class="icons-card">
-            <div class="content">
-              <i class="fas fa-coins"></i>
-              <p>Economy</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-md-4 text-center">
-          <div class="icons-card">
-            <div class="content">
-              <i class="fas fa-basketball-ball"></i>
-              <p>Travel</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-md-4 text-center">
-          <div class="icons-card">
-            <div class="content">
-              <i class="fas fa-tshirt"></i>
-              <p>Fashion</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-md-4 text-center">
-          <div class="icons-card">
-            <div class="content">
-              <i class="fas fa-medkit"></i>
-              <p>Health</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-md-4 text-center">
-          <div class="icons-card">
-            <div class="content">
-              <i class="fas fa-utensils"></i>
-              <p>Food</p>
-            </div>
-          </div>
-        </div>
-        <% # end row %>
-      </div>
-    <% # end category div %>
-    </div>
-
+<div class="wrapper-white wrapper-margin">
+  <div class="calltoaction text-center">
+    <%=  link_to "Ask Your Question", new_question_path, class:"btn-orange btn-big"%>
   </div>
+</div>
+
+<div class="container">
+  <div class="wrapper-gray wrapper-margin text-center">
+    <h2><strong>Browse Questions by Category</strong></h2>
+  </div>
+  <% # HARD CODED categories  %>
+  <div class="categories">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <div class="icons-card">
+          <div class="content">
+            <%=  link_to questions_path do %>
+              <i class="fas fa-globe"></i>
+              <p>All Categories</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <div class="icons-card">
+          <div class="content">
+            <i class="fas fa-paw"></i>
+            <p>Pets</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <div class="icons-card">
+          <div class="content">
+            <i class="fas fa-book"></i>
+            <p>Literature</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <div class="icons-card">
+          <div class="content">
+            <i class="fas fa-basketball-ball"></i>
+            <p>Sport</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <div class="icons-card">
+          <div class="content">
+            <i class="fas fa-coins"></i>
+            <p>Economy</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <div class="icons-card">
+          <div class="content">
+            <i class="fas fa-basketball-ball"></i>
+            <p>Travel</p>
+          </div>
+        </div>
+      </div>
+
+      <% # end row %>
+    </div>
+
+    <div class="calltoaction text-center">
+      <%=  link_to "View All Questions", questions_path, class:"btn-white btn-big"%>
+    </div>
+  <% # end category div %>
+  </div>
+
 </div>
