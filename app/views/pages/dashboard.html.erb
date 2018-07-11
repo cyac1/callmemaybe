@@ -1,6 +1,8 @@
 <h1>Hello is this the dashboard</h1>
 <%= current_user.id %>
 
+<%=  cl_image_tag("wfrf3tc9jbxtcwloas5c.jpg", width: 400, height: 300, crop: :fill) %>
+
 <h2>All Questions</h2>
 <ul>
   <% current_user.questions.each do |q|  %>
