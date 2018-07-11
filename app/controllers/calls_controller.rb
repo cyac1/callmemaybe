@@ -20,6 +20,7 @@ class CallsController < ApplicationController
   def show
     @reply = Reply.find(@call.reply_id)
     @question = Question.find(@call.question_id)
+    @reviews = Review.where("call_id = ?", @call.id)
   end
 
   def edit
