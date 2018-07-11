@@ -2,23 +2,25 @@
   <h2>Your Question</h2>
 
   <div class="row">
-    <div class="col-xs-12 col-md-10 col-md-offset-1">
-      <div class="question-cards white-box">
-        <p><span class="category">Category: <%= @question.category.name %></span></p>
+    <div class="col-xs-12 col-md-10 col-md-offset-1 question-card">
+      <div class="question-cards ">
+        <p><span class="category"><%= @question.category.name.upcase %></span></p>
         <p><span class="title"><%= @question.title %></span></p>
-        <p><span class="title"><%= @question.description %></span></p>
+        <p><span class="description"><%= @question.description %></span></p>
 
         <%# displaying the correct buttons for the respective user state %>
-        <% if current_user %>
-          <% if @question.user.id == current_user.id %>
-            <%= link_to "Edit", edit_question_path, class:"btn btn-primary" %>
-            <%= link_to "Delete", method: :delete, class:"btn btn-primary" %>
+        <div class="button-container">
+          <% if current_user %>
+            <% if @question.user.id == current_user.id %>
+              <%= link_to "Edit", edit_question_path, class:"btn btn-white btn-small" %>
+              <%= link_to "Delete", question_path(@question), method: :delete, class:"btn btn-white btn-small" %>
+            <% else %>
+              <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-orange btn-small" %>
+            <% end %>
           <% else %>
-            <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-primary" %>
+            <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-orange btn-small" %>
           <% end %>
-        <% else %>
-          <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-primary" %>
-        <% end %>
+        </div>
 
       </div>
     </div>
@@ -34,13 +36,18 @@
 
   <div class="row">
     <% @question.replies.each do |reply| %>
-      <div class="col-xs-12 col-md-10 col-md-offset-1">
-        <div class="reply-cards white-box">
-          <p><%= reply.reply_status %></p>
-          <p><%= reply.user.email %></p>
-          <p><%= reply.offer %></p>
-          <p><%= reply.description %></p>
-          <%= link_to "Show Details", question_reply_path(@question, reply), class:"btn btn-primary" %>
+      <div class="col-xs-12 col-md-10 col-md-offset-1 white-box reply-card">
+        <div class="reply-cards">
+          <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar card-avatar">
+          <p><span class="status"><%= reply.reply_status.upcase %></span></p>
+          <p><span class="user-name"><%= reply.user.email %></span></p>
+          <div class="wraper-white">
+            <p><span class="description"><%= reply.description %></span></p>
+          </div>
+          <p><span class="offer"><%= reply.offer %></span></p>
+          <div class="button-container">
+            <%= link_to "Show Details", question_reply_path(@question, reply), class:"btn btn-orange btn-small" %>
+          </div>
         </div>
       </div>
     <% end %>
