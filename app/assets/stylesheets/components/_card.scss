@@ -1,0 +1,71 @@
+// CARD FOR THE CATEGORY
+.question-card {
+  background-color: white;
+  padding: 10px 30px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  box-shadow: 0 0px 2px 0 rgba(0,0,0,0.10);
+  position: relative;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.description {
+  font-size: 15px;
+}
+
+.category {
+  font-size: 12px;
+  margin: 0px;
+  font-color: $medium_gray;
+}
+
+// // CARD FOR THE REPLY
+// .reply-card {
+//   background-color: white;
+//   padding: 30px 10px 10px 30px;
+//   margin-bottom: 10px;
+//   margin-top: 10px;
+//   box-shadow: 0 0px 2px 0 rgba(0,0,0,0.10);
+
+//   position: relative;
+//   padding-top: 10px;
+// }
+
+// .card-avatar {
+//   position: absolute;
+//   top: 18px;
+// }
+
+// .user-name {
+//   position: absolute;
+//   top: 15px;
+//   left: 90px;
+// }
+
+// .status {
+//   position: absolute;
+//   top: 10px;
+//   right: 20px;
+//   font-size: 12px;
+// }
+// .wraper-white {
+//   height: 80px;
+// }
+
+
+// .reply-card .description {
+//   font-size: 15px;
+//   color: red;
+//   // position: absolute;
+// }
+
+// FOR BUTTONS
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+
+}
