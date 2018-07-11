@@ -2,18 +2,48 @@
 
 <div class="container">
 
-<h2>All Open Questions</h2>
+  <div class="wrapper-gray wrapper-margin text-center">
+    <h2><strong>All Open Questions</strong></h2>
+  </div>
+
 
   <div class="row">
-    <% @questions.each do |question| %>
-      <div class="col-xs-12 col-md-10 col-md-offset-1">
-        <div class="question-cards">
-          <span class="category">Category:<%= question.category_id %></span>
-          <span class="title"><%= question.title %></span>
-          <%= link_to "View", question_path(question), class:"btn btn-primary" %>
+    <div class="question-cards">
+
+      <% @questions.each do |question| %>
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+          <div class="question-card">
+            <div class="card-text-content">
+              <p><span class="category"><%= question.category.name.upcase %></span></p>
+              <p><span class="title"><%= question.title %></span></p>
+              <p><span class="description"><%= question.description.truncate(40) %></span></p>
+
+
+              <%# Count Answers for each question  %>
+              <% count = 0 %>
+              <% @replies.each do |reply| %>
+                <% id = reply.question_id %>
+                <% if id == question.id %>
+                  <% count += 1 %>
+                <% end %>
+              <% end %>
+
+              <% if count == 1 %>
+                <p><span class="replies"><%= count %> Reply</span></p>
+              <% else %>
+                <p><span class="replies"><%= count %> Replies</span></p>
+              <% end %>
+
+            </div>
+
+            <div class="button-container">
+              <%= link_to "View Question", question_path(question), class:"btn btn-small btn-orange" %>
+            </div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+
+    </div>
   </div>
 
 </div>

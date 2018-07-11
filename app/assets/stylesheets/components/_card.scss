@@ -1,4 +1,4 @@
-// CARD FOR THE CATEGORY
+// CARD FOR THE INDEX AND QUESTIONS
 .question-card {
   background-color: white;
   padding: 10px 30px;
@@ -8,13 +8,31 @@
   position: relative;
 }
 
+.card-text-content {
+  padding-bottom: 10px;
+}
+
 .title {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 .description {
-  font-size: 15px;
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+
+.replies {
+  margin-top: 20px;
+  width: 100px;
+  padding: 8px 15px;
+  font-size: 16px;
+  text-decoration: none;
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  text-align: center;
+  color: $blue;
 }
 
 .category {
@@ -22,6 +40,7 @@
   margin: 0px;
   font-color: $medium_gray;
 }
+
 
 // // CARD FOR THE REPLY
 .author-reply {
@@ -51,5 +70,5 @@
 .button-container {
   display: flex;
   justify-content: flex-end;
-
+  margin-bottom: 10px;
 }
