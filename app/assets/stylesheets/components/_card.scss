@@ -22,21 +22,14 @@
   padding-bottom: 10px;
 }
 
-// .replies {
-//   // margin-top: 20px;
-//   // width: 100px;
-//   // padding: 8px 15px;
-//   font-size: 16px;
-//   text-decoration: none;
-//   // position: absolute;
-//   // bottom: 20px;
-//   // left: 10px;
-//   text-align: center;
-//   color: $blue;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
+.datetime {
+  font-size: 12px;
+  margin: 0px;
+  font-color: $medium_gray;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
 
 .replies {
   font-size: 16px;
@@ -46,7 +39,7 @@
 .reply-container {
   position: absolute;
   bottom: 20px;
-  left: 33px;
+  left: 30px;
   display: flex;
   justify-content: left;
   align-items: center;

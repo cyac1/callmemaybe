@@ -17,6 +17,7 @@
               <p><span class="category"><%= question.category.name.upcase %></span></p>
               <p><span class="title"><%= question.title %></span></p>
               <p><span class="description"><%= question.description.truncate(40) %></span></p>
+              <p><span class="datetime"><%= question.created_at.strftime("Posted on %d/%m/%Y") %></span></p>
               <%# Count Answers for each question  %>
               <% count = 0 %>
               <% @replies.each do |reply| %>
