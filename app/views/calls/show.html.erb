@@ -34,8 +34,20 @@
       <p>Date: <%= @call.datetime %></p>
       <p>Price: <%= @call.price_cents %></p>
       <p>Call Status: <%= @call.call_status %></p>
-
     </div>
+
+      <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-primary" %>
+
+      <h4>Review</h4>
+      <p>Reviews also appear on the profile page</p>
+      <% @reviews.each do |review| %>
+    <div class="white-box review-card">
+      <p> User: <%= review.user_id %></p>
+      <p> Rating: <%= review.rating %> </p>
+      <p> <%= review.description %> </p>
+    </div>
+      <% end %>
+
 
   <% end %>
 

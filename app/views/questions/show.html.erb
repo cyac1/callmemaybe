@@ -2,68 +2,82 @@
 
 
   <div class="row">
-    <div class="col-xs-12 col-md-10 col-md-offset-1">
-      <div class="flex-inline"><h2>Your Question</h2> <%= link_to "Dashboard", dashboard_path, class:"btn btn-white btn-small" %></div>
-      <div class="question-card ">
-        <p><span class="category"><%= @question.category.name.upcase %></span></p>
-        <p><span class="title"><%= @question.title %></span></p>
-        <p><span class="description"><%= @question.description %></span></p>
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <div class="flex-inline">
+        <h2>Your Question</h2>
+        <%= link_to "Dashboard", dashboard_path, class:"btn btn-white btn-small" %>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-8 col-md-offset-2 question-card">
+      <p><span class="category"><%= @question.category.name.upcase %></span></p>
+      <p><span class="title"><%= @question.title %></span></p>
+      <p><span class="description"><%= @question.description %></span></p>
 
         <%# displaying the correct buttons for the respective user state %>
-        <div class="button-container">
-          <% if current_user %>
-            <% if @question.user.id == current_user.id %>
-              <%= link_to "Edit", edit_question_path, class:"btn btn-white btn-small" %>
-              <%= link_to "Delete", question_path(@question), method: :delete, class:"btn btn-white btn-small" %>
-            <% else %>
-              <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-orange btn-small" %>
-            <% end %>
+      <div class="button-container">
+        <% if current_user %>
+          <% if @question.user.id == current_user.id %>
+            <%= link_to "Edit", edit_question_path, class:"btn btn-white btn-small" %>
+            <%= link_to "Delete", question_path(@question), method: :delete, class:"btn btn-white btn-small" %>
           <% else %>
             <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-orange btn-small" %>
           <% end %>
-        </div>
-
+        <% else %>
+          <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-orange btn-small" %>
+        <% end %>
       </div>
     </div>
   </div>
 
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <% if @question.replies.count == 0 %>
+      <h3> Be the first to reply </h3>
+    <% elsif @question.replies.count == 1 %>
+      <h2><%= @question.replies.count %> Reply</h2>
+    <% else %>
+      <h2><%= @question.replies.count %> Replies</h2>
+    <% end %>
+  </div>
+
 
   <div class="row">
-  <div class="col-xs-12 col-md-10 col-md-offset-1">
-  <% if @question.replies.count == 0 %>
-    <h3> Be the first to reply </h3>
-  <% elsif @question.replies.count == 1 %>
-    <h3><%= @question.replies.count %> Reply</h3>
-  <% else %>
-    <h3><%= @question.replies.count %> Replies</h3>
-  <% end %>
-</div>
     <% @question.replies.each do |reply| %>
-      <div class="col-xs-12 col-md-10 col-md-offset-1 white-box reply-card">
-        <div class="reply-cards">
-
-          <div class="header-question">
-
-            <div class="author-reply">
-              <div class="author-name">
+      <div class="col-xs-12 col-md-8 col-md-offset-2 white-box reply-card">
+        <div class="reply">
+          <div class="reply-header">
+            <div class="header-left">
               <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar card-avatar">
-                <p><span class="user-name"><%= reply.user.email %></span></p>
+              <div class="header-textbox">
+                <p class="user"><%= reply.user.email %></p>
+                <p class="created_at gray"><%= reply.created_at %> </p>
               </div>
-              <p><span class="status"><%= reply.reply_status.upcase %></span></p>
             </div>
-
+            <div class="status-box">
+              <% if reply.reply_status == "pending" %>
+                <i class="far fa-dot-circle gray"></i>
+                <p class="status gray"><%= reply.reply_status%></p>
+              <% elsif reply.reply_status == "accepted" %>
+                <i class="far fa-check-circle green"></i>
+                <p class="status green"><%= reply.reply_status%></p>
+              <% elsif reply.reply_status == "rejected" %>
+                <i class="far fa-times-circle red"></i>
+                <p class="status red"><%= reply.reply_status%></p>
+              <% end %>
+            </div>
           </div>
 
           <div class="reply-content">
-            <p><span class="description"><%= reply.description %></span></p>
-            <p><span class="offer"><%= reply.offer %></span></p>
+            <p class="description"><%= reply.description %></p>
+          </div>
+          <div class="reply-footer">
+            <p class="offer gray"><%= reply.offer %> €</p>
             <div class="button-container">
               <%= link_to "Show Details", question_reply_path(@question, reply), class:"btn btn-orange btn-small" %>
             </div>
           </div>
         </div>
-      </div>
     <% end %>
+    </div>
   </div>
-
 </div>

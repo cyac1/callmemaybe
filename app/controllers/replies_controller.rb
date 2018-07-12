@@ -1,6 +1,6 @@
 class RepliesController < ApplicationController
-  before_action :set_question, only: [:new, :show, :create, :edit]
-  before_action :set_reply, only: [:show]
+  before_action :set_question, only: [:new, :show, :create, :edit, :accept, :reject]
+  before_action :set_reply, only: [:show, :accept, :reject]
   skip_before_action :authenticate_user!, only: [:show, :index]
 
   def create
@@ -50,5 +50,9 @@ class RepliesController < ApplicationController
 
   def set_reply
     @reply = Reply.find(params[:id])
+  end
+
+  def respond_to_reply
+
   end
 end
