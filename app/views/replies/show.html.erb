@@ -6,25 +6,36 @@
     </div>
   </div>
 
-
   <div class="row">
-    <div class="col-xs-12 col-md-10 col-md-offset-1 white-box reply-card">
-      <p>Your question:</p>
+    <div class="question-cards white-box">
+      <p class="category">Your question</p>
       <p class="title"><%= @question.title %></p>
-      <div class="author-name">
-        <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar card-avatar">
-        <p><span class="user-name"><%= @user.email %></span></p>
-      </div>
-      <p class="description"><%= @reply.description %></p>
-      <p class="price"><%= @reply.offer %></p>
-      <% if current_user %>
-        <% if @question.user.id == current_user.id  %>
-          <%= render "calls/form", question: @question, call: @call %>
-        <% else %>
-        <% end %>
-      <% end %>
-      <br>
-      <div class="center-button-container">
+    </div>
+
+    <div class="question-cards white-box">
+    <p class="category"><%= @user.email %>'s response:</p>
+      <div class="replier-details-left">
+        <div class="author-name">
+          <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar dropdown-toggle" id="navbar-wagon-menu">
+        </div>
+          <div class="on-top-of">
+            <p class="user-name category"> <strong> <%= @user.email %></strong></p>
+            <p class ="user-name category"> <strong> Replied on <%= @reply.created_at.strftime("%d %B %Y") %> </strong></p>
+          </div>
+
+       </div>
+       <p class ="category">Price: <%= @reply.offer %></p>
+        <p><%= @reply.description %></p>
+
+        <div class="margin-top margin-bottom center-button-container">
+          <% if current_user %>
+            <% if @question.user.id == current_user.id  %>
+              <%= render "calls/form", question: @question, call: @call %>
+            <% else %>
+            <% end %>
+          <% end %>
+          <%= link_to "Go Back", question_path(@question), class:"btn btn-big btn-white" %>
+        </div>
       </div>
     </div>
 

@@ -47,7 +47,27 @@
               <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar card-avatar">
               <div class="header-textbox">
                 <p class="user"><%= reply.user.email %></p>
-                <p class="created_at gray"><%= reply.created_at %> </p>
+                <p class="created_at gray"><%= reply.created_at.strftime("Replied on: %d/%m/%Y") %> </p>
+                <div class="rating-stars">
+                  <%# Add Average Rating for this user %>
+                  <span class="reviews-text">Reviews:</span>
+                  <% ratingsum = 0  %>
+                  <% count = 0 %>
+                  <% @reviews.each do |review| %>
+                    <% if review.user_id == reply.user_id %>
+                      <% ratingsum += review.rating %>
+                      <% count += 1 %>
+                    <% end %>
+                  <% end %>
+                  <% num = (ratingsum / count).round(0) %>
+                  <% anum = 5 - num %>
+                  <% num.times do %>
+                  <i class="fas fa-star" style="color: #f9d949"></i>
+                  <% end %>
+                  <% anum.times do %>
+                  <i class="far fa-star" style="color: #f9d949"></i>
+                  <% end %>
+                </div>
               </div>
             </div>
             <div class="status-box">
@@ -64,6 +84,7 @@
             </div>
           </div>
 
+
           <div class="reply-content">
             <p class="description"><%= reply.description %></p>
           </div>
@@ -72,8 +93,9 @@
             <div class="button-container">
               <%= link_to "Show Details", question_reply_path(@question, reply), class:"btn btn-orange btn-small" %>
             </div>
-
           </div>
+
+        </div>
         </div>
     <% end %>
   </div>

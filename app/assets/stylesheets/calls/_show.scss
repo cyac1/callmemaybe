@@ -1,0 +1,50 @@
+.review-card {
+  background: white;
+  border: 1px solid rgb(200, 200, 200);
+  margin-bottom: 20px;
+}
+
+.center {
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+}
+
+.call-details {
+  font-size: 14px;
+  margin: 0px;
+  opacity: 0.8;
+}
+
+.call-details-title {
+  font-size: 18px;
+  margin: 0px;
+  opacity: 0.6;
+}
+
+.padding-top-half {
+  padding-top: 10px;
+}
+
+.padding-bottom {
+  padding-bottom: 20px;
+}
+
+.center-images {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 150px;
+}
+
+.replier-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-text {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
