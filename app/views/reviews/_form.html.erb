@@ -1,4 +1,7 @@
 <%= simple_form_for [@call, @review] do |f| %>
+  <div>
+    <%= @reply %>
+  </div>
   <%= f.input :description, label: "Your Review:" %>
   <%= f.input :rating, :as => :grouped_select,
       :collection => { [1,2,3,4,5] => 'Rating - 1: Low to 5: High' },

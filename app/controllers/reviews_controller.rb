@@ -20,6 +20,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @reply = Reply.where("call_id = ?", @call.id)
   end
 
   def edit
