@@ -1,6 +1,8 @@
 <%= simple_form_for [@question, @reply] do |f| %>
-  <%= f.input :offer, label: "Pick a Price" %>
-  <%= f.input :description, label: "Your Reply" %>
-  <%= f.submit "Submit Reply", class: "btn btn-primary" %>
+  <%= f.input :description, label: "Your Reply:" %>
+  <%= f.input :offer, label: "Offer a Price:" %>
+  <div class="text-center margin-bottom padding-top">
+    <%= f.submit "Submit Reply", class: "btn btn-orange btn-big btn-margin" %>
+    <%= link_to "Go Back", question_path(@question), class:"btn btn-white btn-big" %>
+  </div>
 <% end %>
-

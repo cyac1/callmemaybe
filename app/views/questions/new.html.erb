@@ -1,9 +1,13 @@
-<div class="container">
-  <h2 class="text-center">Type your question</h2>
-  <div class="row">
-    <%# Add simple form with input fields to create a question %>
-    <div class="col-xs-12 col-md-6 col-md-offset-3 white-box padding">
-      <%= render "questions/form", question: @question%>
+<div class="banner-form" style="background-image: linear-gradient(-225deg, rgba(4, 43, 104, 0.7) 30%, rgba(4, 43, 104, 0.5) 50%), url(https://images.unsplash.com/photo-1525857332689-4b3110c2d3f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=64092aab3ca44d0dd8f1314166dba348&auto=format&fit=crop&w=2770&q=80); background-size: cover;background-position: center;">
+
+  <div class="container">
+    <h1 class="text-center white-header">Type your question</h1>
+    <div class="row">
+      <%# Add simple form with input fields to create a question %>
+      <div class="col-xs-12 col-md-6 col-md-offset-3 white-box padding">
+        <%= render "questions/form", question: @question%>
+      </div>
     </div>
   </div>
+
 </div>
