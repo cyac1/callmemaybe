@@ -105,6 +105,27 @@
   font-size: 14px;
 }
 
+.status-box {
+  p {
+    font-size: 14px;
+  }
+  i {
+    font-size: 14px;
+  }
+}
+
+.rating-stars {
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+.reviews-text {
+  font-size: 12px;
+  opacity: 0.6;
+  color: $font_color;
+}
+
+
 // FOR BUTTONS
 .button-container {
   display: flex;
@@ -112,8 +133,4 @@
   margin-bottom: 10px;
 }
 
-.center-button-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+

@@ -2,6 +2,17 @@ class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_question, only: [:show, :update, :destroy, :edit]
 
+  def index
+    if params[:filter]
+      @questions = Question.where("category_id = ?", params[:filter])
+      # @selected_option = Category.find(params[:filter])
+    else
+      @questions = Question.all.order("created_at DESC")
+    end
+    @replies = Reply.all
+    @categories = Category.all
+  end
+
   def create
     @question = Question.new(question_params)
     @question.user = current_user
@@ -17,6 +28,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @reviews = Review.all
   end
 
   def edit
@@ -44,11 +56,6 @@ class QuestionsController < ApplicationController
     else
       redirect_to question_path(@question)
     end
-  end
-
-  def index
-    @questions = Question.all.order("created_at DESC")
-    @replies = Reply.all
   end
 
   private
