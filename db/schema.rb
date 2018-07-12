@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2018_07_10_130139) do
   enable_extension "plpgsql"
 
   create_table "calls", force: :cascade do |t|
-    t.integer "call_status", default: 0
-    t.datetime "datetime"
+    t.integer "call_status"
+    t.date "datetime"
     t.bigint "question_id"
     t.bigint "reply_id"
     t.datetime "created_at", null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2018_07_10_130139) do
 
   create_table "replies", force: :cascade do |t|
     t.text "description"
-    t.integer "reply_status", default: 0
+    t.integer "reply_status"
     t.bigint "user_id"
     t.bigint "question_id"
     t.datetime "created_at", null: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2018_07_10_130139) do
     t.string "city"
     t.string "zipcode"
     t.string "country"
-    t.integer "role", default: 0, null: false
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

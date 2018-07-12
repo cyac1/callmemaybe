@@ -1,6 +1,7 @@
 .banner {
   background-size: cover;
   background-repeat: no-repeat;
+  clip-path: polygon(0 0, 100% 0%, 100% 85%, 0% 100%);
 }
 
 .banner-content {
@@ -12,19 +13,42 @@
   align-items: center;
   width: 100%;
 }
+
 .banner h1 {
   margin: 0px;
+  margin-bottom: 10px;
   color: white;
-  font-size: 40px;
+  font-size: 60px;
   justify-content: center;
 }
 
+
 .banner-content p {
-  font-size: 20px;
+  font-size: 28px;
   margin: 0px;
   margin-top: 25px;
   color: white;
 }
+
+// Change font sizes and settings for mobile devices
+// Otherwise font was to small on Desktop
+@media only screen and (max-width: 600px) {
+  .banner h1 {
+    margin: 0px;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 40px;
+    justify-content: center;
+  }
+
+  .banner-content p {
+  font-size: 20px;
+  margin: 0px;
+  margin-top: 25px;
+  color: white;
+  }
+}
+
 
 .calltoaction {
   height: 30vh;
