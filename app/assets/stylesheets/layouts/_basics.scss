@@ -19,3 +19,17 @@ p {
 i {
   color: $font_color;
 }
+
+.green {
+  color: $green;
+  font-color: $green;
+}
+
+.red {
+  color: $red;
+  font-color: $red;
+}
+
+.gray {
+  opacity: 0.6;
+}
