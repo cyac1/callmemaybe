@@ -1,0 +1,135 @@
+// tab
+// input
+// id="tab-one"
+// type="checkbox"
+// name="tabs"
+// label
+// tab-content
+
+
+/* Acordeon styles */
+.tab {
+  position: relative;
+  width: 100%;
+  color: #fff;
+  overflow: hidden;
+  // display: flex;
+  // flex-direction: column;
+  vertical-align: middle;
+}
+input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+label {
+  position: relative;
+  display: block;
+  padding: 0 0 0 1em;
+  background: $blue;
+  font-weight: bold;
+  line-height: 3;
+  cursor: pointer;
+  vertical-align: middle;
+  p {
+    width: calc(100% - 40px);
+    color: white;
+    font-weight: lighter;
+    font-style: italic;
+    // font-size: 15px;
+  }
+}
+
+.question-card.tab-content {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height .35s;
+  -o-transition: max-height .35s;
+  transition: max-height .35s;
+  margin: 0px;
+  padding: 1px 30px 0px 20px;
+
+}
+
+.inner-tab {
+  max-height: 0;
+  overflow: hidden;
+  background: $medium_gray;
+  -webkit-transition: max-height .35s;
+  -o-transition: max-height .35s;
+  transition: max-height .35s;
+  label {
+     background: $medium_gray;
+  }
+}
+
+.tab-content p {
+  margin: 10px;
+}
+/* :checked */
+
+input:checked ~ .inner-tab {
+  min-height: max-content;
+  // padding: 30px;
+}
+
+input:checked ~ .tab-content {
+  min-height: max-content;
+  padding: 10px 10px 10px 30px;
+}
+/* Icon */
+label::after {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0%,-50%);
+  display: block;
+  width: 3em;
+  height: 3em;
+  line-height: 3;
+  text-align: center;
+  -webkit-transition: all .35s;
+  -o-transition: all .35s;
+  transition: all .35s;
+}
+input[type=checkbox] + label::after {
+  content: "+";
+}
+
+input[type=checkbox]:checked + label::after {
+  transform: translate(0%,-50%), rotate(315deg);
+}
+
+// span.dropdown::after {
+//   position: absolute;
+//   right: 0;
+//   top: 0;
+//   // display: block;
+//   width: 20px;
+//   height: 20px;
+//   line-height: 3;
+//   text-align: center;
+//   -webkit-transition: all .35s;
+//   -o-transition: all .35s;
+//   transition: all .35s;
+// }
+
+@media only screen and (max-width: 600px) {
+  .inner-tab label p {
+  font-size: 15px;
+  }
+  .tab-content p {
+  font-size: 15px;
+  }
+}
+
+.o-flexy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.o-flexy__block {
+  flex: 1;
+}
+
