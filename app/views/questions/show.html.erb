@@ -40,29 +40,41 @@
   <div class="row">
     <% @question.replies.each do |reply| %>
       <div class="col-xs-12 col-md-8 col-md-offset-2 white-box reply-card">
-        <div class="">
+        <div class="reply">
 
-          <div class="header-question">
-
-            <div class="author-reply">
-              <div class="author-name">
+          <div class="reply-header">
+            <div class="header-left">
               <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar card-avatar">
-                <p><span class="user-name"><%= reply.user.email %></span></p>
+              <div class="header-textbox">
+                <p class="user"><%= reply.user.email %></p>
+                <p class="created_at gray"><%= reply.created_at %> </p>
               </div>
-              <p><span class="status"><%= reply.reply_status %></span></p>
             </div>
-
+            <div class="status-box">
+              <% if reply.reply_status == "pending" %>
+                <i class="far fa-dot-circle gray"></i>
+                <p class="status gray"><%= reply.reply_status%></p>
+              <% elsif reply.reply_status == "accepted" %>
+                <i class="far fa-check-circle green"></i>
+                <p class="status green"><%= reply.reply_status%></p>
+              <% elsif reply.reply_status == "rejected" %>
+                <i class="far fa-times-circle red"></i>
+                <p class="status red"><%= reply.reply_status%></p>
+              <% end %>
+            </div>
           </div>
 
           <div class="reply-content">
-            <p><span class="description"><%= reply.description %></span></p>
-            <p><span class="offer"><%= reply.offer %></span></p>
+            <p class="description"><%= reply.description %></p>
+          </div>
+          <div class="reply-footer">
+            <p class="offer gray"><%= reply.offer %> €</p>
             <div class="button-container">
               <%= link_to "Show Details", question_reply_path(@question, reply), class:"btn btn-orange btn-small" %>
             </div>
+
           </div>
         </div>
-      </div>
     <% end %>
   </div>
 
