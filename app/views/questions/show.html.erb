@@ -31,9 +31,9 @@
   <% if @question.replies.count == 0 %>
     <h3> Be the first to reply </h3>
   <% elsif @question.replies.count == 1 %>
-    <h3><%= @question.replies.count %> Reply</h3>
+    <h2><%= @question.replies.count %> Reply</h2>
   <% else %>
-    <h3><%= @question.replies.count %> Replies</h3>
+    <h2><%= @question.replies.count %> Replies</h2>
   <% end %>
   </div>
 
