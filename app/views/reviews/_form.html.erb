@@ -1,6 +1,9 @@
 <%= simple_form_for [@call, @review] do |f| %>
-  <div>
-    <%= @reply %>
+  <div class="author-name text-center margin-bottom padding">
+    <p><strong>For your expert: </strong></p>
+    <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar-large">
+    <p><span class="user-name"><%= @user.email %></span></p>
+    <p><span class="user-name"><%= @call.created_at.strftime("Call Date: %d/%m/%Y") %></span></p>
   </div>
   <%= f.input :description, label: "Your Review:" %>
   <%= f.input :rating, :as => :grouped_select,
