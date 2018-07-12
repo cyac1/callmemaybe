@@ -1,7 +1,6 @@
-<h1>Hello is this the dashboard</h1>
+<h1>Profile Overview</h1>
 <%= current_user.id %>
 
-<%=  cl_image_tag("wfrf3tc9jbxtcwloas5c.jpg", width: 400, height: 300, crop: :fill) %>
 
 
 <h2>All Questions</h2>
@@ -20,3 +19,50 @@
 <li> "Replied to <%= question.user.first_name %> <%= question.user.last_name %>'s question about <%= question.category.name %>" </li>
 <% end %>
 </ul>
+
+
+
+    <div class="tab">
+      <input id="tab-one" type="checkbox" name="tabs">
+      <label for="tab-one">All Questions</label>
+      <% current_user.questions.each_with_index do |q, i|  %>
+      <div class="inner-tab">
+        <div class="tab">
+          <input id="tab-<%= i+1 %>-nested" type="checkbox" name="tabs">
+          <label for="tab-<%= i+1 %>-nested"><%= q.title %></label>
+          <div class="tab-content">
+            <p><%= q.description %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="tab">
+      <input id="tab-two" type="checkbox" name="tabs">
+      <label for="tab-two">All Replies</label>
+      <% current_user.replies.each do |r|  %>
+      <% question = r.question %>
+      <div class="tab-content">
+        <h3>Replied to <%= question.user.first_name %> <%= question.user.last_name %>'s question about <%= question.category.name %></h3>
+      </div>
+      <% end %>
+    </div>
+
+
+

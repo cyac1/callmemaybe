@@ -12,11 +12,16 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  .profile-banner {
-    text-align: top;
-
-  }
 }
+
+.banner-content.profile-banner {
+    height: 10vh;
+    // justify-content: start;
+  }
+
+
+
+
 .banner h1 {
   margin: 0px;
   color: white;

@@ -1,21 +1,39 @@
-<div class="diagonal-background">
-  <h1 class="banner-content" style="color: #f6f6f6">My Profile</h1>
-</div>
-
-<div class="container">
-  <img src="<%= current_user.avatar.url(:profile_lg) %>" class="profile-image-lg">
-  <div class="col-xs-6 col-xs-offset-3">
-    <h2 class="text-center"><%="#{current_user.first_name} #{current_user.last_name}"%></h2>
+<div class="wrapper">
+  <div class="diagonal-background">
   </div>
-</div>
+    <div class="front-content">
+      <div class="banner-content profile-banner">
+        <h2 style="color: #f6f6f6">My Profile</h2>
+      </div>
 
-<!-- <div class="wrapper-white">
+      <div class="container text-center no-margin">
+        <!-- <img src="<%= current_user.avatar.url %>" class="profile-image-lg"> -->
+        <%= image_tag current_user.avatar.profile_lg.url, class:"profile-image-lg align-self-center"%>
+          <h1 class="text-center"><%="#{current_user.first_name} #{current_user.last_name}"%></h1>
+        <div class="col-xs-12 col-md-offset-1 col-md-10 question-card">
+        <div class="text-left">
+          <h3>Profile Information</h3>
+          <ul style="list-style-type: none;">
+            <li><strong>Member since: </strong><%= current_user.created_at.strftime("%d %B %Y") %></li>
+            <li><strong>Email: </strong></li>
+            <li><strong>Phone Number: </strong></li>
+            <li><strong>WhatsApp: </strong></li>
 
-
-      <h1><strong>Right Person.</strong></h1>
-      <h1><strong>Right Time.</strong></h1>
-      <p>Your answer is only one call away.</p>
+          </ul>
+        </div>
+        </div>
+        <div class="col-xs-12 col-md-offset-1 col-md-10 question-card">
+        <div class="text-left">
+          <h3 style="margin-bottom: 30px;">Address</h3>
+          <ul style="list-style-type: none;">
+            <li><strong>Street: </strong><%= current_user.street %></li>
+            <li><strong>City: </strong><%= current_user.city %></li>
+            <li><strong>Zip Code: </strong><%= current_user.zipcode %></li>
+            <li><strong>Country: </strong><%= current_user.country %></li>
+          </ul>
+        </div>
+        </div>
+      </div>
     </div>
-  </div>
 </div>
- -->
+

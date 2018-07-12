@@ -10,7 +10,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :profile_lg do
-      cloudinary_transformation crop: :fill, height: 500, width: 500, gravity: :face, quality: :good
+      cloudinary_transformation crop: :fill, height: 500, width: 500, gravity: :face, quality: :auto
   end
 
   version :bright_face do
