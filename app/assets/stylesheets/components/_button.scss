@@ -53,3 +53,18 @@
   color: white;
   text-decoration: none;
 }
+
+
+// FOR BUTTONS small
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+// big
+.center-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

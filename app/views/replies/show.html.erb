@@ -6,39 +6,42 @@
     </div>
   </div>
 
-  <div class="wrapper-gray wrapper-margin text-center">
+<!--   <div class="wrapper-gray wrapper-margin text-center">
     <h2>Reply Details</h2>
-  </div>
+  </div> -->
 
   <div class="row">
     <div class="question-cards white-box">
       <p class="category">Your question:</p>
       <p class="title"><%= @question.title %></p>
+    </div>
 
+    <div class="question-cards white-box">
+    <p class="category"><%= @user.email %>'s' response:</p>
       <div class="replier-details">
         <div class="author-name">
           <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar dropdown-toggle" id="navbar-wagon-menu">
-          <div class="on-top-of">
-            <p class="user-name category"><%= @user.email %></p>
-            <p class ="user-name category"=> Replied on <%= @reply.created_at.strftime("%d %B %Y") %> </p>
-          </div>
         </div>
+          <div class="on-top-of">
+            <p class="user-name category"> <strong> <%= @user.email %></strong></p>
+            <p class ="user-name category"> <strong> Replied on <%= @reply.created_at.strftime("%d %B %Y") %> </strong></p>
+          </div>
+
        </div>
-
+       <p class ="category">Price: <%= @reply.offer %></p>
         <p><%= @reply.description %></p>
-        <p class ="user-name category">Price: <%= @reply.offer %></p>
 
-        <div class="margin-top margin-bottom text-center">
+        <div class="margin-top margin-bottom center-button-container">
           <% if current_user %>
             <% if @question.user.id == current_user.id  %>
               <%= render "calls/form", question: @question, call: @call %>
             <% else %>
             <% end %>
           <% end %>
-          <br>
           <%= link_to "Go Back", question_path(@question), class:"btn btn-big btn-white" %>
         </div>
       </div>
+    </div>
 
   </div>
 </div>

@@ -1,69 +1,105 @@
 <div class="container">
 
   <% if @call.call_status == "unconfirmed" %>
-
-      <div class="wrapper-gray wrapper-margin text-center">
+    <div class="row">
+      <div class="col-xs-12 col-md-10 col-md-offset-1 flex-inline">
         <h2>Confirm Your Call</h2>
+        <%= link_to "Go Back", question_path(@question), class:"btn btn-white btn-small" %>
       </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-12 col-md-10 col-md-offset-1 flex-inline">
+        <h2>Call Confirmed</h2>
+        <%= link_to "Go Back", question_path(@question), class:"btn btn-white btn-small" %>
+      </div>
+    </div>
+  <% end %>
 
-    <div class="confirm-card white-box">
-      <p class="category">Your question:</p>
+<div class="container">
+
+  <% if @call.call_status == "unconfirmed" %>
+
+<!--       <div class="wrapper-gray wrapper-margin text-center">
+        <h2>Confirm Your Call</h2>
+      </div> -->
+  <div class="row">
+    <div class="question-cards white-box">
+      <p class="category">Your question</p>
       <p class="title"><%= @question.title %></p>
 
-      <div class="replier-details center">
-        <div class="author-name">
-          <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar dropdown-toggle" id="navbar-wagon-menu">
-        </div>
-        <div>
-          <p> ... </p>
-        </div>
-        <div class="author-name">
-          <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar dropdown-toggle" id="navbar-wagon-menu">
+      <div class="replier-details">
+        <div class="center-images">
+          <div class="author-name">
+            <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar-large">
+          </div>
+          <div>
+            <p> ... </p>
+          </div>
+          <div class="author-name">
+            <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar-large">
+          </div>
         </div>
       </div>
 
-      <p>Question User Email: <%= @call.question.user.email %></p>
-      <p>Call User Email: <%= @call.reply.user.email %></p>
-      <p>Date: <%= @call.datetime %></p>
-      <p>Price: <%= @call.price_cents %></p>
-      <p>Call Status: <%= @call.call_status %></p>
+      <br>
+      <p class="category">Call Details</p>
+<!--       <p class="call-details">Question User Email: <%= @call.question.user.email %></p> -->
+      <div class="padding-left-right padding-top-half">
+        <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
+        <p class="call-details"><strong>Date: </strong><%= @call.datetime %></p>
+        <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
+        <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
+      </div>
 
-      <%= link_to "Confirm Call", question_call_confirm_path(@question, @call), class:"btn btn-primary" %>
+      <br>
+      <div class="text-center">
+      <%= link_to "Confirm Call", question_call_confirm_path(@question, @call), class:"btn btn-big btn-orange" %>
+      </div>
     </div>
+  </div>
 
   <% else %>
 
-    <div class="confirm-card white-box">
-      <h2>Call Confirmed</h2>
+  <div class="row">
+    <div class="question-cards white-box">
+      <p class="category">Your question</p>
+      <p class="title"><%= @question.title %></p>
 
-      <p>Your question:</p>
-      <h3><%= @question.title %></h3>
+      <br>
+      <p class="category">Get in Touch</p>
+        <div class="padding-left-right padding-top-half padding-bottom">
+          <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
 
-      <p>Question User Email: <%= @call.question.user.email %></p>
-      <p>Call User Email: <%= @call.reply.user.email %></p>
-      <h4>Get in Touch</h4>
-      <p>Phone number: <%= @call.reply.user.phone_number %></p>
-      <p>Skype: <%= @call.reply.user.skype_username %></p>
-      <p>Email: <%= @call.reply.user.email %></p>
-      <p>Date: <%= @call.datetime %></p>
-      <p>Price: <%= @call.price_cents %></p>
-      <p>Call Status: <%= @call.call_status %></p>
+          <p class="call-details"><strong>Phone number: </strong><%= @call.reply.user.phone_number %></p>
+          <p class="call-details"><strong>Skype: </strong><%= @call.reply.user.skype_username %></p>
+          <p class="call-details"><strong>Email: </strong><%= @call.reply.user.email %></p>
+        <br>
+          <p class="call-details"><strong>Date: </strong><%= @call.datetime %></p>
+          <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
+          <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
+        </div>
+      </div>
+    <div class="question-cards white-box padding-top-1.5">
+
+          <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-primary" %>
+      <div class="padding-top-half">
+        <p class="category">Reviews also appear on the profile page of the person you reviewed.</p>
+      </div>
+        <% @reviews.each do |review| %>
+      <div class="white-box review-card">
+        <p> User: <%= review.user_id %></p>
+        <p> Rating: <%= review.rating %> </p>
+        <p> <%= review.description %> </p>
+      </div>
+        <% end %>
     </div>
-
-      <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-primary" %>
-
-      <h4>Review</h4>
-      <p>Reviews also appear on the profile page</p>
-      <% @reviews.each do |review| %>
-    <div class="white-box review-card">
-      <p> User: <%= review.user_id %></p>
-      <p> Rating: <%= review.rating %> </p>
-      <p> <%= review.description %> </p>
-    </div>
-      <% end %>
-
+  </div>
 
   <% end %>
+
+
+
 
 </div>
 
