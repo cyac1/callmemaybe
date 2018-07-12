@@ -1,10 +1,16 @@
 <div class="row">
-  <div>
+  <div class="padding-all">
     <%= simple_form_for [@question] do |f| %>
       <div class="margin-bottom"><%= f.association :category, label: "Pick a category", include_hidden: false%></div>
       <div class="margin-bottom"><%= f.input :title, label: "Your question" %></div>
       <div class="margin-bottom"><%= f.input :description, label: "Question Details (optional)" %></div>
-      <div class="text-center margin-bottom"><%= f.submit "Submit Question", class: "btn btn-orange btn-big margin-top" %></div>
+      <div class="text-center margin-bottom">
+        <div><%= f.submit "Submit Question", class: "btn btn-orange btn-big margin-top" %>
+        </div>
+        <div>
+          <%= link_to "Go Back", root_path, class:"btn btn-white btn-big" %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

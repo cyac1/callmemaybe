@@ -5,8 +5,9 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @question = Question.find(@call.question_id)
-    #add user to review
-    @user = current_user
+    #add user(the one that replied and is reviewed) to review
+    @reply = Reply.where("id = ?", @call.reply_id)[0]
+    @user = @reply.user
     @review.user = @user
     #add call to review
     @review.call = @call
@@ -20,6 +21,11 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+
+    # Find user to display him in review form
+    @reply = Reply.where("id = ?", @call.reply_id)
+    @user = User.where("id = ?", @reply[0].user_id)[0]
+
   end
 
   def edit
