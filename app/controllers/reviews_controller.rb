@@ -20,6 +20,11 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+
+    # Find user to display him in review form
+    @reply = Reply.where("id = ?", @call.reply_id)
+    @user = User.where("id = ?", @reply[0].user_id)[0]
+
   end
 
   def edit
