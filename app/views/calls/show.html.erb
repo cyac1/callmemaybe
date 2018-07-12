@@ -2,11 +2,25 @@
 
   <% if @call.call_status == "unconfirmed" %>
 
-    <div class="confirm-card white-box">
-      <h2>Confirm your Call</h2>
+      <div class="wrapper-gray wrapper-margin text-center">
+        <h2>Confirm Your Call</h2>
+      </div>
 
-      <p>Your question:</p>
-      <h3><%= @question.title %></h3>
+    <div class="confirm-card white-box">
+      <p class="category">Your question:</p>
+      <p class="title"><%= @question.title %></p>
+
+      <div class="replier-details center">
+        <div class="author-name">
+          <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar dropdown-toggle" id="navbar-wagon-menu">
+        </div>
+        <div>
+          <p> ... </p>
+        </div>
+        <div class="author-name">
+          <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar dropdown-toggle" id="navbar-wagon-menu">
+        </div>
+      </div>
 
       <p>Question User Email: <%= @call.question.user.email %></p>
       <p>Call User Email: <%= @call.reply.user.email %></p>
