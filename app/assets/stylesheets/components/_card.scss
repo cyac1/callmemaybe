@@ -29,6 +29,7 @@
   position: absolute;
   top: 20px;
   right: 30px;
+  opacity: 0.6;
 }
 
 .replies {
@@ -50,7 +51,8 @@
 .category {
   font-size: 12px;
   margin: 0px;
-  font-color: $medium_gray;
+  opacity: 0.6;
+
 }
 
 // // CARD FOR THE REPLY
