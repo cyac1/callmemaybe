@@ -6,6 +6,16 @@
     <h2><strong>All Open Questions</strong></h2>
   </div>
 
+  <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
+    <div class="big-button-container">
+    <%= form_tag(questions_path, method: :get, class: "margin-bottom") do %>
+    <%= select_tag 'filter', options_for_select(@categories.collect{ |u| [u.name, u.id] }), selected:  Category.find(params[:filter]).name  %>
+
+    <%#= f.input :start_date, as: :datetime  %>
+      <%= submit_tag "Filter", class:"btn btn-white btn-small enlarge" %>
+    <% end %>
+    </div>
+  </div >
 
   <div class="row">
     <div class="question-cards">
