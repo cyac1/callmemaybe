@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all
+    @questions = Question.all.order("created_at DESC")
     @replies = Reply.all
   end
 
