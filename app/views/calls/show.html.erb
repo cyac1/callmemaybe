@@ -16,8 +16,6 @@
     </div>
   <% end %>
 
-<div class="container">
-
   <% if @call.call_status == "unconfirmed" %>
 
 <!--       <div class="wrapper-gray wrapper-margin text-center">
@@ -43,14 +41,19 @@
       </div>
 
       <br>
-      <p class="category">Call Details</p>
+
+  <div class="replier-details">
+    <div class="center-text">
 <!--       <p class="call-details">Question User Email: <%= @call.question.user.email %></p> -->
       <div class="padding-left-right padding-top-half">
+        <p class="category">Call Details</p>
         <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
         <p class="call-details"><strong>Date: </strong><%= @call.datetime %></p>
         <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
         <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
       </div>
+    </div>
+  </div>
 
       <br>
       <div class="text-center">
@@ -67,23 +70,45 @@
       <p class="title"><%= @question.title %></p>
 
       <br>
-      <p class="category">Get in Touch</p>
-        <div class="padding-left-right padding-top-half padding-bottom">
-          <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
 
-          <p class="call-details"><strong>Phone number: </strong><%= @call.reply.user.phone_number %></p>
-          <p class="call-details"><strong>Skype: </strong><%= @call.reply.user.skype_username %></p>
-          <p class="call-details"><strong>Email: </strong><%= @call.reply.user.email %></p>
-        <br>
-          <p class="call-details"><strong>Date: </strong><%= @call.datetime %></p>
-          <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
-          <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
+        <div class="replier-details">
+          <div class="center-images">
+            <div class="author-name">
+              <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar-large">
+            </div>
+            <div>
+              <p> ... </p>
+            </div>
+            <div class="author-name">
+              <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar-large">
+            </div>
+          </div>
         </div>
-      </div>
-    <div class="question-cards white-box padding-top-1.5">
 
-          <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-primary" %>
-      <div class="padding-top-half">
+        <div class="replier-details">
+          <div class="center-text">
+              <div class="padding-left-right padding-bottom">
+                <p class="call-details"><strong>Get in Touch</strong></p>
+                <br>
+                <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
+
+                <p class="call-details"><strong>Phone number: </strong><%= @call.reply.user.phone_number %></p>
+                <p class="call-details"><strong>Skype: </strong><%= @call.reply.user.skype_username %></p>
+                <p class="call-details"><strong>Email: </strong><%= @call.reply.user.email %></p>
+              <br>
+                <p class="call-details"><strong>Date: </strong><%= @call.datetime %></p>
+                <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
+                <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <div class="question-cards white-box padding-top-1.5">
+        <div class="padding-top-half center-text">
+          <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-big btn-orange" %>
+        </div>
+      <div class="center-text">
         <p class="category">Reviews also appear on the profile page of the person you reviewed.</p>
       </div>
         <% @reviews.each do |review| %>
@@ -94,7 +119,6 @@
       </div>
         <% end %>
     </div>
-  </div>
 
   <% end %>
 
