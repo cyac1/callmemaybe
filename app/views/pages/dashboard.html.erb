@@ -1,37 +1,37 @@
-<h1>Profile Overview</h1>
-<%= current_user.id %>
+<h2 class="text-center">Dashboard</h2>
 
+<div class="tab">
+      <input id="tab-one" type="checkbox" name="tabs">
+      <label class="align-middle" for="tab-one">Your Questions</label>
+      <% current_user.questions.each_with_index do |q, i|  %>
+          <div class="question-card tab-content">
+            <div class="o-flexy">
+              <div class="o-flexy__block">
+                <p><%= q.title %></p>
+              </div>
+              <%=  link_to("edit", edit_question_path(q.id), class: "btn-small btn-white") %>
+              <%=  link_to("view", question_path(q.id), class: "btn-small btn-orange") %>
+            </div>
+          </div>
 
-
-<h2>All Questions</h2>
-<ul>
-  <% current_user.questions.each do |q|  %>
-  <li> <%= q.title %></li>
-  <% end %>
-</ul>
-
-
-
-<h2>All Replies</h2>
-<ul>
-<% current_user.replies.each do |r| %>
-    <% question = r.question %>
-<li> "Replied to <%= question.user.first_name %> <%= question.user.last_name %>'s question about <%= question.category.name %>" </li>
-<% end %>
-</ul>
-
-
+      <% end %>
+    </div>
 
     <div class="tab">
-      <input id="tab-one" type="checkbox" name="tabs">
-      <label for="tab-one">All Questions</label>
-      <% current_user.questions.each_with_index do |q, i|  %>
+      <input id="tab-two" type="checkbox" name="tabs">
+      <label class="align-middle" for="tab-two">Your Replies</label>
+      <% current_user.replies.each_with_index do |r, i|  %>
       <div class="inner-tab">
         <div class="tab">
-          <input id="tab-<%= i+1 %>-nested" type="checkbox" name="tabs">
-          <label for="tab-<%= i+1 %>-nested"><%= q.title %></label>
+          <input id="reply-tab-<%= i+1 %>-nested" type="checkbox" name="inside tab">
+          <label class="align-middle" for="reply-tab-<%= i+1 %>-nested"> <p> Reply to: <%= r.question.title %></p></label>
           <div class="question-card tab-content">
-            <p><%= q.description %></p>
+            <div class="o-flexy">
+              <div class="o-flexy__block">
+                <p><%= r.description %></p>
+              </div>
+              <%=  link_to("edit", edit_question_reply_path(r.question.id, r.id), class: "btn-small btn-orange") %>
+            </div>
           </div>
         </div>
       </div>
@@ -41,28 +41,38 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="tab">
-      <input id="tab-two" type="checkbox" name="tabs">
-      <label for="tab-two">All Replies</label>
-      <% current_user.replies.each do |r|  %>
-      <% question = r.question %>
-      <div class="tab-content">
-        <h3>Replied to <%= question.user.first_name %> <%= question.user.last_name %>'s question about <%= question.category.name %></h3>
+<!--     <div class="tab">
+      <input id="tab-one" type="checkbox" name="tabs">
+      <label class="align-middle" for="tab-one">Your Questions</label>
+      <% current_user.questions.each_with_index do |q, i|  %>
+      <div class="inner-tab">
+        <div class="tab">
+          <input id="question-tab-<%= i+1 %>-nested" type="checkbox" name="inside tab">
+          <label class="align-middle" for="question-tab-<%= i+1 %>-nested"> <p> <%= q.title %></p></label>
+          <div class="question-card tab-content">
+            <div class="o-flexy">
+              <div class="o-flexy__block">
+                <p><%= q.description %></p>
+              </div>
+              <%=  link_to("edit", edit_question_path(q.id), class: "btn-small btn-orange") %>
+            </div>
+          </div>
+        </div>
       </div>
       <% end %>
     </div>
+
+
+
+ -->
+
+
+
+
+
+
+
+
 
 
 

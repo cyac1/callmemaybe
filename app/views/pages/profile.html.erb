@@ -13,27 +13,29 @@
         <div class="col-xs-12 col-md-offset-1 col-md-10 question-card">
         <div class="text-left">
           <h3>Profile Information</h3>
-          <ul style="list-style-type: none;">
-            <li><strong>Member since: </strong><%= current_user.created_at.strftime("%d %B %Y") %></li>
-            <li><strong>Email: </strong></li>
-            <li><strong>Phone Number: </strong></li>
-            <li><strong>WhatsApp: </strong></li>
+          <ul style="list-style-type: none; padding: 0;">
+            <li><strong>Member since:  </strong><%= current_user.created_at.strftime("%d %B %Y") %></li>
+            <li><strong>Email:  </strong><%= current_user.email %></li>
+            <li><strong>Phone Number:  </strong><%= current_user.phone_number %></li>
+            <li><strong>WhatsApp:  </strong><%= current_user.whatsapp_number %></li>
 
           </ul>
         </div>
         </div>
         <div class="col-xs-12 col-md-offset-1 col-md-10 question-card">
         <div class="text-left">
-          <h3 style="margin-bottom: 30px;">Address</h3>
-          <ul style="list-style-type: none;">
-            <li><strong>Street: </strong><%= current_user.street %></li>
-            <li><strong>City: </strong><%= current_user.city %></li>
-            <li><strong>Zip Code: </strong><%= current_user.zipcode %></li>
-            <li><strong>Country: </strong><%= current_user.country %></li>
+          <h3>Address</h3>
+          <ul style="list-style-type: none; padding: 0;">
+            <li><strong>Street:  </strong><%= current_user.street %></li>
+            <li><strong>City:  </strong><%= current_user.city %></li>
+            <li><strong>Zip Code:  </strong><%= current_user.zipcode %></li>
+            <li><strong>Country:  </strong><%= current_user.country %></li>
           </ul>
         </div>
         </div>
       </div>
     </div>
+    <%= link_to("Back to Dashboard", dashboard_path(current_user), {class:"btn-big btn-orange", style: "display: block"}) %>
+    <%= link_to("Edit Profile", edit_user_registration_path(current_user), {class:"btn-big btn-white", style: "display: block"}) %>
 </div>
 
