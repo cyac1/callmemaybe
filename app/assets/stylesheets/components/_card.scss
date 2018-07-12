@@ -105,4 +105,20 @@
   font-size: 14px;
 }
 
+.status-box {
+  p {
+    font-size: 14px;
+  }
+  i {
+    font-size: 14px;
+  }
+}
+
+// FOR BUTTONS
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
 
