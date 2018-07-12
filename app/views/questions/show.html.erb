@@ -1,13 +1,13 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-xs-12 col-md-10 col-md-offset-1">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
       <div class="flex-inline">
         <h2>Your Question</h2>
         <%= link_to "Dashboard", questions_path, class:"btn btn-white btn-small" %></div>
     </div>
 
-    <div class="col-xs-12 col-md-10 col-md-offset-1 question-card">
+    <div class="col-xs-12 col-md-8 col-md-offset-2 question-card">
       <p><span class="category"><%= @question.category.name.upcase %></span></p>
         <p><span class="title"><%= @question.title %></span></p>
         <p><span class="description"><%= @question.description %></span></p>
@@ -27,7 +27,7 @@
         </div>
     </div>
   </div>
-  <div class="col-xs-12 col-md-10 col-md-offset-1">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
   <% if @question.replies.count == 0 %>
     <h3> Be the first to reply </h3>
   <% elsif @question.replies.count == 1 %>
@@ -39,7 +39,7 @@
 
   <div class="row">
     <% @question.replies.each do |reply| %>
-      <div class="col-xs-12 col-md-10 col-md-offset-1 white-box reply-card">
+      <div class="col-xs-12 col-md-8 col-md-offset-2 white-box reply-card">
         <div class="">
 
           <div class="header-question">
@@ -49,7 +49,7 @@
               <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar card-avatar">
                 <p><span class="user-name"><%= reply.user.email %></span></p>
               </div>
-              <p><span class="status"><%= reply.reply_status.upcase %></span></p>
+              <p><span class="status"><%= reply.reply_status %></span></p>
             </div>
 
           </div>

@@ -35,15 +35,6 @@ class RepliesController < ApplicationController
 
   def show
     @user = @reply.user
-    if @user == current_user
-      response = params[:resp]
-      if response == "accept"
-        @reply.reply_status = 1
-      else response == "reject"
-        @reply.reply_status = 2
-      end
-      @reply.save
-    end
     @call = Call.new
   end
 

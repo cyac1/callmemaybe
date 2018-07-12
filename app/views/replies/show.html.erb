@@ -16,7 +16,7 @@
         <p><span class="user-name"><%= @user.email %></span></p>
       </div>
       <p class="description"><%= @reply.description %></p>
-      <p class="price"><%= @reply.offer %> $</p>
+      <p class="price"><%= @reply.offer %></p>
       <% if current_user %>
         <% if @question.user.id == current_user.id  %>
           <%= render "calls/form", question: @question, call: @call %>
@@ -25,9 +25,6 @@
       <% end %>
       <br>
       <div class="center-button-container">
-
-        <%= link_to "Accept Guy", question_reply_path(@question, @reply, resp: "accept"), class:"btn btn-orange btn-big" %>
-        <%= link_to "Reject Guy", question_reply_path(@question, @reply , resp: "reject"), class:"btn btn-white btn-big" %>
       </div>
     </div>
 
