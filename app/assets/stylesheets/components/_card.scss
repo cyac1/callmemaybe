@@ -114,6 +114,18 @@
   }
 }
 
+.rating-stars {
+  font-size: 12px;
+  padding-left: 10px;
+}
+
+.reviews-text {
+  font-size: 12px;
+  opacity: 0.6;
+  color: $font_color;
+}
+
+
 // FOR BUTTONS
 .button-container {
   display: flex;
