@@ -22,57 +22,66 @@
   <div class="categories">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <%=  link_to questions_path(:filter => "7") do %>
         <div class="icons-card">
           <div class="content">
-            <%=  link_to questions_path do %>
               <i class="fas fa-globe"></i>
-              <p>All Categories</p>
-            <% end %>
-
+              <p>Geography</p>
           </div>
         </div>
+        <% end %>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <%=  link_to questions_path(:filter => "3") do %>
         <div class="icons-card">
           <div class="content">
-            <i class="fas fa-paw"></i>
-            <p>Pets</p>
+            <i class="fas fa-flask"></i>
+            <p>Sciences & Nature</p>
           </div>
         </div>
+        <% end %>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <%=  link_to questions_path(:filter => "9") do %>
+        <div class="icons-card">
+          <div class="content">
+            <i class="fas fa-music"></i>
+            <p>Music</p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <%=  link_to questions_path(:filter => "8") do %>
         <div class="icons-card">
           <div class="content">
             <i class="fas fa-book"></i>
-            <p>Literature</p>
+            <p>History</p>
           </div>
         </div>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <div class="icons-card">
-          <div class="content">
-            <i class="fas fa-basketball-ball"></i>
-            <p>Sport</p>
-          </div>
-        </div>
+        <% end %>
       </div>
 
       <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <%=  link_to questions_path(:filter => "4") do %>
         <div class="icons-card">
           <div class="content">
-            <i class="fas fa-coins"></i>
-            <p>Economy</p>
+            <i class="fas fa-car"></i>
+            <p>Vehicles</p>
           </div>
         </div>
+        <% end %>
       </div>
 
       <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <%=  link_to questions_path(:filter => "5") do %>
         <div class="icons-card">
           <div class="content">
-            <i class="fas fa-basketball-ball"></i>
-            <p>Travel</p>
+            <i class="fas fa-gamepad"></i>
+            <p>Video Games</p>
           </div>
         </div>
+        <% end %>
       </div>
 
       <% # end row %>
