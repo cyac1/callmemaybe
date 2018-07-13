@@ -1,7 +1,7 @@
 <%= simple_form_for [@call, @review] do |f| %>
   <div class="author-name text-center margin-bottom padding">
     <p><strong>For your expert: </strong></p>
-    <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar-large">
+    <img src="<%= @user.avatar %>" class="avatar-large">
     <p><span class="user-name"><%= @user.email %></span></p>
     <p><span class="user-name"><%= @call.created_at.strftime("Call Date: %d/%m/%Y") %></span></p>
   </div>
