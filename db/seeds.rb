@@ -321,7 +321,8 @@ users.each do |user|
     break if counter == 50
 
     difficulty = q_api_response["results"][counter]["difficulty"]
-    category_name = q_api_response["results"][counter]["category"]
+    category_array = q_api_response["results"][counter]["category"].split(": ")
+    category_name = category_array.pop
 
     if Category.where(name:category_name).empty?
       category = Category.create!(name:category_name)
