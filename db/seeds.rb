@@ -89,7 +89,7 @@ puts 'Creating users...'
 end
 
 # ## Import question data ##
-q_api_response = JSON.parse(open("https://opentdb.com/api.php?amount=50&type=multiple").read)
+q_api_response = JSON.parse(open("https://opentdb.com/api.php?amount=55&type=multiple").read)
 #binding.pry
 
 
@@ -106,7 +106,6 @@ users = User.all
   counter = 0
 users.each do |user|
   5.times do
-    break if counter == 50
 
     difficulty = q_api_response["results"][counter]["difficulty"]
     category_name = q_api_response["results"][counter]["category"]
