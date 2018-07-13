@@ -5,6 +5,7 @@ tmp/*
 !log/.keep
 !tmp/.keep
 *.swp
+*.env
 .DS_Store
 public/assets
 public/packs
@@ -15,3 +16,5 @@ yarn-error.log
 
 # Ignore application configuration
 /config/application.yml
+.env*
+.env*
