@@ -59,13 +59,15 @@
                       <% count += 1 %>
                     <% end %>
                   <% end %>
-                  <% num = (ratingsum / count).round(0) %>
-                  <% anum = 5 - num %>
-                  <% num.times do %>
-                  <i class="fas fa-star" style="color: #f9d949"></i>
-                  <% end %>
-                  <% anum.times do %>
-                  <i class="far fa-star" style="color: #f9d949"></i>
+                  <% if count > 0 %>
+                    <% num = (ratingsum / count).round(0) %>
+                    <% anum = 5 - num %>
+                    <% num.times do %>
+                    <i class="fas fa-star" style="color: #f9d949"></i>
+                    <% end %>
+                    <% anum.times do %>
+                    <i class="far fa-star" style="color: #f9d949"></i>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
