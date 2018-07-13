@@ -46,6 +46,7 @@
   input:checked ~ .tab-content {
     min-height: max-content;
     padding: 10px 10px 10px 30px;
+    border-bottom: 1px solid $medium_gray;
   }
   /* Icon */
   label::after {
@@ -79,7 +80,6 @@
   transition: max-height .35s;
   margin: 0px;
   padding: 1px 30px 0px 20px;
-
 }
 
 .inner-tab {

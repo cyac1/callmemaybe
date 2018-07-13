@@ -14,6 +14,7 @@ gem 'faker'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
+gem 'htmlentities', '~> 4.3', '>= 4.3.4'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'

@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2018_07_11_133516) do
     t.string "zipcode"
     t.string "country"
     t.integer "role", default: 0, null: false
-    t.string "avatar", default: "/assets/default_avatar.jpeg"
+    t.string "avatar", default: "https://smallbusinessbc.ca/wp-content/themes/sbbcmain/images/default-avatar.svg"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
