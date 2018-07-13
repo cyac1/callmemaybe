@@ -88,6 +88,7 @@ GEM
       sassc (>= 1.11)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    htmlentities (4.3.4)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.0.1)
@@ -248,6 +249,7 @@ DEPENDENCIES
   faker
   figaro
   font-awesome-sass (~> 5.0.9)
+  htmlentities (~> 4.3, >= 4.3.4)
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
   money-rails
