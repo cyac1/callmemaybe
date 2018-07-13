@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
 
   def index
     if params[:filter]
-      @questions = Question.where("category_id = ?", params[:filter])
+      @questions = Question.where("category_id = ?", params[:filter]).order("created_at DESC")
       # @selected_option = Category.find(params[:filter])
     else
       @questions = Question.all.order("created_at DESC")
