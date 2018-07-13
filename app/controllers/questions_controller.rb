@@ -5,10 +5,13 @@ class QuestionsController < ApplicationController
   def index
     if params[:filter] == "0"
       @questions = Question.all.order("created_at DESC").order("created_at DESC")
+      @title = "All Open Questions"
     elsif params[:filter]
       @questions = Question.where("category_id = ?", params[:filter]).order("created_at DESC")
+      @title = "All Questions in #{Category.find(params[:filter]).name}"
     else
       @questions = Question.all.order("created_at DESC")
+      @title = "All Open Questions"
     end
     @replies = Reply.all
 
