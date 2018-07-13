@@ -268,7 +268,7 @@ user_attributes = [
     zipcode: Faker::Address.postcode,
     country: "United Kingdom",
     role: 1,
-    avatar: "https://smallbusinessbc.ca/wp-content/themes/sbbcmain/images/default-avatar.svg"
+    remote_avatar_url: "https://smallbusinessbc.ca/wp-content/themes/sbbcmain/images/default-avatar.svg"
   }
 ]
 
@@ -295,7 +295,7 @@ puts 'Creating users...'
       zipcode: Faker::Address.postcode,
       country: Faker::Address.country,
       role: 0,
-      avatar: "https://smallbusinessbc.ca/wp-content/themes/sbbcmain/images/default-avatar.svg"
+      remote_avatar_url: "https://smallbusinessbc.ca/wp-content/themes/sbbcmain/images/default-avatar.svg"
     }
   ]
 
