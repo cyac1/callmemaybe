@@ -54,6 +54,18 @@
   text-decoration: none;
 }
 
+.btn-icons:hover {
+  text-decoration: none !important;
+  .content {
+    p {
+      color: $orange;
+    }
+    i {
+      color: $orange;
+    }
+  }
+}
+
 .enlarge {
   width: 100px;
 }
