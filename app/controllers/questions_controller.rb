@@ -3,14 +3,21 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :update, :destroy, :edit]
 
   def index
-    if params[:filter]
-      @questions = Question.where("category_id = ?", params[:filter])
-      # @selected_option = Category.find(params[:filter])
+    if params[:filter] == "0"
+      @questions = Question.all.order("created_at DESC").order("created_at DESC")
+    elsif params[:filter]
+      @questions = Question.where("category_id = ?", params[:filter]).order("created_at DESC")
     else
       @questions = Question.all.order("created_at DESC")
     end
     @replies = Reply.all
-    @categories = Category.all
+
+    # trick to display an "All" category in the dropdown. Fake category is NOT saved.
+    @categories = []
+    @categories << Category.new(id:"0", name:"All")
+    Category.all.each do |category|
+      @categories << category
+    end
   end
 
   def create
