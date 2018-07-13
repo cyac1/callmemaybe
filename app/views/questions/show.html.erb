@@ -1,7 +1,7 @@
 <div class="container">
 
-
   <div class="row">
+
     <div class="col-xs-12 col-md-8 col-md-offset-2">
       <div class="flex-inline">
         <% if @question.user == current_user %>
@@ -30,11 +30,8 @@
           <% else %>
             <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-orange btn-small" %>
           <% end %>
-        <% else %>
-          <%= link_to "Reply", new_question_reply_path(@question), class:"btn btn-orange btn-small" %>
-        <% end %>
+        </div>
       </div>
-    </div>
   </div>
 
   <div class="col-xs-12 col-md-8 col-md-offset-2">
@@ -113,6 +110,7 @@
 
         </div>
         </div>
+    <%# End of Loop  %>
     <% end %>
     </div>
   </div>
