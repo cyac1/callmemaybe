@@ -1,30 +1,32 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-10 col-md-offset-1 flex-inline">
+    <div class="col-xs-12 col-md-8 col-md-offset-2 flex-inline">
       <h2>Reply details</h2>
       <%= link_to "Go Back", question_path(@question), class:"btn btn-white btn-small" %>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="question-cards white-box">
-      <p class="category">Your question</p>
-      <p class="title"><%= @question.title %></p>
+
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <div class="question-cards white-box">
+        <p class="category">Your question</p>
+        <p class="title"><%= @question.title %></p>
+      </div>
     </div>
 
-    <div class="question-cards white-box">
-    <p class="category"><%= @user.email %>'s response:</p>
-      <div class="replier-details-left">
-        <div class="author-name">
-          <img src="<%= @user.avatar %>" class="avatar dropdown-toggle" id="navbar-wagon-menu">
-        </div>
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <div class="question-cards white-box">
+      <p class="category"><%= @user.email %>'s response:</p>
+        <div class="replier-details-left">
+          <div class="author-name">
+            <img src="<%= @user.avatar %>" class="avatar dropdown-toggle" id="navbar-wagon-menu">
+          </div>
           <div class="on-top-of">
             <p class="user-name category"> <strong> <%= @user.email %></strong></p>
             <p class ="user-name category"> <strong> Replied on <%= @reply.created_at.strftime("%d %B %Y") %> </strong></p>
           </div>
+        </div>
 
-       </div>
-       <p class ="category">Price: <%= @reply.offer %></p>
+        <p class ="category">Price: <%= @reply.offer %></p>
         <p><%= @reply.description %></p>
 
         <div class="margin-top margin-bottom center-button-container">
@@ -36,7 +38,9 @@
           <% end %>
           <%= link_to "Go Back", question_path(@question), class:"btn btn-big btn-white" %>
         </div>
+
       </div>
+    </div>
     </div>
 
   </div>
