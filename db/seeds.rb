@@ -267,6 +267,7 @@ user_attributes = [
     zipcode: Faker::Address.postcode,
     country: "United Kingdom",
     role: 1,
+    remote_avatar_url: "https://smallbusinessbc.ca/wp-content/themes/sbbcmain/images/default-avatar.svg"
   }
 ]
 
@@ -292,7 +293,8 @@ puts 'Creating users...'
       city: Faker::Address.city,
       zipcode: Faker::Address.postcode,
       country: Faker::Address.country,
-      role: 0
+      role: 0,
+      remote_avatar_url: "https://smallbusinessbc.ca/wp-content/themes/sbbcmain/images/default-avatar.svg"
     }
   ]
 
@@ -301,6 +303,7 @@ end
 
 # ## Import question data ##
 q_api_response = JSON.parse(open("https://opentdb.com/api.php?amount=50&type=multiple").read)
+
 #binding.pry
 
 
@@ -320,7 +323,8 @@ users.each do |user|
     break if counter == 50
 
     difficulty = q_api_response["results"][counter]["difficulty"]
-    category_name = q_api_response["results"][counter]["category"]
+    category_array = q_api_response["results"][counter]["category"].split(": ")
+    category_name = category_array.pop
 
     if Category.where(name:category_name).empty?
       category = Category.create!(name:category_name)
@@ -331,7 +335,9 @@ users.each do |user|
 
     category = category.pop if category.class == Array
 
-    question = q_api_response["results"][counter]["question"]
+    question = HTMLEntities.new.decode(q_api_response["results"][counter]["question"]).gsub(/[\\"]/,'')
+    p question
+
     counter += 1
 
     question_attributes =  { title: question,
