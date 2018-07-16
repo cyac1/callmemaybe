@@ -38,6 +38,7 @@ class RepliesController < ApplicationController
     @call = Call.new
     @confirmedcalls = Call.where("call_status = ?", 1)
     @existingcall = @confirmedcalls.where("reply_id = ?", @reply.id)
+    @reviews = Review.all
   end
 
   private

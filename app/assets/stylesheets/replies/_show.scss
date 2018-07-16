@@ -2,14 +2,35 @@
   display: flex;
   align-items: center;
   padding: 10px;
+  color: $font_color;
 }
 
 .replier-details-left {
   display: flex;
-  align-items: left;
+  align-items: center;
   padding: 10px;
 }
 
+// User Avatar on reply
 .on-top-of {
   padding: 10px;
+  font-size: 16px;
+  align-items: left;
 }
+
+.reply-offer {
+  font-size: 16px;
+  color: $font_color;
+  font-weight: bold;
+}
+
+.reply-description {
+  font-size: 16px;
+  color: $font_color;
+}
+
+.reply-rating-stars {
+  margin: 5px;
+}
+
+
