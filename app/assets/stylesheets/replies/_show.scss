@@ -13,3 +13,26 @@
 .on-top-of {
   padding: 10px;
 }
+
+.header-reply {
+  display: flex;
+  justify-content: space-between;
+  .status-box {
+    p {
+      margin: 0px;
+      padding: 0px;
+      font-size: 12px;
+    }
+  }
+}
+
+.red {
+  font-color: $red;
+  color: $red;
+}
+
+.green {
+  font-color: $green;
+  color: $green;
+}
+

@@ -15,15 +15,32 @@
 
     <div class="col-xs-12 col-md-8 col-md-offset-2">
       <div class="question-cards white-box">
-      <p class="category"><%= @user.email %>'s response:</p>
-        <div class="replier-details-left">
-          <div class="author-name">
-            <img src="<%= @user.avatar %>" class="avatar dropdown-toggle" id="navbar-wagon-menu">
+
+        <div class="header-reply">
+          <p class="category"><%= @user.email %>'s response:</p>
+
+          <div class="status-box">
+            <% if @reply.reply_status == "pending" %>
+              <i class="far fa-dot-circle gray"></i>
+              <p class="status gray">  <%= @reply.reply_status%></p>
+            <% elsif @reply.reply_status == "accepted" %>
+              <i class="far fa-check-circle green"></i>
+              <p class="status green">  <%= @reply.reply_status%></p>
+            <% elsif @reply.reply_status == "rejected" %>
+              <i class="far fa-times-circle red"></i>
+              <p class="status red">  <%= @reply.reply_status%></p>
+            <% end %>
           </div>
-          <div class="on-top-of">
-            <p class="user-name category"> <strong> <%= @user.email %></strong></p>
-            <p class ="user-name category"> <strong> Replied on <%= @reply.created_at.strftime("%d %B %Y") %> </strong></p>
-          </div>
+
+        </div>
+            <div class="replier-details-left">
+              <div class="author-name">
+                <img src="<%= @user.avatar %>" class="avatar dropdown-toggle" id="navbar-wagon-menu">
+              </div>
+              <div class="on-top-of">
+                <p class="user-name category"> <strong> <%= @user.email %></strong></p>
+                <p class ="user-name category"> <strong> Replied on <%= @reply.created_at.strftime("%d %B %Y") %> </strong></p>
+              </div>
         </div>
 
         <p class ="category">Price: <%= @reply.offer %></p>
@@ -31,8 +48,10 @@
 
         <div class="margin-top margin-bottom center-button-container">
         <%# Find out whether (1) current user exists, (2) is the user that asked the question, (3) has a confirmed call for this reply. If all TRUE...%>
-          <% if current_user && @question.user.id == current_user.id && @existingcall.empty? && @reply.pending?%>
+
+          <% if current_user && @question.user.id == current_user.id && @existingcall.empty? && @reply.reply_status == "pending"%>
             <%= render "calls/form", question: @question, call: @call %>
+            <%= link_to "Reject guy", question_reply_path(@question, @reply, :response => "reject"), method: :put, class:"btn btn-white btn-big" %>
           <% elsif !@existingcall.empty? %>
             <p class = "call-details">There is an existing call for this reply:</p>
             <%= link_to "Show Call", question_call_path(@question, @existingcall.first), class:"btn btn-white btn-big" %>

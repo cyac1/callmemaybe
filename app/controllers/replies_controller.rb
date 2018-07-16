@@ -1,6 +1,6 @@
 class RepliesController < ApplicationController
   before_action :set_question, only: [:new, :show, :create, :edit, :accept, :reject]
-  before_action :set_reply, only: [:show, :accept, :reject]
+  before_action :set_reply, only: [:show, :accept, :reject, :update]
   skip_before_action :authenticate_user!, only: [:show, :index]
 
   def create
@@ -25,6 +25,12 @@ class RepliesController < ApplicationController
   end
 
   def update
+    if params["response"] == "reject"
+      @reply.reply_status = "rejected"
+    elsif params["response"] == "accept"
+      @reply.reply_status = "accepted"
+    end
+    @reply.save!
   end
 
   def destroy

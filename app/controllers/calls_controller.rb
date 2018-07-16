@@ -36,6 +36,13 @@ class CallsController < ApplicationController
     @call = Call.find(params[:call_id])
     @question = Question.find(@call.question_id)
     @call.call_status = "confirmed"
+    # Boking a call sets the reply as accepted.
+    @reply = Reply.find(params[:reply]) unless params[:reply].nil?
+    if params["response"] == "accept"
+      @reply.reply_status = "accepted"
+      @reply.save!
+    end
+
     if @call.save
       redirect_to question_call_path(@question, @call)
     else

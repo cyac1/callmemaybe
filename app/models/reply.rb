@@ -16,12 +16,4 @@ class Reply < ApplicationRecord
   def rejected?
     @reply_status == :rejected
   end
-
-  def accept_reply
-    @reply_status = 1
-  end
-
-  def reject_reply
-    @reply_status = 2
-  end
 end

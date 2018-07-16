@@ -68,7 +68,7 @@
 
       <br>
       <div class="text-center">
-      <%= link_to "Confirm Call", question_call_confirm_path(@question, @call), class:"btn btn-big btn-orange" %>
+      <%= link_to "Confirm Call", question_call_confirm_path(@question, @call, response: "accept", reply: @reply ), class:"btn btn-big btn-orange" %>
       </div>
     </div>
   </div>
