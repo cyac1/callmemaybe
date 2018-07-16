@@ -31,7 +31,7 @@
         <div class="status status-center border-left current">
           <p>02 - Confirm Call</p>
         </div>
-        <div class="status status-last border-left current">
+        <div class="status status-last border-left incomplete">
           <p>03 - Write Review</p>
         </div>
       </div>
@@ -87,7 +87,7 @@
           <p>&#10003  Confirm Call</p>
         </div>
         <% if @reviews.empty? %>
-          <div class="status status-last border-left incomplete">
+          <div class="status status-last border-left current">
             <p>03 - Write Review</p>
           </div>
         <% else %>
