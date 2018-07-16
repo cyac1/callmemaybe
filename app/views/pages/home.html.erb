@@ -21,19 +21,18 @@
   </div>
   <div class="categories">
     <div class="row">
-
-      <% @icons.each do |icon| %>
+      <% @icons_link.each do |icon| %>
       <div class="col-xs-12 col-sm-6 col-md-4 text-center">
         <%=  link_to questions_path(:filter => icon.name), class:"btn-icons" do %>
           <div class="icons-card">
-            <div class="content">
+            <div class="icon-content">
+              <%= tag.p("", class: @icons[icon.name]) %>
               <p><%= icon.name %></p>
             </div>
           </div>
         <% end %>
       </div>
       <% end %>
-
       <% # end row %>
     </div>
 
