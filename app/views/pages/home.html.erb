@@ -21,68 +21,36 @@
   <% # HARD CODED categories  %>
   <div class="categories">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <%=  link_to questions_path(:filter => "7"), class:"btn-icons" do %>
-        <div class="icons-card">
-          <div class="content">
-              <i class="fas fa-globe"></i>
-              <p>Geography</p>
-          </div>
-        </div>
-        <% end %>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <%=  link_to questions_path(:filter => "3"), class:"btn-icons" do %>
-        <div class="icons-card">
-          <div class="content">
-            <i class="fas fa-flask"></i>
-            <p>Sciences & Nature</p>
-          </div>
-        </div>
-        <% end %>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <%=  link_to questions_path(:filter => "9"), class:"btn-icons" do %>
-        <div class="icons-card">
-          <div class="content">
-            <i class="fas fa-music"></i>
-            <p>Music</p>
-          </div>
-        </div>
-        <% end %>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <%=  link_to questions_path(:filter => "8"), class:"btn-icons" do %>
-        <div class="icons-card">
-          <div class="content">
-            <i class="fas fa-book"></i>
-            <p>History</p>
-          </div>
-        </div>
-        <% end %>
-      </div>
 
+      <% @icons.each do |icon| %>
       <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <%=  link_to questions_path(:filter => "4"), class:"btn-icons" do %>
-        <div class="icons-card">
-          <div class="content">
-            <i class="fas fa-car"></i>
-            <p>Vehicles</p>
+        <%=  link_to questions_path(:filter => icon.name), class:"btn-icons" do %>
+          <div class="icons-card">
+            <div class="content">
+              <p><%= icon.name %></p>
+            </div>
           </div>
-        </div>
         <% end %>
       </div>
+      <% end %>
 
-      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <%=  link_to questions_path(:filter => "5"), class:"btn-icons" do %>
-        <div class="icons-card">
-          <div class="content">
-            <i class="fas fa-gamepad"></i>
-            <p>Video Games</p>
-          </div>
-        </div>
-        <% end %>
-      </div>
+<!--      <i class="fas fa-football-ball"></i>
+     <p>Sport</p>
+
+      <i class="fas fa-globe"></i>
+      <p>General Knowlegde</p>
+
+      <i class="fas fa-flask"></i>
+      <p>Sciences & Nature</p>
+
+      <i class="fas fa-music"></i>
+      <p>Music</p>
+
+      <i class="fas fa-book"></i>
+      <p>Books</p>
+
+      <i class="fas fa-film"></i>
+      <p>Films</p> -->
 
       <% # end row %>
     </div>

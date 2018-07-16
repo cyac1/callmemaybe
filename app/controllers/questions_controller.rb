@@ -3,12 +3,13 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :update, :destroy, :edit]
 
   def index
-    if params[:filter] == "0"
+    if params[:filter] == "All"
       @questions = Question.all.order("created_at DESC").order("created_at DESC")
       @title = "All Open Questions"
     elsif params[:filter]
-      @questions = Question.where("category_id = ?", params[:filter]).order("created_at DESC")
-      @title = "All Questions in #{Category.find(params[:filter]).name}"
+      id_category = Category.where("name ILIKE ?", params[:filter]).first.id
+      @questions = Question.where("category_id = ?", id_category).order("created_at DESC")
+      @title = "All Questions in #{Category.find(id_category).name}"
     else
       @questions = Question.all.order("created_at DESC")
       @title = "All Open Questions"
