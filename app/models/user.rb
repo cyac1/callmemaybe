@@ -8,4 +8,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :add_default_avatar
+
+  private
+
+  def add_default_avatar
+    update(remote_avatar_url: "https://smallbusinessbc.ca/wp-content/themes/sbbcmain/images/default-avatar.svg")
+  end
 end

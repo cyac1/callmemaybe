@@ -45,7 +45,7 @@
 
   input:checked ~ .tab-content {
     min-height: max-content;
-    padding: 10px 10px 10px 30px;
+    padding: 10px 30px 10px 30px;
     border-bottom: 1px solid $medium_gray;
   }
   /* Icon */
@@ -63,16 +63,19 @@
     -o-transition: all .35s;
     transition: all .35s;
   }
+
   input[type=checkbox] + label::after {
     content: "+";
   }
 
   input[type=checkbox]:checked + label::after {
+    content: "-";
     transform: translate(0%,-50%), rotate(315deg);
   }
 }
 
 .question-card.tab-content {
+  color: $font_color;
   max-height: 0;
   overflow: hidden;
   -webkit-transition: max-height .35s;
@@ -95,7 +98,7 @@
 }
 
 .tab-content p {
-  margin: 10px;
+  margin: 10px 0px;
 }
 /* :checked */
 
@@ -115,11 +118,15 @@
 // }
 
 @media only screen and (max-width: 600px) {
-  .inner-tab label p {
-  font-size: 15px;
-  }
-  .tab-content p {
-  font-size: 15px;
+  // .inner-tab label p {
+  // font-size: 15px;
+  // }
+  // .tab-content p {
+  // font-size: 15px;
+  // }
+
+  .tab-content.little_p {
+  font-size: 10px;
   }
 }
 
@@ -127,9 +134,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .o-flexy__block {
-  flex: 1;
+  flex: 0 1;
+  align-items: center;
+  justify-content: space-around;
 }
 
+.dash-btn {
+  margin: 20px;
+}
+
+.btn-padding {
+  margin: 30px 0px 15px 0px;
+}
+
+.little_p {
+  font-size: 15px;
+  padding-left: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+
+}

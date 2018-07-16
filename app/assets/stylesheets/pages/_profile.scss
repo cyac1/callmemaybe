@@ -1,14 +1,16 @@
 .profile-image-lg  {
   border-radius: 50%;
-  height: 50%;
-  width: 50%;
+  height: 33%;
+  width: 33%;
+  max-width: 200px;
+  max-height: 200px;
   margin: 10px auto 0px auto ;
   top: 30%;
 }
 
 .diagonal-background {
   background-color: $orange;
-  clip-path: polygon(0 0, 100% 0%, 100% 15%, 0% 25%);
+  clip-path: polygon(0 0, 100% 0%, 100% 10%, 0% 20%);
   min-height: 100vh;
   position: absolute;
   top: 0px;

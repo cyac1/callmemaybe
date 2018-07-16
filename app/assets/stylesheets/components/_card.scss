@@ -11,6 +11,22 @@
 .card-text-content {
   padding-bottom: 10px;
 }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover {
+     color: $orange;
+     text-decoration:none;
+     cursor:pointer;
+  }
+
+// a {
+//   .col-xs-12.col-md-8.col-md-offset-2.white-box:hover {
+//     text-decoration:none;
+//   }
+// }
 
 .title {
   font-weight: bold;
