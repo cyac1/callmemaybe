@@ -112,18 +112,22 @@
     <div class="col-xs-12 col-md-8 col-md-offset-2">
       <div class="question-cards white-box padding-top-1.5">
         <div class="padding-top-half center-text">
+        <% if @reviews.count == 0 %>
             <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-big btn-orange" %>
         </div>
         <div class="center-text">
           <p class="category">Reviews also appear on the profile page of the person you reviewed.</p>
         </div>
+        <% else %>
           <% @reviews.each do |review| %>
             <div class="white-box review-card">
-              <p> User: <%= review.user_id %></p>
-              <p> Rating: <%= review.rating %> </p>
-              <p> <%= review.description %> </p>
+              <p class="call-details"> <strong>User:</strong> <%= review.user_id %></p>
+              <p class="call-details"> <strong>Rating:</strong> <%= review.rating %> </p>
+              <br>
+              <p class="call-details"> <%= review.description %> </p>
             </div>
           <% end %>
+        <% end %>
       </div>
     </div>
   <% end %>

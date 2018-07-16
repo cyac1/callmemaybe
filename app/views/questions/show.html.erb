@@ -33,18 +33,20 @@
       </div>
   </div>
 
-  <div class="col-xs-12 col-md-8 col-md-offset-2">
-    <% if @question.user == current_user && @question.replies.count == 0 %>
-      <h2>No replies yet</h2>
-    <% else %>
-      <% if @question.replies.count == 0 %>
-        <h2>Be the first to reply</h2>
-      <% elsif @question.replies.count == 1 %>
-        <h2><%= @question.replies.count %> Reply</h2>
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <% if @question.user == current_user && @question.replies.count == 0 %>
+        <p class="replies-text">No replies yet</p>
       <% else %>
-        <h2><%= @question.replies.count %> Replies</h2>
+        <% if @question.replies.count == 0 %>
+          <p class="replies-text">Be the first to reply</p>
+        <% elsif @question.replies.count == 1 %>
+          <h2><%= @question.replies.count %> Reply</h2>
+        <% else %>
+          <p class="replies-text"><%= @question.replies.count %> Replies</p>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 
 
