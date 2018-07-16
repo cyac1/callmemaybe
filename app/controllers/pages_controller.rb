@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:dashboard]
 
   def home
+    @icons = Category.all[1..6]
   end
 
   def dashboard
