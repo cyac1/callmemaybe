@@ -21,7 +21,7 @@
   <% if @call.call_status == "unconfirmed" %>
 
   <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
+    <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
 
       <%# Progress Bar depending on Call Status  %>
       <div class="status-header">
@@ -35,7 +35,7 @@
           <p>03 - Write Review</p>
         </div>
       </div>
-      <div class="question-cards white-box">
+      <div class=>
         <p class="category">Your question</p>
         <p class="title"><%= @question.title %></p>
           <div class="replier-details">
@@ -76,8 +76,7 @@
   <% else %>
   <%# Beginning of Confirmed Page %>
   <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
-
+    <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
       <%# Progress Bar depending on Call Status  %>
       <div class="status-header">
         <div class="status status-first completed">
@@ -96,8 +95,7 @@
           </div>
         <% end %>
       </div>
-
-      <div class="question-cards white-box">
+      <div>
         <p class="category">Your question</p>
         <p class="title"><%= @question.title %></p>
 

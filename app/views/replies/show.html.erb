@@ -6,8 +6,8 @@
     </div>
 
 
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
-      <div class="question-cards white-box">
+    <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
+      <div>
         <% if @question.user == current_user %>
           <p class="category">Your Question</p>
         <% else %>
@@ -17,8 +17,8 @@
       </div>
     </div>
 
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
-      <div class="question-cards white-box">
+    <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
+      <div>
       <p class="category"><%= @user.first_name %>'s reply:</p>
         <div class="replier-details-left">
           <div class="author-name">
@@ -59,9 +59,11 @@
         <%# Find out whether (1) current user exists, (2) is the user that asked the question, (3) has a confirmed call for this reply. If all TRUE...%>
           <% if current_user && @question.user.id == current_user.id && @existingcall.empty? %>
             <%= render "calls/form", question: @question, call: @call %>
-          <% elsif !@existingcall.empty? %>
+          <% elsif current_user && @question.user.id == current_user.id && !@existingcall.empty? %>
             <p class = "call-details">There is an existing call for this reply:</p>
             <%= link_to "Show Call", question_call_path(@question, @existingcall.first), class:"btn btn-white btn-big" %>
+          <% else %>
+            <%# Display nothing at all%>
           <% end %>
         </div>
 
