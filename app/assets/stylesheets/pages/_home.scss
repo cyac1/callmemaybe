@@ -39,11 +39,13 @@
   margin-top: 50px;
 }
 
-.icon-content:hover {
+.icons-card:hover {
+  .icon-content {
     p {
       text-decoration: none;
       color: $orange;
     }
+  }
 }
 
 .icon-content {
