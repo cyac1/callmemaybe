@@ -30,13 +30,13 @@
         <p><%= @reply.description %></p>
 
         <div class="margin-top margin-bottom center-button-container">
-          <% if current_user %>
-            <% if @question.user.id == current_user.id  %>
-              <%= render "calls/form", question: @question, call: @call %>
-            <% else %>
-            <% end %>
+        <%# Find out whether (1) current user exists, (2) is the user that asked the question, (3) has a confirmed call for this reply. If all TRUE...%>
+          <% if current_user && @question.user.id == current_user.id && @existingcall.empty? %>
+            <%= render "calls/form", question: @question, call: @call %>
+          <% else %>
+            <p class = "call-details">There is an existing call for this reply:</p>
+            <%= link_to "Show Call", question_call_path(@question, @existingcall.first), class:"btn btn-white btn-big" %>
           <% end %>
-          <%= link_to "Go Back", question_path(@question), class:"btn btn-big btn-white" %>
         </div>
 
       </div>

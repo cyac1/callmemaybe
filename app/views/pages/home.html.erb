@@ -1,5 +1,6 @@
 <div class="wrapper-white">
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(4, 43, 104, 0.7) 30%, rgba(4, 43, 104, 0.5) 50%), url('<%= asset_path('call-banner.jpg') %>');">
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(4, 43, 104, 0.7) 30%, rgba(4, 43, 104, 0.5) 50%), url('<%= asset_path('background-question-login.jpg') %>'); background-size: cover;
+    background-position-y: 33%;">
     <div class="banner-content">
       <h1><strong>Right Person</strong></h1>
       <h1><strong>Right Time</strong></h1>
@@ -18,71 +19,20 @@
   <div class="wrapper-gray wrapper-margin text-center">
     <h2><strong>Browse Questions by Category</strong></h2>
   </div>
-  <% # HARD CODED categories  %>
   <div class="categories">
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <%=  link_to questions_path(:filter => "7"), class:"btn-icons" do %>
-        <div class="icons-card">
-          <div class="content">
-              <i class="fas fa-globe"></i>
-              <p>Geography</p>
-          </div>
-        </div>
-        <% end %>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <%=  link_to questions_path(:filter => "3"), class:"btn-icons" do %>
-        <div class="icons-card">
-          <div class="content">
-            <i class="fas fa-flask"></i>
-            <p>Sciences & Nature</p>
-          </div>
-        </div>
-        <% end %>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <%=  link_to questions_path(:filter => "9"), class:"btn-icons" do %>
-        <div class="icons-card">
-          <div class="content">
-            <i class="fas fa-music"></i>
-            <p>Music</p>
-          </div>
-        </div>
-        <% end %>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <%=  link_to questions_path(:filter => "8"), class:"btn-icons" do %>
-        <div class="icons-card">
-          <div class="content">
-            <i class="fas fa-book"></i>
-            <p>History</p>
-          </div>
-        </div>
-        <% end %>
-      </div>
 
+      <% @icons.each do |icon| %>
       <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <%=  link_to questions_path(:filter => "4"), class:"btn-icons" do %>
-        <div class="icons-card">
-          <div class="content">
-            <i class="fas fa-car"></i>
-            <p>Vehicles</p>
+        <%=  link_to questions_path(:filter => icon.name), class:"btn-icons" do %>
+          <div class="icons-card">
+            <div class="content">
+              <p><%= icon.name %></p>
+            </div>
           </div>
-        </div>
         <% end %>
       </div>
-
-      <div class="col-xs-12 col-sm-6 col-md-4 text-center">
-        <%=  link_to questions_path(:filter => "5"), class:"btn-icons" do %>
-        <div class="icons-card">
-          <div class="content">
-            <i class="fas fa-gamepad"></i>
-            <p>Video Games</p>
-          </div>
-        </div>
-        <% end %>
-      </div>
+      <% end %>
 
       <% # end row %>
     </div>
