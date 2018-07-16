@@ -36,6 +36,8 @@ class RepliesController < ApplicationController
   def show
     @user = @reply.user
     @call = Call.new
+    @confirmedcalls = Call.where("call_status = ?", 1)
+    @existingcall = @confirmedcalls.where("reply_id = ?", @reply.id)
   end
 
   private
