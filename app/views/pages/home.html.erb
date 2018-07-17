@@ -26,7 +26,11 @@
         <%=  link_to questions_path(:filter => icon.name), class:"btn-icons" do %>
           <div class="icons-card">
             <div class="icon-content">
+              <% if @icons[icon.name].nil? %>
+              <i class="fas fa-globe"></i>
+              <% else %>
               <%= tag.p("", class: @icons[icon.name]) %>
+              <% end %>
               <p><%= icon.name %></p>
             </div>
           </div>
