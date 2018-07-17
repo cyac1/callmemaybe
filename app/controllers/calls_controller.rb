@@ -1,4 +1,5 @@
 class CallsController < ApplicationController
+  protect_from_forgery with: :exception
   before_action :set_call, only: [:show, :update]
 
   def create
@@ -27,8 +28,13 @@ class CallsController < ApplicationController
   end
 
   def update
+    puts "this is my params #{params}"
     @question = Question.find(@call.question_id)
-    @call.datetime = params[:call][:datetime]
+    date = params[:date]
+    time = params[:time]
+    newdate = DateTime.parse("#{params[:date]}-#{params[:time]}")
+
+    @call.datetime = newdate
     if @call.save
       redirect_to question_call_path(@question, @call)
     else

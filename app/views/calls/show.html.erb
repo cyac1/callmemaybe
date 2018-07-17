@@ -19,6 +19,7 @@
 
   <% if @call.call_status == "unconfirmed" && @call.datetime.nil? %>
 
+
     <div class="row">
       <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
 
@@ -101,7 +102,7 @@
   </div>
   <%# ^^^^ End outside grid col-md-8%>
 
-  <% elsif @call.call_status == "unconfirmed" %>
+  <% elsif @call.call_status == "unconfirmed"%>
 
     <div class="row">
       <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">

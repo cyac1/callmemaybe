@@ -22,14 +22,36 @@ timeslots.forEach(function(timeslot) {
   });
 });
 
-setCall.addEventListener('click', function() {
+setCall.addEventListener('click', function(event) {
+
+  event.preventDefault();
+
   let dateSelected = datePic.getAttribute("value");
   let timeSelected = document.querySelector(".time-selected").innerText;
-  // console.log(dateSelected)
-  // console.log(timeSelected)
-  let base = new URL(window.location.href );
+  let base = new URL(window.location.href);
 
-  base = base + "?day=" + encodeURIComponent(dateSelected) + "&time=" + encodeURIComponent(timeSelected);
-  console.log(base)
+  base = base + "day=" + encodeURIComponent(dateSelected) + "&time=" + encodeURIComponent(timeSelected);
+
+$.ajax({
+              url: base,
+              type: 'PATCH',
+              beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+              data:{date: dateSelected,
+                    time: timeSelected},
+              success: function(data) {
+
+
+                console.log(data);
+              }
+            });
+
   window.location = base;
-})
+
+});
+
+
+
+
+
+
+
