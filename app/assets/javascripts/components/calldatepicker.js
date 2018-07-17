@@ -2,9 +2,6 @@ let datePic = document.querySelector(".datepicker");
 let calendar = document.querySelector(".time-picker");
 calendar.hidden = true;
 
-let clearButton = document.querySelector("#resetDate");
-// clearButton.style.visibility = "hidden" // or "visible"
-
 datePic.addEventListener('change', function() {
   console.log(datePic.getAttribute("value"))
   if (datePic.getAttribute("value") ) {
@@ -12,8 +9,15 @@ datePic.addEventListener('change', function() {
   }
 })
 
-clearButton.addEventListener("click", function() {
-  calendar.hidden = true;
+let timeslots = document.querySelectorAll(".timeslot");
+console.log(timeslots)
+
+timeslots.forEach(function(timeslot) {
+  timeslot.addEventListener('click', function() {
+    timeslots.forEach(function(time){
+      timeslot.classList.remove("selected");
+    })
+    console.log(event)
+    timeslot.classList.add("selected");
+  });
 });
-
-
