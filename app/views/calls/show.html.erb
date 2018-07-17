@@ -73,11 +73,7 @@
                 <p class="text-center">Pick a date for your call</p>
               </div>
               <div class="clear-date text-center">
-                <input class="form-control string optional datepicker flatpickr-input form-control input" placeholder="" tabindex="0" type="text" readonly="readonly">
-                <%# Clear Input Field for Datepickr  %>
-                <div id="resetDate" class="btn btn-small btn-white">
-                  Clear
-                </div>
+                <input class="form-control string optional datepicker flatpickr-input form-control input" placeholder="Pick a date..." tabindex="0" type="text" readonly="readonly">
               </div>
 
               <div class="time-picker">
@@ -86,13 +82,15 @@
                 <div class="row">
                   <% num.times do |i| %>
                     <div class="col-xs-4 timeslot-box">
-                      <p class="timeslot"><%= link_to "#{slots[i]}:00", root_path %></p>
+                      <p class="timeslot"><%= "#{slots[i]}:00" %></p>
                     </div>
                   <% end %>
                 </div>
               </div>
               <div class="button-container">
-                <%= link_to "Set Call", question_call_confirm_path(@question, @call), class:"btn btn-big btn-orange" %>
+                <%#= link_to "Set Call", question_call_confirm_path(@question, @call), class:"btn btn-big btn-orange", id:"setCall" %>
+              <div id="setCall" class="btn btn-orange btn-big">Set Call</div>
+
               </div>
             </div>
           </div>

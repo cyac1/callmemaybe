@@ -28,5 +28,14 @@
   &:hover {
     border-color: $orange;
     color: $orange;
+    cursor: pointer;
+  }
+}
+
+.time-selected {
+  background-color: $orange;
+  color: white;
+  &:hover {
+    color: white;
   }
 }
