@@ -85,6 +85,13 @@
   padding-bottom: 10px;
 }
 
+// Change Font-Size for small screens
+@media only screen and (max-width: 400px) {
+    .status {
+        font-size: 12px;
+    }
+}
+
 .status-center {
   clip-path: polygon(95% 0%, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
 }
