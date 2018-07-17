@@ -20,223 +20,233 @@
   <% if @call.call_status == "unconfirmed" && @call.datetime.nil? %>
 
     <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
+      <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
 
-      <%# Progress Bar depending on Call Status  %>
-      <div class="status-header">
-        <div class="status status-first current">
-          <p>01 - Set Call</p>
-        </div>
-        <div class="status status-center border-left incomplete">
-          <p>02 - Confirm Call</p>
-        </div>
-        <div class="status status-last border-left incomplete">
-          <p>03 - Write Review</p>
-        </div>
-      </div>
-      <div class=>
-        <p class="category">Your question</p>
-        <p class="title"><%= @question.title %></p>
-          <div class="replier-details">
-            <div class="center-images">
-              <div class="author-name">
-                <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar-large">
-              </div>
-              <div>
-                <p> <i class="fas fa-phone phone-icon-preconfirmation"></i> </p>
-              </div>
-              <div class="author-name">
-                <img src="<%= @call.reply.user.avatar %>" class="avatar-large">
-              </div>
-            </div>
+        <%# Progress Bar depending on Call Status  %>
+        <div class="status-header">
+          <div class="status status-first current">
+            <p>01 - Set Call</p>
           </div>
-      <br>
-
-      <div class="replier-details">
-        <div class="center-text">
-          <div class="padding-left-right padding-top-half">
-            <p class="category">Call Details</p>
-            <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
+          <div class="status status-center border-left incomplete">
+            <p>02 - Confirm Call</p>
+          </div>
+          <div class="status status-last border-left incomplete">
+            <p>03 - Write Review</p>
           </div>
         </div>
-      </div>
+        <div>
+          <%# Display Question for this call %>
+          <p class="category">Your question</p>
+          <p class="title"><%= @question.title %></p>
 
+          <%# Display Call-Details  %>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
 
-      <br>
-      <div class="replier-details">
-      <div class="text-center">
-        <input class="form-control string optional datepicker flatpickr-input form-control input" placeholder="" tabindex="0" type="text" readonly="readonly">
-      </div>
-      <div id="resetDate" class="btn btn-small btn-white">Clear</div>
-
-    </div>
-       <div class="row">
-          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-
-            <div class="time-picker">
-              <% slots = (9..24).to_a %>
-              <% num = slots.size - 1 %>
-              <div class="row">
-                <div class="dateheader">Pick a time for your call on <%= Date.today.strftime("%d.%m.%Y") %></div>
-                <% num.times do |i| %>
-                  <div class="col-xs-4 timeslot-box">
-                    <p> <%= link_to "#{slots[i]}:00", root_path, class:"timeslot" %></p>
+              <%# Display two user avatars  %>
+              <div class="replier-details">
+                <div class="center-images">
+                  <div class="author-name">
+                    <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar-large">
                   </div>
-                <% end %>
+                  <div>
+                    <p> <i class="fas fa-phone phone-icon-preconfirmation"></i> </p>
+                  </div>
+                  <div class="author-name">
+                    <img src="<%= @call.reply.user.avatar %>" class="avatar-large">
+                  </div>
+                </div>
+              </div>
+
+              <%# Contact Info for Call  %>
+              <div class="replier-details">
+                <div class="center-text">
+                  <div class="padding-left-right padding-top-half">
+                    <p class="category text-center">Your Call with</p>
+                    <p class="caller-name"><%= @call.reply.user.first_name %> <%= @call.reply.user.last_name %></p>
+                  </div>
+                </div>
+              </div>
+
+              <%# Datepicker to set date for call  %>
+              <div class="dateheader">
+                <p class="text-center">Pick a date for your call</p>
+              </div>
+              <div class="clear-date text-center">
+                <input class="form-control string optional datepicker flatpickr-input form-control input" placeholder="" tabindex="0" type="text" readonly="readonly">
+                <%# Clear Input Field for Datepickr  %>
+                <div id="resetDate" class="btn btn-small btn-white">
+                  Clear
+                </div>
+              </div>
+
+              <div class="time-picker">
+                <% slots = (9..24).to_a %>
+                <% num = slots.size - 1 %>
+                <div class="row">
+                  <% num.times do |i| %>
+                    <div class="col-xs-4 timeslot-box">
+                      <p class="timeslot"><%= link_to "#{slots[i]}:00", root_path %></p>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="button-container">
+                <%= link_to "Set Call", question_call_confirm_path(@question, @call), class:"btn btn-big btn-orange" %>
               </div>
             </div>
-
           </div>
-        </div>
 
+          <%# ^^^^End of inside grid col-sm-6 %>
+        </div>
     </div>
   </div>
-  <%# End of SET DATTIME for call page  %>
+  <%# ^^^^ End outside grid col-md-8%>
 
   <% elsif @call.call_status == "unconfirmed" %>
 
-  <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
 
-      <%# Progress Bar depending on Call Status  %>
-      <div class="status-header">
-        <div class="status status-first completed">
-          <p>&#10003  Set Call</p>
-        </div>
-        <div class="status status-center border-left current">
-          <p>02 - Confirm Call</p>
-        </div>
-        <div class="status status-last border-left incomplete">
-          <p>03 - Write Review</p>
-        </div>
-      </div>
-      <div class=>
-        <p class="category">Your question</p>
-        <p class="title"><%= @question.title %></p>
-          <div class="replier-details">
-            <div class="center-images">
-              <div class="author-name">
-                <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar-large">
-              </div>
-              <div>
-                <p> <i class="fas fa-phone phone-icon-preconfirmation"></i> </p>
-              </div>
-              <div class="author-name">
-                <img src="<%= @call.reply.user.avatar %>" class="avatar-large">
-              </div>
-            </div>
+        <%# Progress Bar depending on Call Status  %>
+        <div class="status-header">
+          <div class="status status-first completed">
+            <p>&#10003  Set Call</p>
           </div>
-
-      <br>
-
-  <div class="replier-details">
-    <div class="center-text">
-      <div class="padding-left-right padding-top-half">
-        <p class="category">Call Details</p>
-        <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
-        <p class="call-details"><strong>Date: </strong><%= @call.datetime %></p>
-        <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
-        <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
-      </div>
-    </div>
-  </div>
-
-      <br>
-      <div class="text-center">
-      <%= link_to "Confirm Call", question_call_confirm_path(@question, @call), class:"btn btn-big btn-orange" %>
-      </div>
-    </div>
-  </div>
-  <%# End of Unconfirmed Page  %>
-  <% else %>
-  <%# Beginning of Confirmed Page %>
-  <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
-      <%# Progress Bar depending on Call Status  %>
-      <div class="status-header">
-        <div class="status status-first completed">
-          <p>&#10003  Set Call</p>
-        </div>
-        <div class="status status-center border-left completed">
-          <p>&#10003  Confirm Call</p>
-        </div>
-        <% if @reviews.empty? %>
-          <div class="status status-last border-left current">
+          <div class="status status-center border-left current">
+            <p>02 - Confirm Call</p>
+          </div>
+          <div class="status status-last border-left incomplete">
             <p>03 - Write Review</p>
           </div>
-        <% else %>
-          <div class="status status-last border-left completed">
-            <p>&#10003 Write Review</p>
-          </div>
-        <% end %>
-      </div>
-      <div>
-        <p class="category">Your question</p>
-        <p class="title"><%= @question.title %></p>
+        </div>
+        <div class=>
+          <p class="category">Your question</p>
+          <p class="title"><%= @question.title %></p>
+            <div class="replier-details">
+              <div class="center-images">
+                <div class="author-name">
+                  <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar-large">
+                </div>
+                <div>
+                  <p> <i class="fas fa-phone phone-icon-preconfirmation"></i> </p>
+                </div>
+                <div class="author-name">
+                  <img src="<%= @call.reply.user.avatar %>" class="avatar-large">
+                </div>
+              </div>
+            </div>
 
         <br>
-          <div class="replier-details">
-            <div class="center-images">
-              <div class="author-name">
-                <img src="<%= @call.reply.user.avatar %>" class="avatar-large">
-              </div>
-              <div>
-                <p> <i class="fas fa-phone phone-icon-confirmed"></i> </p>
-              </div>
-              <div class="author-name">
-                <img src="<%= @call.question.user.avatar %>" class="avatar-large">
-              </div>
-            </div>
-          </div>
 
-        <div class="replier-details">
-          <div class="center-text">
-              <div class="padding-left-right padding-bottom">
-                <p class="call-details"><strong>Get in Touch</strong></p>
-                <br>
-                <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
-
-                <p class="call-details"><strong>Phone number: </strong><%= @call.reply.user.phone_number %></p>
-                <p class="call-details"><strong>Skype: </strong><%= @call.reply.user.skype_username %></p>
-                <p class="call-details"><strong>Email: </strong><%= @call.reply.user.email %></p>
-              <br>
-                <p class="call-details"><strong>Date: </strong><%= @call.datetime %></p>
-                <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
-                <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
-
-              <%# Link to Dashboard  %>
-              <div class="center-text padding-top-double">
-                <p class="call-details">View your call in your personal dashboard.</p>
-              </div>
-              <%= link_to "Go to Dashboard", dashboard_path, class:"btn btn-big btn-white" %>
-
-              </div>
-            </div>
-          </div>
+    <div class="replier-details">
+      <div class="center-text">
+        <div class="padding-left-right padding-top-half">
+          <p class="category">Call Details</p>
+          <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
+          <p class="call-details"><strong>Date: </strong><%= @call.datetime %></p>
+          <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
+          <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
         </div>
-      </div>
-
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
-      <div class="question-cards white-box padding-top-1.5">
-        <div class="padding-top-half center-text">
-        <% if @reviews.count == 0 %>
-            <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-big btn-orange" %>
-        </div>
-        <div class="center-text">
-          <p class="category">Reviews also appear on the profile page of the person you reviewed.</p>
-        </div>
-        <% else %>
-          <% @reviews.each do |review| %>
-            <div class="white-box review-card">
-              <p class="call-details"> <strong>User:</strong> <%= review.user_id %></p>
-              <p class="call-details"> <strong>Rating:</strong> <%= review.rating %> </p>
-              <br>
-              <p class="call-details"> <%= review.description %> </p>
-            </div>
-          <% end %>
-        <% end %>
       </div>
     </div>
+
+        <br>
+        <div class="text-center">
+        <%= link_to "Confirm Call", question_call_confirm_path(@question, @call), class:"btn btn-big btn-orange" %>
+        </div>
+      </div>
+    </div>
+    <%# End of Unconfirmed Page  %>
+  <% else %>
+    <%# Beginning of Confirmed Page %>
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
+        <%# Progress Bar depending on Call Status  %>
+        <div class="status-header">
+          <div class="status status-first completed">
+            <p>&#10003  Set Call</p>
+          </div>
+          <div class="status status-center border-left completed">
+            <p>&#10003  Confirm Call</p>
+          </div>
+          <% if @reviews.empty? %>
+            <div class="status status-last border-left current">
+              <p>03 - Write Review</p>
+            </div>
+          <% else %>
+            <div class="status status-last border-left completed">
+              <p>&#10003 Write Review</p>
+            </div>
+          <% end %>
+        </div>
+        <div>
+          <p class="category">Your question</p>
+          <p class="title"><%= @question.title %></p>
+
+          <br>
+            <div class="replier-details">
+              <div class="center-images">
+                <div class="author-name">
+                  <img src="<%= @call.reply.user.avatar %>" class="avatar-large">
+                </div>
+                <div>
+                  <p> <i class="fas fa-phone phone-icon-confirmed"></i> </p>
+                </div>
+                <div class="author-name">
+                  <img src="<%= @call.question.user.avatar %>" class="avatar-large">
+                </div>
+              </div>
+            </div>
+
+          <div class="replier-details">
+            <div class="center-text">
+                <div class="padding-left-right padding-bottom">
+                  <p class="call-details"><strong>Get in Touch</strong></p>
+                  <br>
+                  <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
+
+                  <p class="call-details"><strong>Phone number: </strong><%= @call.reply.user.phone_number %></p>
+                  <p class="call-details"><strong>Skype: </strong><%= @call.reply.user.skype_username %></p>
+                  <p class="call-details"><strong>Email: </strong><%= @call.reply.user.email %></p>
+                <br>
+                  <p class="call-details"><strong>Date: </strong><%= @call.datetime %></p>
+                  <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
+                  <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
+
+                <%# Link to Dashboard  %>
+                <div class="center-text padding-top-double">
+                  <p class="call-details">View your call in your personal dashboard.</p>
+                </div>
+                <%= link_to "Go to Dashboard", dashboard_path, class:"btn btn-big btn-white" %>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <div class="question-cards white-box padding-top-1.5">
+          <div class="padding-top-half center-text">
+          <% if @reviews.count == 0 %>
+              <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-big btn-orange" %>
+          </div>
+          <div class="center-text">
+            <p class="category">Reviews also appear on the profile page of the person you reviewed.</p>
+          </div>
+          <% else %>
+            <% @reviews.each do |review| %>
+              <div class="white-box review-card">
+                <p class="call-details"> <strong>User:</strong> <%= review.user_id %></p>
+                <p class="call-details"> <strong>Rating:</strong> <%= review.rating %> </p>
+                <br>
+                <p class="call-details"> <%= review.description %> </p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
   <% end %>
 </div>
 
