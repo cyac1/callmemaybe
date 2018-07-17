@@ -62,8 +62,33 @@
         </div>
       </div>
 
+
+        <div class="calendar">
+
+        <table align="center" style="width: 100%">
+            <tr>
+              <% yesterday = Date.today - 1 %>
+              <% tomorrow = Date.today + 1 %>
+              <th><%= yesterday.strftime("%d.%m.%Y") %>
+              <th><%= Date.today.strftime("%d.%m.%Y") %>
+              <th><%= tomorrow.strftime("%d.%m.%Y") %>
+            </tr>
+          <% slots = (9..24).to_a %>
+          <% num = slots.size - 1 %>
+          <% num.times do |i| %>
+            <tr id="slot<%=i+1%>">
+              <td><%= link_to "#{slots[i]}-#{slots[i+1]}", root_path %></td>
+              <td><%= link_to "#{slots[i]}-#{slots[i+1]}", root_path %></td>
+              <td><%= link_to "#{slots[i]}-#{slots[i+1]}", root_path %></td>
+            </tr>
+          <% end %>
+        </table>
+
+      </div>
+
       <br>
       <div class="text-center">
+        <%#= form_tag :datetime, as: :string, required: false, input_html: {class: "datepicker"} %>
         <%= render "calls/datetime_form", question: @question, call: @call %>
       </div>
     </div>
