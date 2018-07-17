@@ -17,8 +17,83 @@
     </div>
   <% end %>
 
+  <% if @call.call_status == "unconfirmed" && @call.datetime.nil? %>
 
-  <% if @call.call_status == "unconfirmed" %>
+    <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
+
+      <%# Progress Bar depending on Call Status  %>
+      <div class="status-header">
+        <div class="status status-first current">
+          <p>01 - Set Call</p>
+        </div>
+        <div class="status status-center border-left incomplete">
+          <p>02 - Confirm Call</p>
+        </div>
+        <div class="status status-last border-left incomplete">
+          <p>03 - Write Review</p>
+        </div>
+      </div>
+      <div class=>
+        <p class="category">Your question</p>
+        <p class="title"><%= @question.title %></p>
+          <div class="replier-details">
+            <div class="center-images">
+              <div class="author-name">
+                <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar-large">
+              </div>
+              <div>
+                <p> <i class="fas fa-phone phone-icon-preconfirmation"></i> </p>
+              </div>
+              <div class="author-name">
+                <img src="<%= @call.reply.user.avatar %>" class="avatar-large">
+              </div>
+            </div>
+          </div>
+      <br>
+
+      <div class="replier-details">
+        <div class="center-text">
+          <div class="padding-left-right padding-top-half">
+            <p class="category">Call Details</p>
+            <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
+          </div>
+        </div>
+      </div>
+
+
+      <br>
+      <div class="replier-details">
+      <div class="text-center">
+        <input class="form-control string optional datepicker flatpickr-input form-control input" placeholder="" tabindex="0" type="text" readonly="readonly">
+      </div>
+      <div id="resetDate" class="btn btn-small btn-white">Clear</div>
+
+    </div>
+       <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
+            <div class="time-picker">
+              <% slots = (9..24).to_a %>
+              <% num = slots.size - 1 %>
+              <div class="row">
+                <div class="dateheader">Pick a time for your call on <%= Date.today.strftime("%d.%m.%Y") %></div>
+                <% num.times do |i| %>
+                  <div class="col-xs-4 timeslot-box">
+                    <p> <%= link_to "#{slots[i]}:00", root_path, class:"timeslot" %></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+  <%# End of SET DATTIME for call page  %>
+
+  <% elsif @call.call_status == "unconfirmed" %>
 
   <div class="row">
     <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">

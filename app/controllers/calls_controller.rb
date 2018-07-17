@@ -1,5 +1,5 @@
 class CallsController < ApplicationController
-  before_action :set_call, only: [:show]
+  before_action :set_call, only: [:show, :update]
 
   def create
     @call = Call.new(call_params)
@@ -27,6 +27,13 @@ class CallsController < ApplicationController
   end
 
   def update
+    @question = Question.find(@call.question_id)
+    @call.datetime = params[:call][:datetime]
+    if @call.save
+      redirect_to question_call_path(@question, @call)
+    else
+      redirect_to question_call_path(@question, @call)
+    end
   end
 
   def destroy
