@@ -120,9 +120,16 @@
             <p>03 - Write Review</p>
           </div>
         </div>
-        <div class=>
-          <p class="category">Your question</p>
-          <p class="title"><%= @question.title %></p>
+
+
+        <%# Display Question for this call %>
+        <p class="category">Your question</p>
+        <p class="title"><%= @question.title %></p>
+
+        <%# Display Call-Details  %>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
             <div class="replier-details">
               <div class="center-images">
                 <div class="author-name">
@@ -137,28 +144,31 @@
               </div>
             </div>
 
-        <br>
+            <div class="replier-details">
+              <div class="center-text">
+                <div class="padding-left-right padding-top-half">
+                  <p class="category text-center">Your Call with</p>
+                  <p class="caller-name"><%= @call.reply.user.first_name %> <%= @call.reply.user.last_name %></p>
+                  <p class="category">Call Details</p>
+                  <p class="call-details"><strong>Date: </strong><%= @call.datetime.strftime("%d/%m/%Y") %></p>
+                  <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
+                  <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
+                </div>
+              </div>
+            </div>
 
-    <div class="replier-details">
-      <div class="center-text">
-        <div class="padding-left-right padding-top-half">
-          <p class="category">Call Details</p>
-          <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
-          <p class="call-details"><strong>Date: </strong><%= @call.datetime %></p>
-          <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
-          <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
-        </div>
-      </div>
-    </div>
 
-        <br>
-        <div class="text-center">
-        <%= link_to "Confirm Call", question_call_confirm_path(@question, @call), class:"btn btn-big btn-orange" %>
+            <div class="button-container">
+            <%= link_to "Confirm Call", question_call_confirm_path(@question, @call), class:"btn btn-big btn-orange" %>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
     <%# End of Unconfirmed Page  %>
   <% else %>
+
     <%# Beginning of Confirmed Page %>
     <div class="row">
       <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
@@ -184,49 +194,56 @@
           <p class="category">Your question</p>
           <p class="title"><%= @question.title %></p>
 
-          <br>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
+              <div class="replier-details">
+                <div class="center-images">
+                  <div class="author-name">
+                    <img src="<%= @call.reply.user.avatar %>" class="avatar-large">
+                  </div>
+                  <div>
+                    <p> <i class="fas fa-phone phone-icon-confirmed"></i> </p>
+                  </div>
+                  <div class="author-name">
+                    <img src="<%= @call.question.user.avatar %>" class="avatar-large">
+                  </div>
+                </div>
+              </div>
+
             <div class="replier-details">
-              <div class="center-images">
-                <div class="author-name">
-                  <img src="<%= @call.reply.user.avatar %>" class="avatar-large">
-                </div>
-                <div>
-                  <p> <i class="fas fa-phone phone-icon-confirmed"></i> </p>
-                </div>
-                <div class="author-name">
-                  <img src="<%= @call.question.user.avatar %>" class="avatar-large">
+              <div class="center-text">
+                  <div class="padding-left-right padding-bottom">
+                    <p class="category text-center">Your Call with</p>
+                    <p class="caller-name">
+                      <%= @call.reply.user.first_name %><%= @call.reply.user.last_name %></p>
+                    <br>
+                    <p class="category text-center">Call Details</p>
+                    <p class="call-details"><strong>Phone number: </strong><%= @call.reply.user.phone_number %></p>
+                    <p class="call-details"><strong>Skype: </strong><%= @call.reply.user.skype_username %></p>
+                    <p class="call-details"><strong>Email: </strong><%= @call.reply.user.email %></p>
+                  <br>
+                    <p class="call-details"><strong>Date: </strong><%= @call.datetime.strftime("%d/%m/%Y") %></p>
+                    <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
+                    <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
+
+                  <%# Link to Dashboard  %>
+                  <div class="center-text padding-top-double">
+                    <p class="call-details">View call in your personal dashboard</p>
+                  </div>
+                  <%= link_to "Go to Dashboard", dashboard_path, class:"btn btn-big btn-white" %>
+
+                  </div>
                 </div>
               </div>
             </div>
 
-          <div class="replier-details">
-            <div class="center-text">
-                <div class="padding-left-right padding-bottom">
-                  <p class="call-details"><strong>Get in Touch</strong></p>
-                  <br>
-                  <p class="call-details"><strong>Call with:</strong> <%= @call.reply.user.email %></p>
-
-                  <p class="call-details"><strong>Phone number: </strong><%= @call.reply.user.phone_number %></p>
-                  <p class="call-details"><strong>Skype: </strong><%= @call.reply.user.skype_username %></p>
-                  <p class="call-details"><strong>Email: </strong><%= @call.reply.user.email %></p>
-                <br>
-                  <p class="call-details"><strong>Date: </strong><%= @call.datetime %></p>
-                  <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
-                  <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
-
-                <%# Link to Dashboard  %>
-                <div class="center-text padding-top-double">
-                  <p class="call-details">View your call in your personal dashboard.</p>
-                </div>
-                <%= link_to "Go to Dashboard", dashboard_path, class:"btn btn-big btn-white" %>
-
-                </div>
-              </div>
             </div>
           </div>
         </div>
 
-      <div class="col-xs-12 col-md-8 col-md-offset-2">
+  <%# Code to be refactored by Cyrus  %>
+   <!--    <div class="col-xs-12 col-md-8 col-md-offset-2">
         <div class="question-cards white-box padding-top-1.5">
           <div class="padding-top-half center-text">
           <% if @reviews.count == 0 %>
@@ -246,7 +263,7 @@
             <% end %>
           <% end %>
         </div>
-      </div>
+      </div> -->
   <% end %>
 </div>
 
