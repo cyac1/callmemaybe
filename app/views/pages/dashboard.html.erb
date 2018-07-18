@@ -1,18 +1,25 @@
+<div class="container">
 
-  <div class="col-xs-12 col-md-10 col-md-offset-1">
-    <h2>Dashboard</h2>
+  <div class="wrapper-gray wrapper-margin text-center dashboard-header">
+    <h2><strong>Dashboard</strong></h2>
   </div>
-    <div class="tab">
+
+  <div class="row">
+
+    <div class="tab col-xs-12 col-md-8 col-md-offset-2">
       <input id="tab-one" type="checkbox" name="tabs" checked>
       <label class="align-middle" for="tab-one">Your Questions</label>
       <% if current_user.questions.empty? %>
-      <div class="col-xs-12 col-md-10 col-md-offset-1 question-card tab-content">
+
+        <div class="question-card tab-content">
         <p>You have not asked any questions yet</p>
       </div>
+
       <% else %>
 
       <% current_user.questions.each_with_index do |q, i|  %>
-      <div class="col-xs-12 col-md-10 col-md-offset-1 question-card tab-content">
+
+      <div class="question-card tab-content">
         <div>
           <p><%= q.title %></p>
         </div>
@@ -26,7 +33,7 @@
       <% end %>
     </div>
 
-    <div class="tab">
+    <div class="tab col-xs-12 col-md-8 col-md-offset-2">
       <input id="tab-two" type="checkbox" name="tabs">
       <label class="align-middle" for="tab-two">Your Replies</label>
       <% current_user.replies.each_with_index do |r, i|  %>
@@ -39,7 +46,10 @@
         </div>
       </div>
     </div>
-     <% end %>
+    <% end %>
+
+  </div> <!-- END ROW -->
+</div> <!-- END CONTAINER -->
 
 
 
