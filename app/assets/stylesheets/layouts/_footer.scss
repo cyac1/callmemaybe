@@ -1,0 +1,45 @@
+
+
+
+.footer {
+ background: $blue;
+ visibility: hidden;
+ height: 70px;
+ padding: 0px 50px;
+ color: rgba(0,0,0,0.3);
+ position: fixed;
+ left: 0;
+ bottom: 0;
+ width: 100%;
+}
+
+p {color: white;
+ text-align: center;
+ align-items: center;
+ font-size: 14px;
+ font-weight: bold;
+ font-style: italic;
+}
+
+
+.footer-links {
+ display: flex;
+ align-items: center;
+}
+.footer-links a {
+ color: black;
+ opacity: 0.15;
+ text-decoration: none;
+ font-size: 24px;
+ padding: 0px 10px;
+}
+.footer-links a:hover {
+ opacity: 1;
+}
+
+
+.mar-bottom {
+ margin-bottom: 150px !important;
+}
+
+
