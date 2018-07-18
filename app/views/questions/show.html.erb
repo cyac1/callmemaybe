@@ -107,7 +107,6 @@
             </div>
           </div>
 
-
           <div class="reply-content">
             <p class="description"><%= reply.description %></p>
           </div>
@@ -115,11 +114,11 @@
             <p class="offer gray"><%= reply.offer %> €</p>
             <div class="button-container">
               <% if @question.user == current_user %>
-              <%= link_to "Send a Message", conversations_path(question_id: @question, reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
+                <%= link_to "Send a Message", conversations_path(question_id: @question, reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
+                <%= render "calls/form", question: @question, call: @call, reply: reply %>
               <% else %>
               <%= link_to "Send a Message", conversations_path(reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
               <% end %>
-              <%= link_to "Book a Call", question_call_path(@question, reply), class:"btn btn-orange btn-small" %>
             </div>
           </div>
 

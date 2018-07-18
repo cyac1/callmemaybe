@@ -15,6 +15,7 @@ function initCallDatePicker() {
         // remove all previous selected time slots
         timeslots.forEach(function(time){
               time.classList.remove("booked");
+              time.classList.remove("time-selected");
             })
         // Show a calendar with only the timeslots that are actually available
         // Look in "hidden" information for exisiting calls
@@ -79,7 +80,7 @@ function initCallDatePicker() {
           console.log(data);
         }
       });
-      window.location = base;
+      window.location.reload(true);
     });
   }
 };
