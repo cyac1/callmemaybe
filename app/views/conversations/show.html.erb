@@ -40,10 +40,16 @@
             </div>
           </div>
           <div class="reply-content">
+            <% if message.message_type == 0 %>
+            <p class="description"><%= message.content %></p>
+            <% else %>
+              <% if  %>
             <p class="description"><%= message.content %></p>
           </div>
         </div>
       </div>
+      <% end %>
+      <% end %>
     <% end %>
   <% end %>
 

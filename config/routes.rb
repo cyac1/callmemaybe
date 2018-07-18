@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'dashboard', to: "pages#dashboard"
+  get 'inbox', to: "conversations#index"
+  get 'calls', to: "calls#index"
   get 'profile', to: "pages#profile"
 
 

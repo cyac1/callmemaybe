@@ -1,0 +1,20 @@
+
+<%= render "pages/tabs" %>
+
+<% @conversations.each do |conversation| %>
+  <%= conversation.id %>
+  <% conversation.messages.each do |message| %>
+    <p>
+      From: <%= message.sender.first_name %>
+    </p>
+    <p>
+      To: <%= message.receiver.first_name %>
+    </p>
+    <p>
+      Body:
+    </p>
+    <p>
+      <%= message.content %>
+    </p>
+  <% end %>
+<% end %>

@@ -1,4 +1,7 @@
 class ConversationsController < ApplicationController
+  def index
+    @conversations = current_user.conversations
+  end
 
   def create
     @conversation = Conversation.new(conversation_params)
@@ -45,7 +48,7 @@ class ConversationsController < ApplicationController
   def offer
     @message = Message.new
     @message.message_type = 1
-
+    @message.content = "You sent a new offer"
   end
 
 end
