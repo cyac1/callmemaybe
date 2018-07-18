@@ -34,11 +34,11 @@ class RepliesController < ApplicationController
   end
 
   def show
-    @user = @reply.user
-    @call = Call.new
-    @confirmedcalls = Call.where("call_status = ?", 1)
-    @existingcall = @confirmedcalls.where("reply_id = ?", @reply.id)
-    @reviews = Review.all
+    # @user = @reply.user
+    # @call = Call.new
+    # @confirmedcalls = Call.where("call_status = ?", 1)
+    # @existingcall = @confirmedcalls.where("reply_id = ?", @reply.id)
+    # @reviews = Review.all
   end
 
   private

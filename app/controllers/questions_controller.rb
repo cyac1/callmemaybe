@@ -40,6 +40,11 @@ class QuestionsController < ApplicationController
 
   def show
     @reviews = Review.all
+    @call = Call.new
+    @replies = Reply.all
+    # @user = @reply.user
+    # @confirmedcalls = Call.where("call_status = ?", 1)
+    # @existingcall = @confirmedcalls.where("reply_id = ?", @reply.id)
   end
 
   def edit
