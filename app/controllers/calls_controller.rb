@@ -1,5 +1,6 @@
 class CallsController < ApplicationController
-  before_action :set_call, only: [:show]
+  protect_from_forgery with: :exception
+  before_action :set_call, only: [:show, :update]
 
   def create
     @call = Call.new(call_params)
@@ -27,6 +28,18 @@ class CallsController < ApplicationController
   end
 
   def update
+    puts "this is my params #{params}"
+    @question = Question.find(@call.question_id)
+    date = params[:date]
+    time = params[:time]
+    newdate = DateTime.parse("#{params[:date]}-#{params[:time]}")
+
+    @call.datetime = newdate
+    if @call.save
+      redirect_to question_call_path(@question, @call)
+    else
+      redirect_to question_call_path(@question, @call)
+    end
   end
 
   def destroy

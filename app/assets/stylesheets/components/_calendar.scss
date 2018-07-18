@@ -1,0 +1,41 @@
+.time-picker {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.dateheader {
+  background: white;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.timeslot-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.timeslot {
+  padding: 10px 0px 10px 0px;
+  border-radius: 5px;
+  border: 1px solid $medium_gray;
+  width: 100%;
+  text-align: center;
+  &:hover {
+    border-color: $orange;
+    color: $orange;
+    cursor: pointer;
+  }
+}
+
+.time-selected {
+  background-color: $orange;
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
