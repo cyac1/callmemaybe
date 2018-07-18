@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :conversations, only: [:create, :update, :show]
+  resources :messages, only: [:create]
   resources :categories, except: [:show]
   resources :questions  do
     resources :replies

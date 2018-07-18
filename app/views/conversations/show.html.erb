@@ -1,0 +1,67 @@
+
+<% if (current_user == @question.user) || (current_user == @reply.user)  %>
+
+  <div class="header-left">
+    <img src="<%= current_user.avatar %>" class="avatar card-avatar">
+    <div class="header-textbox">
+      <p class="user"><%= current_user.first_name %></p>
+    </div>
+  </div>
+
+  <%= @question.title %>
+  <%= @conversation.offer %>
+
+  <div class="col-xs-12 col-md-8 col-md-offset-2 white-box reply-card">
+    <%= simple_form_for @conversation, url: conversation_path, html: { method: :patch } do |f| %>
+    <div class="margin-bottom"><%= f.input :offer, placeholder: "New offer" %>
+    </div>
+    <%= f.input :conversation_id, as: :hidden, input_html: { value: @conversation.id } %>
+    <%= f.input :reply_id, as: :hidden, input_html: { value: @reply.id } %>
+    <div class="text-center margin-bottom">
+      <div><%= f.submit "Submit", class: "btn btn-orange btn-small margin-top" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <% if @conversation.messages.nil? %>
+  <% else %>
+    <% @conversation.messages.each do |message| %>
+      <div class="col-xs-12 col-md-8 col-md-offset-2 white-box reply-card">
+        <div class="reply">
+          <div class="reply-header">
+            <div class="header-left">
+              <img src="<%= message.sender.avatar %>" class="avatar card-avatar">
+              <div class="header-textbox">
+                <p class="user"><%= message.sender.email %></p>
+                <p class="created_at gray"><%= message.created_at.strftime("Replied on: %d/%m/%Y") %> </p>
+
+              </div>
+            </div>
+          </div>
+          <div class="reply-content">
+            <p class="description"><%= message.content %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="col-xs-12 col-md-8 col-md-offset-2 white-box reply-card">
+    <%= simple_form_for @message, url: messages_path do |f| %>
+    <div class="margin-bottom"><%= f.input :content, placeholder: "Enter your message" %>
+    </div>
+    <%= f.input :conversation_id, as: :hidden, input_html: { value: @conversation.id } %>
+    <%= f.input :reply_id, as: :hidden, input_html: { value: @reply.id } %>
+    <div class="text-center margin-bottom">
+      <div><%= f.submit "Submit", class: "btn btn-orange btn-small margin-top" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+<% else %>
+
+<%= flash[:alert] = "Mind your own business" %>
+
+<% end %>

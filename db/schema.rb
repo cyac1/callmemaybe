@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_16_131118) do
+ActiveRecord::Schema.define(version: 2018_07_17_154519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,28 @@ ActiveRecord::Schema.define(version: 2018_07_16_131118) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "offer_cents", default: 0, null: false
+    t.index ["question_id"], name: "index_conversations_on_question_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.datetime "opened_at"
+    t.string "message_type"
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.bigint "conversation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -98,6 +120,7 @@ ActiveRecord::Schema.define(version: 2018_07_16_131118) do
 
   add_foreign_key "calls", "questions"
   add_foreign_key "calls", "replies"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "questions", "categories"
   add_foreign_key "questions", "users"
   add_foreign_key "replies", "questions"

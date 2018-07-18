@@ -15,6 +15,15 @@
 
     <div class="col-xs-12 col-md-8 col-md-offset-2 question-card">
       <p><span class="category"><%= @question.category.name.upcase %></span></p>
+
+      <div class="header-left">
+        <img src="<%= @question.user.avatar %>" class="avatar card-avatar">
+        <div class="header-textbox">
+          <p class="user"><%= @question.user.email %></p>
+          <p class="created_at gray"><%= @question.created_at.strftime("Posted on: %d/%m/%Y") %> </p>
+        </div>
+      </div>
+
       <p><span class="title"><%= @question.title %></span></p>
       <p><span class="description"><%= @question.description %></span></p>
 
@@ -105,6 +114,11 @@
           <div class="reply-footer">
             <p class="offer gray"><%= reply.offer %> €</p>
             <div class="button-container">
+              <% if @question.user == current_user %>
+              <%= link_to "Send a message", conversations_path(question_id: @question, reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
+              <% else %>
+              <%= link_to "Send a message", conversations_path(reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
+              <% end %>
               <%= link_to "Show Details", question_reply_path(@question, reply), class:"btn btn-orange btn-small" %>
             </div>
           </div>
