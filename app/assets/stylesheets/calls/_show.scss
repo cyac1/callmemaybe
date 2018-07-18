@@ -10,10 +10,14 @@
   align-items: center;
 }
 
+.caller-name {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
 .call-details {
-  font-size: 14px;
-  margin: 0px;
-  opacity: 0.8;
+  font-size: 16px;
 }
 
 .call-details-title {
@@ -35,6 +39,7 @@
   justify-content: space-around;
   align-items: center;
   width: 150px;
+  margin-top: 20px;
 }
 
 .replier-details {
@@ -60,8 +65,14 @@
   padding-right: 20px;
 }
 
+.clear-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
-// Status-Bar
+/// Status-Bar
 .status-header {
   background-color: $background_gray;
   display: flex;

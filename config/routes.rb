@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :categories, except: [:show]
   resources :questions  do
     resources :replies
-    resources :calls, only: [:show, :create, :new] do
+    resources :calls, only: [:show, :create, :new, :update] do
       get 'confirm', to: "calls#confirm"
     end
   end
