@@ -268,5 +268,13 @@
   <% end %>
 </div>
 
+<ul class="hidden">
+  <% @calls_of_replier.each do |call| %>
+      <li class="calls-info"><%= call%></li>
+  <% end %>
+</ul>
+
+<%#= content_tag :div, class: "calls_info", data: {calls_replier: @calls_of_replier} do %>
+<%# end %>
 
 

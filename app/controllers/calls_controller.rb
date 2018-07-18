@@ -23,7 +23,7 @@ class CallsController < ApplicationController
     @reviews = Review.where("call_id = ?", @call.id)
     @calls_of_replier = []
     Reply.where(user: @reply.user).each do |reply|
-      @calls_of_replier << reply.call if reply.call.call_status == "confirmed"
+      @calls_of_replier << reply.call.datetime if reply.call.call_status == "confirmed"
     end
   end
 
