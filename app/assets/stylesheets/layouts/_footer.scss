@@ -1,6 +1,3 @@
-
-
-
 .footer {
  background: $blue;
  visibility: hidden;
@@ -11,16 +8,14 @@
  left: 0;
  bottom: 0;
  width: 100%;
+  p {color: white;
+   text-align: center;
+   align-items: center;
+   font-size: 14px;
+   font-weight: bold;
+   font-style: italic;
+  }
 }
-
-p {color: white;
- text-align: center;
- align-items: center;
- font-size: 14px;
- font-weight: bold;
- font-style: italian;
-}
-
 
 .footer-links {
  display: flex;
@@ -37,9 +32,6 @@ p {color: white;
  opacity: 1;
 }
 
-
 .mar-bottom {
  margin-bottom: 150px !important;
 }
-
-
