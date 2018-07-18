@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :conversations, only: [:create, :update, :show]
+  resources :messages, only: [:create]
   resources :categories, except: [:show]
   resources :questions  do
     resources :replies
@@ -10,6 +12,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'dashboard', to: "pages#dashboard"
+  get 'inbox', to: "conversations#index"
+  get 'calls', to: "calls#index"
   get 'profile', to: "pages#profile"
 
 

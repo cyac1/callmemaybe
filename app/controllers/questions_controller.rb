@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
     @categories = []
     @categories << Category.new(id:"0", name:"All")
     Category.all.each do |category|
-      @categories << category
+    @categories << category
     end
   end
 
