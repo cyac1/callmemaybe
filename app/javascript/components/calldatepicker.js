@@ -7,12 +7,15 @@ function initCallDatePicker() {
     let setCall = document.getElementById("setCall");
 
     let url = new URL(window.location.href );
-
     let calls_replier = document.querySelectorAll(".calls-info");
     console.log(calls_replier)
 
     datePic.addEventListener('change', function() {
       if (datePic.getAttribute("value") ) {
+        // remove all previous selected time slots
+        timeslots.forEach(function(time){
+              time.classList.remove("booked");
+            })
         // Show a calendar with only the timeslots that are actually available
         // Look in "hidden" information for exisiting calls
         // Check if any of those match the "Attribute Value"
@@ -36,19 +39,20 @@ function initCallDatePicker() {
           }
         });
 
-
         calendar.hidden = false;
       }
     })
 
     timeslots.forEach(function(timeslot) {
       timeslot.addEventListener('click', function() {
-        if (timeslot.hasClass("booked")) {
+        if (timeslot.classList.contains("booked") === false) {
           timeslots.forEach(function(time){
               time.classList.remove("time-selected");
             })
             console.log(event)
             timeslot.classList.add("time-selected");
+            setCall.classList.remove("hidden");
+            setCall.scrollIntoView();
         };
       });
     });
