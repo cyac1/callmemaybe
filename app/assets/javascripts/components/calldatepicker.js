@@ -32,21 +32,19 @@ setCall.addEventListener('click', function(event) {
 
   base = base + "day=" + encodeURIComponent(dateSelected) + "&time=" + encodeURIComponent(timeSelected);
 
-$.ajax({
-              url: base,
-              type: 'PATCH',
-              beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-              data:{date: dateSelected,
-                    time: timeSelected},
-              success: function(data) {
+  $.ajax({
+    url: base,
+    type: 'PATCH',
+    beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+    data:{date: dateSelected,
+          time: timeSelected},
+    success: function(data) {
 
 
-                console.log(data);
-              }
-            });
-
+      console.log(data);
+    }
+  });
   window.location = base;
-
 });
 
 
