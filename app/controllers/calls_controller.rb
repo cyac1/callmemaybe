@@ -4,7 +4,6 @@ class CallsController < ApplicationController
 
   def create
     @call = Call.new(call_params)
-
     @reply = Reply.find(params[:reply_id])
     @call.reply = @reply
 
@@ -22,13 +21,16 @@ class CallsController < ApplicationController
     @reply = Reply.find(@call.reply_id)
     @question = Question.find(@call.question_id)
     @reviews = Review.where("call_id = ?", @call.id)
+    @calls_of_replier = []
+    Reply.where(user: @reply.user).each do |reply|
+      @calls_of_replier << reply.call if reply.call.call_status == "confirmed"
+    end
   end
 
   def edit
   end
 
   def update
-    puts "this is my params #{params}"
     @question = Question.find(@call.question_id)
     date = params[:date]
     time = params[:time]
