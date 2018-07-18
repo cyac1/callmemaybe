@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'profile', to: "pages#profile"
 
 
+
   resources :calls, only: [:index] do
     resources :reviews
   end
