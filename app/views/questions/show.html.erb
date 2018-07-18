@@ -115,11 +115,11 @@
             <p class="offer gray"><%= reply.offer %> €</p>
             <div class="button-container">
               <% if @question.user == current_user %>
-              <%= link_to "Send a message", conversations_path(question_id: @question, reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
+              <%= link_to "Send a Message", conversations_path(question_id: @question, reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
               <% else %>
-              <%= link_to "Send a message", conversations_path(reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
+              <%= link_to "Send a Message", conversations_path(reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
               <% end %>
-              <%= link_to "Show Details", question_reply_path(@question, reply), class:"btn btn-orange btn-small" %>
+              <%= link_to "Book a Call", question_call_path(@question, reply), class:"btn btn-orange btn-small" %>
             </div>
           </div>
 
