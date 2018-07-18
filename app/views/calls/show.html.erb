@@ -32,7 +32,7 @@
             <p>02 - Confirm Call</p>
           </div>
           <div class="status status-last border-left incomplete">
-            <p>03 - Write Review</p>
+            <p>03 - Call Summary</p>
           </div>
         </div>
         <div>
@@ -116,7 +116,7 @@
             <p>02 - Confirm Call</p>
           </div>
           <div class="status status-last border-left incomplete">
-            <p>03 - Write Review</p>
+            <p>03 - Call Summary</p>
           </div>
         </div>
 
@@ -148,8 +148,10 @@
                 <div class="padding-left-right padding-top-half">
                   <p class="category text-center">Your Call with</p>
                   <p class="caller-name"><%= @call.reply.user.first_name %> <%= @call.reply.user.last_name %></p>
+                  <p class="caller-name red">Call <%= @call.call_status.capitalize %></p>
                   <p class="category">Call Details</p>
                   <p class="call-details"><strong>Date: </strong><%= @call.datetime.strftime("%d/%m/%Y") %></p>
+                  <p class="call-details"><strong>Time: </strong><%= @call.datetime.strftime("%H:%M") %>h</p>
                   <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
                   <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
                 </div>
@@ -179,15 +181,9 @@
           <div class="status status-center border-left completed">
             <p>&#10003  Confirm Call</p>
           </div>
-          <% if @reviews.empty? %>
-            <div class="status status-last border-left current">
-              <p>03 - Write Review</p>
-            </div>
-          <% else %>
-            <div class="status status-last border-left completed">
-              <p>&#10003 Write Review</p>
-            </div>
-          <% end %>
+          <div class="status status-last border-left current">
+            <p>03 - Call Summary</p>
+          </div>
         </div>
         <div>
           <p class="category">Your question</p>
@@ -216,6 +212,7 @@
                     <p class="category text-center">Your Call with</p>
                     <p class="caller-name">
                       <%= @call.reply.user.first_name %><%= @call.reply.user.last_name %></p>
+                    <p class="caller-name green">Call <%= @call.call_status.capitalize %></p>
                     <br>
                     <p class="category text-center">Call Details</p>
                     <p class="call-details"><strong>Phone number: </strong><%= @call.reply.user.phone_number %></p>
@@ -223,8 +220,8 @@
                     <p class="call-details"><strong>Email: </strong><%= @call.reply.user.email %></p>
                   <br>
                     <p class="call-details"><strong>Date: </strong><%= @call.datetime.strftime("%d/%m/%Y") %></p>
+                    <p class="call-details"><strong>Time: </strong><%= @call.datetime.strftime("%H:%M") %>h</p>
                     <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
-                    <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
 
                   <%# Link to Dashboard  %>
                   <div class="center-text padding-top-double">
@@ -232,6 +229,13 @@
                   </div>
                   <%= link_to "Go to Dashboard", dashboard_path, class:"btn btn-big btn-white" %>
 
+                  <%# Link to Write Review only visible after Call-Date  %>
+                  <% if @reviews.count == 0 && @call.datetime < Date.today %>
+                    <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-big btn-orange"%>
+                  <% else %>
+                    <p class="call-details center-text padding-top">Write a review after your call</p>
+                    <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-big btn-orange disabled"%>
+                  <% end %>
                   </div>
                 </div>
               </div>
@@ -240,29 +244,6 @@
             </div>
           </div>
         </div>
-
-  <%# Code to be refactored by Cyrus  %>
-   <!--    <div class="col-xs-12 col-md-8 col-md-offset-2">
-        <div class="question-cards white-box padding-top-1.5">
-          <div class="padding-top-half center-text">
-          <% if @reviews.count == 0 %>
-              <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-big btn-orange" %>
-          </div>
-          <div class="center-text">
-            <p class="category">Reviews also appear on the profile page of the person you reviewed.</p>
-          </div>
-          <% else %>
-            <% @reviews.each do |review| %>
-              <div class="white-box review-card">
-                <p class="call-details"> <strong>User:</strong> <%= review.user_id %></p>
-                <p class="call-details"> <strong>Rating:</strong> <%= review.rating %> </p>
-                <br>
-                <p class="call-details"> <%= review.description %> </p>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-      </div> -->
   <% end %>
 </div>
 

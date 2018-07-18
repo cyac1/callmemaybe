@@ -34,7 +34,6 @@ class CallsController < ApplicationController
   end
 
   def update
-    puts "this is my params #{params}"
     @question = Question.find(@call.question_id)
     date = params[:date]
     time = params[:time]
