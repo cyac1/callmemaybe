@@ -9,17 +9,30 @@ class CallsController < ApplicationController
   end
 
   def create
-    @call = Call.new(call_params)
     @reply = Reply.find(params[:reply_id])
-    @call.reply = @reply
+    all_calls = Call.where("reply_id = ?", @reply.id)
 
-    @question = Question.find(params[:question_id])
-    @call.question = @question
+    # Checkout whether this reply has a call already
+    # If no call exists, create one
+    if all_calls.empty?
+      @call = Call.new(call_params)
+      @call.reply = @reply
+      @question = Question.find(params[:question_id])
+      @call.question = @question
 
-    if @call.save
-      redirect_to question_call_path(@question, @call)
+      if @call.save
+        redirect_to question_call_path(@question, @call)
+      else
+        redirect_to question_reply_path(@question, @reply)
+      end
+    # If Call exists, do not create new one but redirect to existing one
     else
-      redirect_to question_reply_path(@question, @reply)
+      ### IMPORTANT ###
+      # Last is a placeholder here, we have to fix our database,
+      # so there is always only ONE CALL per Reply
+      @call = all_calls.last
+      @question = Question.find(params[:question_id])
+      redirect_to question_call_path(@question, @call)
     end
   end
 
