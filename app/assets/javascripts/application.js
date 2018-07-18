@@ -1,9 +1,3 @@
-//= require rails-ujs
-//= require_tree .
-
-
-
-
 const footer = document.querySelector('.footer');
 
   if (footer) {
