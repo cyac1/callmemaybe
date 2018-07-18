@@ -13,17 +13,43 @@ function initCallDatePicker() {
 
     datePic.addEventListener('change', function() {
       if (datePic.getAttribute("value") ) {
+        // Show a calendar with only the timeslots that are actually available
+        // Look in "hidden" information for exisiting calls
+        // Check if any of those match the "Attribute Value"
+        // Add class "disabled" to the timeslots that are already booked
+
+        // Find out what date user picked in input field and create Date out of it
+        let userSelectedDate = new Date(datePic.getAttribute("value"))
+
+        // Access existing calls of user and also create Dates out of it
+        let dateArray = document.querySelectorAll(".calls-info")
+        dateArray.forEach(function(element) {
+          let bookedDate = new Date(element.innerHTML);
+
+          // If picked date and any call date is the same, block a timeslot
+          if (sameDay(bookedDate, userSelectedDate)) {
+            console.log(bookedDate.getHours());
+            let bookedSlot = document.querySelector(".slot-"+ bookedDate.getHours());
+            console.log(bookedSlot)
+            bookedSlot.classList.add("booked");
+            bookedSlot.disabled = true
+          }
+        });
+
+
         calendar.hidden = false;
       }
     })
 
     timeslots.forEach(function(timeslot) {
       timeslot.addEventListener('click', function() {
-        timeslots.forEach(function(time){
-          time.classList.remove("time-selected");
-        })
-        console.log(event)
-        timeslot.classList.add("time-selected");
+        if (timeslot.hasClass("booked")) {
+          timeslots.forEach(function(time){
+              time.classList.remove("time-selected");
+            })
+            console.log(event)
+            timeslot.classList.add("time-selected");
+        };
       });
     });
 
@@ -56,3 +82,10 @@ function initCallDatePicker() {
 
 export { initCallDatePicker };
 
+function sameDay(d1, d2) {
+  console.log(d1);
+  console.log(d2);
+  return d1.getFullYear() === d2.getFullYear() &&
+    d1.getMonth() === d2.getMonth() &&
+    d1.getDate() === d2.getDate();
+}

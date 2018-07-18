@@ -86,7 +86,7 @@
                   <div class="row">
                     <% num.times do |i| %>
                       <div class="col-xs-4 timeslot-box">
-                        <p class="timeslot"><%= "#{slots[i]}:00" %></p>
+                        <p class="timeslot slot-<%= "#{slots[i]}" %>"><%= "#{slots[i]}:00" %></p>
                       </div>
                     <% end %>
                   </div>
@@ -257,8 +257,13 @@
 
 <ul class="hidden">
   <% @calls_of_replier.each do |call| %>
-      <li class="calls-info"><%= call%></li>
+      <li class="calls-info"><%= call.datetime%></li>
   <% end %>
+      <li class="calls-info">2018-07-19 14:00:00 UTC</li>
+      <li class="calls-info">2018-07-19 15:00:00 UTC</li>
+      <li class="calls-info">2018-07-20 15:00:00 UTC</li>
+      <li class="calls-info">2018-07-20 17:00:00 UTC</li>
+      <li class="calls-info">2018-07-20 18:00:00 UTC</li>
 </ul>
 
 <%#= content_tag :div, class: "calls_info", data: {calls_replier: @calls_of_replier} do %>

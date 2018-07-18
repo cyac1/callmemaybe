@@ -21,10 +21,21 @@ class CallsController < ApplicationController
     @reply = Reply.find(@call.reply_id)
     @question = Question.find(@call.question_id)
     @reviews = Review.where("call_id = ?", @call.id)
+
+    # (1) Find user that gave the reply to this call
+    replying_user = @reply.user
+
+    #(2) Find all his replies until today
+    repliers_replies = Reply.where("user_id = ?", replying_user.id)
+
+    #(3) Knowing the ID of all his replies, find corresponding calls
     @calls_of_replier = []
-    Reply.where(user: @reply.user).each do |reply|
-      @calls_of_replier << reply.call.datetime if reply.call.call_status == "confirmed"
+    repliers_replies.each do |reply|
+      if !reply.call.nil? && reply.call.call_status == "confirmed"
+        @calls_of_replier << Call.where("reply_id = ?", reply.id).first
+      end
     end
+    #(4) calls_of_replier Array now holds all calls of user that gave reply
   end
 
   def edit
