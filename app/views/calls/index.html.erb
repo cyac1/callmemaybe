@@ -1,0 +1,22 @@
+<h1>Questions you asked</h1>
+
+<% @question_calls.each do |call| %>
+  <p>
+    Asking for help: <%= call.question_author.full_name %>
+  </p>
+  <p>
+    Offering help: <%= call.reply_author.full_name %>
+  </p>
+<% end %>
+
+
+<h1>Questions you helped with</h1>
+
+<% @reply_calls.each do |call| %>
+  <p>
+    Asking for help: <%= call.question_author.full_name %>
+  </p>
+  <p>
+    Offering help: <%= call.reply_author.full_name %>
+  </p>
+<% end %>

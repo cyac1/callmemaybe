@@ -2,6 +2,12 @@ class CallsController < ApplicationController
   protect_from_forgery with: :exception
   before_action :set_call, only: [:show, :update]
 
+  def index
+    calls = current_user.calls #.where("call.datetime > ?", Time.current)
+    @question_calls = calls.select { |c| c.question_author == current_user }
+    @reply_calls = calls.select { |c| c.reply_author == current_user }
+  end
+
   def create
     @call = Call.new(call_params)
     @reply = Reply.find(params[:reply_id])

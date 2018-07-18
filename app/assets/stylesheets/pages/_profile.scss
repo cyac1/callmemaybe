@@ -26,9 +26,13 @@
 
 .front-content {
   position: relative;
-  z-index: 200;
+  z-index: 00;
 }
 
 .no-margin {
   padding: 0px;
+}
+
+.profile-banner h2 {
+  margin: 0px !important;
 }
