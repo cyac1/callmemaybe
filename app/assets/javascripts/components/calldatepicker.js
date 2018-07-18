@@ -6,6 +6,9 @@ let setCall = document.getElementById("setCall");
 
 let url = new URL(window.location.href );
 
+let calls_replier = document.querySelectorAll(".calls-info");
+console.log(calls_replier)
+
 datePic.addEventListener('change', function() {
   if (datePic.getAttribute("value") ) {
     calendar.hidden = false;

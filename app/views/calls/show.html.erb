@@ -17,6 +17,7 @@
     </div>
   <% end %>
 
+  <% # FIRST STEP OF THE PROGRESS: set a time for the call %>
   <% if @call.call_status == "unconfirmed" && @call.datetime.nil? %>
 
 
@@ -102,7 +103,8 @@
   </div>
   <%# ^^^^ End outside grid col-md-8%>
 
-  <% elsif @call.call_status == "unconfirmed"%>
+    <% # FIRST STEP OF THE PROGRESS: set a time for the call %>
+    <% elsif @call.call_status == "unconfirmed"%>
 
     <div class="row">
       <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
@@ -247,5 +249,13 @@
   <% end %>
 </div>
 
+<ul class="hidden">
+  <% @calls_of_replier.each do |call| %>
+      <li class="calls-info"><%= call%></li>
+  <% end %>
+</ul>
+
+<%#= content_tag :div, class: "calls_info", data: {calls_replier: @calls_of_replier} do %>
+<%# end %>
 
 
