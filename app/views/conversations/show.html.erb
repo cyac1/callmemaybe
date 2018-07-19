@@ -33,6 +33,7 @@
 
   <% if @conversation.messages.nil? %>
   <% else %>
+  <div class="all-messages">
     <% @conversation.messages.each do |message| %>
       <div class="col-xs-12 col-md-8 col-md-offset-2 no-padding">
         <% if message.sender == current_user %>
@@ -82,6 +83,10 @@
         <% end %>
       </div>
     <% end %>
+    <div class="col-xs-12 col-md-8 col-md-offset-2 no-padding">
+      <div class="messaging"></div>
+    </div>
+  </div>
   <% end %>
 
   <div class="col-xs-12 col-md-8 col-md-offset-2 white-box reply-card input-footer">
