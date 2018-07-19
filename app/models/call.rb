@@ -6,7 +6,7 @@ class Call < ApplicationRecord
   has_many :review
   enum call_status: [:unconfirmed, :confirmed]
 
-  validates :call, uniqueness: true, if: :first_call?
+  validates :reply, uniqueness: true
 
   def question_author
     question.user
@@ -16,7 +16,4 @@ class Call < ApplicationRecord
     reply.user
   end
 
-  def first_call?
-    Call.where("reply_id = ?", reply.id).empty?
-  end
 end
