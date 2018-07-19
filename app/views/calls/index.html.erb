@@ -1,22 +1,70 @@
-<h1>Questions you asked</h1>
+<%= render "pages/tabs" %>
 
-<% @question_calls.each do |call| %>
-  <p>
-    Asking for help: <%= call.question_author.full_name %>
-  </p>
-  <p>
-    Offering help: <%= call.reply_author.full_name %>
-  </p>
-<% end %>
+<div class="dash-box">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+
+    <div class="tab">
+      <input id="tab-three" type="checkbox" name="tabs" checked>
+      <label class="align-middle" for="tab-three">Calls from Questions</label>
+      <% if @question_calls.empty? %>
+      <div class="question-card tab-content">
+        <p>You have no calls from your questions yet</p>
+      </div>
+      <% else %>
+
+      <% @question_calls.each do |c|  %>
+      <div class="question-card tab-content">
+        <div>
+          <p><%= c.reply_author.full_name %></p>
+          <p><%= c.datetime %></p>
+          <p><%= c.call_status %></p>
+          <p><%= c.price %></p>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+
+    <div class="tab">
+      <input id="tab-four" type="checkbox" name="tabs" checked>
+      <label class="align-middle" for="tab-four">Calls from Replies</label>
+      <% if @question_calls.empty? %>
+      <div class="question-card tab-content">
+        <p>You have no calls from your replies yet</p>
+      </div>
+      <% else %>
+
+      <% @reply_calls.each do |call|  %>
+      <div class="question-card tab-content">
+            <div class="header-left">
+   <!--      <p> <i class="fas fa-phone phone-icon-preconfirmation"></i> </p> -->
+        <img src="<%= call.question_author.avatar %>" class="avatar card-avatar">
+        <div class="header-textbox">
+          <p class="user"><%= call.question_author.full_name %></p>
+        </div>
+
+        <div class="flex-column datetime big">
+          <p style="font-size: 20px;"><i class="far fa-calendar-alt"></i></p>
+          <div>
+            <p>15/04/2018</p>
+          </div>
+        </div>
+      </div>
 
 
-<h1>Questions you helped with</h1>
 
-<% @reply_calls.each do |call| %>
-  <p>
-    Asking for help: <%= call.question_author.full_name %>
-  </p>
-  <p>
-    Offering help: <%= call.reply_author.full_name %>
-  </p>
-<% end %>
+
+            <div class="replier-details">
+              <div class="text-left">
+                <div class="padding-left-right">
+                  <p style="text-align: center;"><strong>€<%= call.price_cents %></strong></p>
+                </div>
+              </div>
+            </div>
+
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+    </div>
+</div>

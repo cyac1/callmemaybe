@@ -49,6 +49,16 @@
   opacity: 0.6;
 }
 
+.datetime.big {
+  font-size: 18px;
+  top: 10px;
+  right: 30px;
+  opacity: 0.4;
+  p {
+    margin: 0 !important;
+  }
+}
+
 .replies {
   font-size: 16px;
   color: $font_color;
@@ -149,6 +159,11 @@
   margin-bottom: 10px;
 }
 
+.date-tag {
+  position: absolute;
+  top: 0px;
+  right: 30px;
+}
 
 // @media only screen and (max-width: 600px) {
 //   .question-card {

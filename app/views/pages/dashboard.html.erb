@@ -1,18 +1,19 @@
+<%= render "pages/tabs" %>
+<div class="dash-box">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
 
-  <div class="col-xs-12 col-md-10 col-md-offset-1">
-    <h2>Dashboard</h2>
-  </div>
+
     <div class="tab">
       <input id="tab-one" type="checkbox" name="tabs" checked>
       <label class="align-middle" for="tab-one">Your Questions</label>
       <% if current_user.questions.empty? %>
-      <div class="col-xs-12 col-md-10 col-md-offset-1 question-card tab-content">
+      <div class="question-card tab-content">
         <p>You have not asked any questions yet</p>
       </div>
       <% else %>
 
       <% current_user.questions.each_with_index do |q, i|  %>
-      <div class="col-xs-12 col-md-10 col-md-offset-1 question-card tab-content">
+      <div class="question-card tab-content">
         <div>
           <p><%= q.title %></p>
         </div>
@@ -29,18 +30,28 @@
     <div class="tab">
       <input id="tab-two" type="checkbox" name="tabs">
       <label class="align-middle" for="tab-two">Your Replies</label>
+      <% if current_user.questions.empty? %>
+      <div class="question-card tab-content">
+        <p>You have not asked any questions yet</p>
+      </div>
+      <% else %>
       <% current_user.replies.each_with_index do |r, i|  %>
 
-      <div class="col-xs-12 col-md-10 col-md-offset-1 question-card tab-content">
-        <p>Reply to: <%= r.question.title %></p>
-        <p class="little_p"><%= r.description %></p>
+      <div class="question-card tab-content">
+        <div>
+          <p>Reply to: <%= r.question.title %></p>
+          <p class="little_p"><%= r.description %></p>
+        </div>
         <div class="text-center button-container">
           <%=  link_to("edit", edit_question_reply_path(r.question.id, r.id), class: "btn-small btn-orange") %>
         </div>
       </div>
-    </div>
-     <% end %>
 
+    <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>
 
 
 
