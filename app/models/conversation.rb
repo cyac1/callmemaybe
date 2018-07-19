@@ -4,4 +4,6 @@ class Conversation < ApplicationRecord
   has_many :messages
   monetize :offer_cents
   enum message_type: [:normal, :offer]
+
+
 end

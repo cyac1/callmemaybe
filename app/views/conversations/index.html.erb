@@ -1,20 +1,51 @@
 
-<%= render "pages/tabs" %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
 
-<% @conversations.each do |conversation| %>
-  <%= conversation.id %>
-  <% conversation.messages.each do |message| %>
-    <p>
-      From: <%= message.sender.first_name %>
-    </p>
-    <p>
-      To: <%= message.receiver.first_name %>
-    </p>
-    <p>
-      Body:
-    </p>
-    <p>
-      <%= message.content %>
-    </p>
-  <% end %>
-<% end %>
+      <%= render "pages/tabs"%>
+      <% @conversations.each do |conversation| %>
+        <%#= conversation.id %>
+        <% message = conversation.messages.first %>
+          <% other_user = message.receiver %>
+
+        <div class="conversation-card ">
+          <div class="flex-inline message-header">
+            <div class="user">
+              <img src="<%= other_user.avatar %>" class="avatar card-avatar">
+              <span class="inbox-name"> <%= other_user.full_name%> </span>
+            </div>
+            <div class="date">
+              <span class="created_at gray"><%= message.created_at.strftime("%d/%m/%Y") %> </span>
+            </div>
+              </div>
+                <div>
+                  <div class="message-footer">
+                    <p class="created_at gray"> <%= conversation.question.title.truncate(90) %> </p>
+
+                    <%# Loop over all replies of the question corresponding to this
+                    conversation and find the reply that belongs to the user
+                    we are having a conversation with. Store this reply object inside
+                    of array and since it is only one, send "first" element of array
+                    to show page.  %>
+                    <% user_reply = [] %>
+                    <% conversation.question.replies.each do |reply| %>
+                      <% if reply.user == other_user %>
+                        <%  user_reply << reply %>
+                      <% end %>
+                    <% end %>
+                  <div>
+                  <%= link_to "Show", conversation_path(conversation, reply_id: user_reply.first), class:"btn btn-orange btn-small" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+
+
+
