@@ -3,9 +3,9 @@ class CallsController < ApplicationController
   before_action :set_call, only: [:show, :update]
 
   def index
-    calls = current_user.calls #.where("call.datetime > ?", Time.current)
-    @question_calls = calls.select { |c| (c.question_author == current_user) && (c.call_status == "confirmed") }
-    @reply_calls = calls.select { |c| (c.reply_author == current_user) && (c.call_status == "confirmed") }
+    calls = Call.all #current_user.calls #.where("call.datetime > ?", Time.current)
+    @question_calls = calls.select { |c| (c.question_author == current_user) && c.call_status == "confirmed"}
+    @reply_calls = calls.select { |c| (c.reply_author == current_user)}
   end
 
   def create
