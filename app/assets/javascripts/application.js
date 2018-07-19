@@ -1,6 +1,8 @@
 //= require rails-ujs
 //= require_tree .
+//= require turbolinks
 
+Turbolinks.setProgressBarDelay(20)
 
 const footer = document.querySelector('.footer');
 
