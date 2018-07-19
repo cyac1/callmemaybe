@@ -33,7 +33,6 @@
         </div>
 
         <div class="replier-details datetime user margin-topp">
-          <p><i class="far fa-calendar-alt"></i></p>
           <p class="padding-left"><%= l(c.datetime, format: :long) if c.datetime %></p>
         </div>
       </div>
@@ -69,8 +68,7 @@
             <p class="user"><%= call.question_author.full_name %></p>
           </div>
 
-          <div class="replier-details datetime user margin-topp">
-            <p><i class="far fa-calendar-alt"></i></p>
+          <div class="replier-details datetime user margin-top">
             <p class="padding-left"><%= l(call.datetime, format: :long) if call.datetime %></p>
           </div>
         </div>
