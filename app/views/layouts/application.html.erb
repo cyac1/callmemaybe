@@ -11,12 +11,13 @@
     <meta property="og:locale" content="it_IT" />
 
 
-
-    <title>Coalla</title>
+    <title>Coalla.me - Right Answer. Right Time.</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <%= javascript_include_tag 'application', defer: true %>
+    <%= javascript_pack_tag 'application', defer: true %>
 
 
   </head>
@@ -24,7 +25,5 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
   </body>
 </html>

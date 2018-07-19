@@ -2,21 +2,23 @@
 //= require_tree .
 //= require turbolinks
 
-Turbolinks.setProgressBarDelay(20)
+Turbolinks.setProgressBarDelay(30)
 
-const footer = document.querySelector('.footer');
+// Footer JS if we want to implement it at some point
 
-  if (footer) {
-    window.addEventListener('scroll', () => {
-      console.log("scrollY " + window.scrollY);
-      console.log("inner " + window.innerHeight);
-      console.log(document.body.scrollHeight);
-      const height = (document.body.scrollHeight - 100);
-      console.log(height);
-      if (window.scrollY + window.innerHeight >= height ) {
-        footer.style.visibility = "visible";
-      } else {
-        footer.style.visibility = "hidden";
-      }
-    });
-  }
+// const footer = document.querySelector('.footer');
+
+//   if (footer) {
+//     window.addEventListener('scroll', () => {
+//       console.log("scrollY " + window.scrollY);
+//       console.log("inner " + window.innerHeight);
+//       console.log(document.body.scrollHeight);
+//       const height = (document.body.scrollHeight - 100);
+//       console.log(height);
+//       if (window.scrollY + window.innerHeight >= height ) {
+//         footer.style.visibility = "visible";
+//       } else {
+//         footer.style.visibility = "hidden";
+//       }
+//     });
+//   }
