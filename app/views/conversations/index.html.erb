@@ -31,17 +31,17 @@
 
     <div class="conversation-card ">
       <div class="flex-inline message-header">
-        <div class="user">
+        <div class="user-inbox">
           <img src="<%= other_user.avatar %>" class="avatar card-avatar">
-          <span class="inbox-name"> <%= other_user.full_name%> </span>
+          <div><span class="inbox-name"> <%= other_user.full_name%> </span></div>
         </div>
         <div class="date">
-          <span class="created_at gray"><%= message.created_at.strftime("%d/%m/%Y") %> </span>
+          <span class="created_at gray">Last Message: <%= message.created_at.strftime("%d/%m/%Y") %></span>
         </div>
       </div>
       <div>
         <div class="message-footer">
-          <p class="created_at gray"> <%= conversation.question.title.truncate(90) %> </p>
+          <p class="question-preview"><strong>Question:</strong> <%= conversation.question.title.truncate(90) %> </p>
 
           <%# Loop over all replies of the question corresponding to this
           conversation and find the reply that belongs to the user
