@@ -128,7 +128,7 @@
               <% if @question.user == current_user %>
                 <%= link_to "Send a Message", conversations_path(question_id: @question, reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
                 <% if call_number.size > 0 %>
-                  <%= link_to "Show Call", question_call_path(question_id: @question, call: call_number.last), class:"btn btn-white btn-small" %>
+                  <%= link_to "Show Call", question_call_path(question_id: @question, id: call_number.last), class:"btn btn-white btn-small" %>
                 <% else %>
                   <%= render "calls/form", question: @question, call: @call, reply: reply %>
                 <% end %>
