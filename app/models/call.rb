@@ -6,6 +6,8 @@ class Call < ApplicationRecord
   has_many :review
   enum call_status: [:unconfirmed, :confirmed]
 
+  validates :reply, uniqueness: true
+
   def question_author
     question.user
   end
@@ -13,4 +15,5 @@ class Call < ApplicationRecord
   def reply_author
     reply.user
   end
+
 end

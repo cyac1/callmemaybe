@@ -32,6 +32,15 @@
   }
 }
 
+.booked {
+  background: $background_gray;
+  color: $medium_gray;
+  &:hover {
+    border: 1px solid $medium_gray;
+    color: $medium_gray;
+  }
+}
+
 .time-selected {
   background-color: $orange;
   color: white;

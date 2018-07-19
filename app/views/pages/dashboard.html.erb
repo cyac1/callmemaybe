@@ -1,3 +1,4 @@
+
 <%= render "pages/tabs" %>
 <div class="dash-box">
   <div class="col-xs-12 col-md-8 col-md-offset-2">
@@ -10,6 +11,7 @@
       <div class="question-card tab-content">
         <p>You have not asked any questions yet</p>
       </div>
+
       <% else %>
 
       <% current_user.questions.each_with_index do |q, i|  %>
@@ -27,7 +29,7 @@
       <% end %>
     </div>
 
-    <div class="tab">
+    <div class="tab col-xs-12 col-md-8 col-md-offset-2">
       <input id="tab-two" type="checkbox" name="tabs">
       <label class="align-middle" for="tab-two">Your Replies</label>
       <% if current_user.questions.empty? %>
