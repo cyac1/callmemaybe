@@ -14,57 +14,59 @@
 
       <% @question_calls.each do |c|  %>
       <div class="question-card tab-content">
-        <div>
-          <p><%= c.reply_author.full_name %></p>
-          <p><%= c.datetime %></p>
-          <p><%= c.call_status %></p>
-          <p><%= c.price %></p>
-        </div>
-      </div>
-      <% end %>
-      <% end %>
-    </div>
-
-    <div class="tab">
-      <input id="tab-four" type="checkbox" name="tabs" checked>
-      <label class="align-middle" for="tab-four">Calls from Replies</label>
-      <% if @question_calls.empty? %>
-      <div class="question-card tab-content">
-        <p>You have no calls from your replies yet</p>
-      </div>
-      <% else %>
-
-      <% @reply_calls.each do |call|  %>
-      <div class="question-card tab-content">
-            <div class="header-left">
-   <!--      <p> <i class="fas fa-phone phone-icon-preconfirmation"></i> </p> -->
-        <img src="<%= call.question_author.avatar %>" class="avatar card-avatar">
-        <div class="header-textbox">
-          <p class="user"><%= call.question_author.full_name %></p>
+        <div class="header-left">
+         <!--      <p> <i class="fas fa-phone phone-icon-preconfirmation"></i> </p> -->
+         <img src="<%= c.reply_author.avatar %>" class="avatar card-avatar">
+         <div class="header-textbox">
+          <p class="user"><%= c.reply_author.full_name %></p>
         </div>
 
-        <div class="flex-column datetime big">
-          <p style="font-size: 20px;"><i class="far fa-calendar-alt"></i></p>
-          <div>
-            <p>15/04/2018</p>
-          </div>
+        <div class="replier-details datetime user margin-topp">
+          <p><i class="far fa-calendar-alt"></i></p>
+          <p class="padding-left"><%= l(c.datetime, format: :long) if c.datetime %></p>
         </div>
       </div>
 
-
-
-
-            <div class="replier-details">
-              <div class="text-left">
-                <div class="padding-left-right">
-                  <p style="text-align: center;"><strong>€<%= call.price_cents %></strong></p>
-                </div>
-              </div>
-            </div>
-
+      <div class="text-left">
+        <p style="text-align: left;"><%= c.question.title %></p>
+        <p style="text-align: left; color:red;"><strong>€<%= c.price_cents %></strong></p>
       </div>
-      <% end %>
-      <% end %>
     </div>
+    <% end %>
+    <% end %>
+  </div>
+
+  <div class="tab">
+    <input id="tab-four" type="checkbox" name="tabs" checked>
+    <label class="align-middle" for="tab-four">Calls from Replies</label>
+    <% if @question_calls.empty? %>
+    <div class="question-card tab-content">
+      <p>You have no calls from your replies yet</p>
     </div>
+    <% else %>
+
+    <% @reply_calls.each do |call|  %>
+    <div class="question-card tab-content">
+      <div class="header-left">
+       <!--      <p> <i class="fas fa-phone phone-icon-preconfirmation"></i> </p> -->
+       <img src="<%= call.question_author.avatar %>" class="avatar card-avatar">
+       <div class="header-textbox">
+        <p class="user"><%= call.question_author.full_name %></p>
+      </div>
+
+      <div class="replier-details datetime user margin-topp">
+        <p><i class="far fa-calendar-alt"></i></p>
+        <p class="padding-left"><%= l(call.datetime, format: :long) if call.datetime %></p>
+      </div>
+    </div>
+
+    <div class="text-left">
+      <p style="text-align: left;"><%= call.question.title %></p>
+      <p style="text-align: left; color:green;"><strong>€<%= call.price_cents %></strong></p>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+</div>
+</div>
 </div>
