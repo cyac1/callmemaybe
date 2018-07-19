@@ -27,7 +27,7 @@
           <div class="icons-card">
             <div class="icon-content">
               <% if @icons[icon.name].nil? %>
-              <i class="fas fa-globe"></i>
+              <%= tag.p("", class: "fas fa-globe") %>
               <% else %>
               <%= tag.p("", class: @icons[icon.name]) %>
               <% end %>
