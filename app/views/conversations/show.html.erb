@@ -1,14 +1,20 @@
 
 <% if (current_user == @question.user) || (current_user == @reply.user)  %>
-
-  <div class="header-left">
-    <img src="<%= current_user.avatar %>" class="avatar card-avatar">
-    <div class="header-textbox">
-      <p class="user"><%= current_user.first_name %></p>
+<div class="col-xs-12 col-md-8 col-md-offset-2 white-box reply-card convo">
+  <div class="flex-start">
+    <div class="flex-column">
+      <img src="<%= current_user.avatar %>" class="avatar card-avatar">
+      <div class="header-textbox text-center">
+        <p class="user" style="margin:0px;"><%= current_user.first_name %></p>
+      </div>
+    </div>
+    <div class="question-title">
+      <%= @question.title %>
     </div>
   </div>
+</div>
 
-  <%= @question.title %>
+
   <%= @conversation.offer %>
 
   <div class="col-xs-12 col-md-8 col-md-offset-2 white-box reply-card">
