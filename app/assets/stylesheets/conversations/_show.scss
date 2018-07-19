@@ -31,25 +31,42 @@
 }
 
 
-
 .flex-ends.no-padding {
   .conversation_offer {
     margin: 0px;
   }
   .message_content {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
   text-align: left;
   margin: 0px;
   padding: 0px;
   border-radius: 30;
   font-size: 16px;
-  @media only screen and (max-width: 600px) {
-    max-width: 150px;
-  }
   }
 }
 
 .flex-ends {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.flex-offer.no-padding {
+  .conversation_offer {
+    margin: 0px;
+  }
+  .message_content {
+  flex: 1 1 auto;
+  text-align: left;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 30;
+  font-size: 16px;
+  }
+}
+
+.flex-offer {
   display: flex;
   justify-content: flex-left;
   align-items: center;

@@ -18,13 +18,13 @@
 
     <div class="col-xs-12 col-md-8 col-md-offset-2 white-box reply-card">
       <%= simple_form_for @conversation, url: conversation_path, html: { method: :patch } do |f| %>
-        <div class="flex-ends no-padding">
+        <div class="flex-offer no-padding">
           <%= f.input :offer, placeholder: "New offer", label:false, :class => "rounded" %>
           <%= f.input :conversation_id, as: :hidden, input_html: { value: @conversation.id } %>
           <%= f.input :reply_id, as: :hidden, input_html: { value: @reply.id } %>
           <div>
-            <%= f.submit "Submit", class: "btn btn-orange btn-small" %>
-            <%= link_to "Cancel", question_path, class:"btn btn-white btn-small" %>
+            <%= f.submit "Submit Offer", class: "btn btn-orange btn-small" %>
+            <%# link_to "Cancel", question_path, class:"btn btn-white btn-small" %>
           </div>
         </div>
       <% end %>
@@ -44,7 +44,7 @@
                 <div class="header-left">
                   <img src="<%= message.sender.avatar %>" class="avatar card-avatar">
                   <div class="header-textbox">
-                    <p class="user"><%= message.sender.email %></p>
+                    <p class="user"><%= message.sender.first_name %> <%= message.sender.last_name %></p>
                     <p class="created_at gray"><%= message.created_at.strftime("Replied on: %d/%m/%Y") %> </p>
                   </div>
                 </div>
@@ -66,7 +66,7 @@
                 <div class="header-left">
                   <img src="<%= message.sender.avatar %>" class="avatar card-avatar">
                   <div class="header-textbox">
-                    <p class="user"><%= message.sender.email %></p>
+                    <p class="user"><%= message.sender.first_name %> <%= message.sender.last_name %></p>
                     <p class="created_at gray"><%= message.created_at.strftime("Replied on: %d/%m/%Y") %> </p>
                   </div>
                 </div>
@@ -96,7 +96,7 @@
         <%= f.input :conversation_id, as: :hidden, input_html: { value: @conversation.id } %>
         <%= f.input :reply_id, as: :hidden, input_html: { value: @reply.id } %>
         <div>
-          <%= f.submit "Submit", class: "btn btn-orange btn-small" %>
+          <%= f.submit "Submit Message", class: "btn btn-orange btn-small" %>
         </div>
       </div>
     <% end %>

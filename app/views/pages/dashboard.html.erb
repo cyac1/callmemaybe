@@ -27,18 +27,20 @@
 
       <% else %>
 
-      <% current_user.questions.each_with_index do |q, i|  %>
-      <div class="question-card tab-content">
-        <div>
-          <p><%= q.title %></p>
-        </div>
-        <div class="text-center button-container">
-          <%=  link_to("edit", edit_question_path(q.id), class: "btn-small btn-white") %>
-          <%=  link_to("view", question_path(q.id), class: "btn-small btn-orange") %>
-        </div>
+        <% current_user.questions.each_with_index do |q, i|  %>
+        <div class="question-card tab-content">
+          <div>
+            <p><%= q.title %></p>
+          </div>
+          <p class="created_at gray"><%= q.replies.size %> Replies</p>
+          <div class="text-center button-container">
+            <%=  link_to("edit", edit_question_path(q.id), class: "btn-small btn-white") %>
+            <%=  link_to("view", question_path(q.id), class: "btn-small btn-orange") %>
+          </div>
 
-      </div>
-      <% end %>
+        </div>
+        <% end %>
+
       <% end %>
     </div>
 
@@ -50,20 +52,20 @@
         <p>You have not asked any questions yet</p>
       </div>
       <% else %>
-      <% current_user.replies.each_with_index do |r, i|  %>
+        <% current_user.replies.each_with_index do |r, i|  %>
 
-      <div class="question-card tab-content">
-        <div>
-          <p>Reply to: <%= r.question.title %></p>
-          <p class="little_p"><%= r.description %></p>
+        <div class="question-card tab-content">
+          <div>
+            <p>Reply to: <%= r.question.title %></p>
+            <p class="little_p"><%= r.description %></p>
+          </div>
+          <div class="text-center button-container">
+            <%= link_to "show", question_path(r.question), class: "btn-small btn-orange" %>
+          </div>
         </div>
-        <div class="text-center button-container">
-          <%=  link_to("edit", edit_question_reply_path(r.question.id, r.id), class: "btn-small btn-orange") %>
-        </div>
-      </div>
 
-    <% end %>
-    <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

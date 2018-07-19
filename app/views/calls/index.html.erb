@@ -41,7 +41,7 @@
       <div class="text-left">
         <p style="text-align: left;"><%= c.question.title %></p>
         <div class="price-call-container">
-          <p style="text-align: left;"><strong><%= c.price_cents %> €</strong></p>
+          <p style="text-align: left;"><strong><%= c.price_cents %>.00 €</strong></p>
           <div class="button-container">
             <%= link_to "Show Call", question_call_path(question_id: c.question.id, id: c.id), class:"btn btn-orange btn-small" %>
           </div>
@@ -61,32 +61,32 @@
     </div>
     <% else %>
 
-    <% @reply_calls.each do |call|  %>
-      <div class="question-card tab-content">
-        <div class="header-left">
-         <img src="<%= call.question_author.avatar %>" class="avatar card-avatar">
-         <div class="header-textbox">
-          <p class="user"><%= call.question_author.full_name %></p>
+      <% @reply_calls.each do |call|  %>
+        <div class="question-card tab-content">
+          <div class="header-left">
+           <img src="<%= call.question_author.avatar %>" class="avatar card-avatar">
+           <div class="header-textbox">
+            <p class="user"><%= call.question_author.full_name %></p>
+          </div>
+
+          <div class="replier-details datetime user margin-topp">
+            <p><i class="far fa-calendar-alt"></i></p>
+            <p class="padding-left"><%= l(call.datetime, format: :long) if call.datetime %></p>
+          </div>
         </div>
 
-        <div class="replier-details datetime user margin-topp">
-          <p><i class="far fa-calendar-alt"></i></p>
-          <p class="padding-left"><%= l(call.datetime, format: :long) if call.datetime %></p>
-        </div>
-      </div>
-
-      <div class="text-left">
-        <p style="text-align: left;"><%= call.question.title %></p>
-        <div class="price-call-container">
-          <p style="text-align: left;"><strong><%= call.price_cents %> €</strong></p>
-          <div class="button-container">
-            <%= link_to "Show Call", question_call_path(question_id: call.question, id: call), class:"btn btn-orange btn-small" %>
+        <div class="text-left">
+          <p style="text-align: left;"><%= call.question.title %></p>
+          <div class="price-call-container">
+            <p style="text-align: left;"><strong><%= call.price_cents %>.00 €</strong></p>
+            <div class="button-container">
+              <%= link_to "Show Call", question_call_path(question_id: call.question, id: call), class:"btn btn-orange btn-small" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
-  <% end %>
-</div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 </div>
