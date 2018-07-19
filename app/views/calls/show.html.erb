@@ -233,12 +233,12 @@
                   <%= link_to "Go to Dashboard", dashboard_path, class:"btn btn-big btn-white" %>
 
                   <%# Link to Write Review only visible after Call-Date  %>
-                  <% if @reviews.count == 0 && @call.datetime < Date.today %>
+                  <%# if @reviews.count == 0 && @call.datetime < Date.today %>
                     <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-big btn-orange"%>
-                  <% else %>
-                    <p class="button-details center-text padding-top">Write a review after your call</p>
-                    <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-big btn-orange disabled"%>
-                  <% end %>
+                  <%# else %>
+                    <!-- <p class="button-details center-text padding-top">Write a review after your call</p> -->
+                    <%# link_to "Write a Review", new_call_review_path(@call), class:"btn btn-big btn-orange disabled"%>
+                  <%# end %>
                   </div>
                 </div>
               </div>
