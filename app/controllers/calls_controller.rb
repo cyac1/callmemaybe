@@ -5,7 +5,7 @@ class CallsController < ApplicationController
   def index
     calls = Call.all #current_user.calls #.where("call.datetime > ?", Time.current)
     @question_calls = calls.select { |c| (c.question_author == current_user) && c.call_status == "confirmed"}
-    @reply_calls = calls.select { |c| (c.reply_author == current_user)}
+    @reply_calls = calls.select { |c| (c.reply_author == current_user) && c.call_status == "confirmed"}
   end
 
   def create
