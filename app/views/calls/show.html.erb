@@ -17,8 +17,8 @@
     </div>
   <% end %>
 
+  <% # FIRST STEP OF THE PROGRESS: set a time for the call %>
   <% if @call.call_status == "unconfirmed" && @call.datetime.nil? %>
-
 
     <div class="row">
       <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
@@ -69,28 +69,33 @@
                 </div>
               </div>
 
-              <%# Datepicker to set date for call  %>
-              <div class="dateheader">
-                <p class="text-center">Pick a date for your call</p>
-              </div>
-              <div class="clear-date text-center">
-                <input class="form-control string optional datepicker flatpickr-input form-control input" placeholder="Pick a date..." tabindex="0" type="text" readonly="readonly">
+              <div id="call-calendar">
+
+                <%# Datepicker to set date for call  %>
+                <div class="dateheader">
+                  <p class="text-center">Pick a date for your call</p>
+                </div>
+                <div class="clear-date text-center">
+                  <input class="form-control string optional datepicker flatpickr-input form-control input" placeholder="Pick a date..." tabindex="0" type="text" readonly="readonly">
+                </div>
+
+                <div class="time-picker">
+                  <% slots = (9..24).to_a %>
+                  <% num = slots.size - 1 %>
+                  <div class="row">
+                    <% num.times do |i| %>
+                      <div class="col-xs-4 timeslot-box">
+                        <p class="timeslot slot-<%= "#{slots[i]}" %>"><%= "#{slots[i]}:00" %></p>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+
               </div>
 
-              <div class="time-picker">
-                <% slots = (9..24).to_a %>
-                <% num = slots.size - 1 %>
-                <div class="row">
-                  <% num.times do |i| %>
-                    <div class="col-xs-4 timeslot-box">
-                      <p class="timeslot"><%= "#{slots[i]}:00" %></p>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
+
               <div class="button-container">
-                <%#= link_to "Set Call", question_call_confirm_path(@question, @call), class:"btn btn-big btn-orange", id:"setCall" %>
-              <div id="setCall" class="btn btn-orange btn-big">Set Call</div>
+              <div id="setCall" class="btn btn-orange btn-big hidden">Set Call</div>
 
               </div>
             </div>
@@ -102,7 +107,8 @@
   </div>
   <%# ^^^^ End outside grid col-md-8%>
 
-  <% elsif @call.call_status == "unconfirmed"%>
+    <% # FIRST STEP OF THE PROGRESS: set a time for the call %>
+    <% elsif @call.call_status == "unconfirmed"%>
 
     <div class="row">
       <div class="col-xs-12 col-md-8 col-md-offset-2 question-card white-box">
@@ -152,7 +158,7 @@
                   <p class="category">Call Details</p>
                   <p class="call-details"><strong>Date: </strong><%= @call.datetime.strftime("%d/%m/%Y") %></p>
                   <p class="call-details"><strong>Time: </strong><%= @call.datetime.strftime("%H:%M") %>h</p>
-                  <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
+                  <p class="call-details"><strong>Price:</strong>€ <%= @call.price_cents %></p>
                   <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
                 </div>
               </div>
@@ -247,5 +253,24 @@
   <% end %>
 </div>
 
+<ul class="hidden">
+  <% @calls_of_replier.each do |call| %>
+      <li class="calls-info"><%= call.datetime%></li>
+  <% end %>
+      <li class="calls-info">2018-07-19 14:00:00 UTC</li>
+      <li class="calls-info">2018-07-19 15:00:00 UTC</li>
+      <li class="calls-info">2018-07-20 15:00:00 UTC</li>
+      <li class="calls-info">2018-07-20 17:00:00 UTC</li>
+      <li class="calls-info">2018-07-20 18:00:00 UTC</li>
+      <li class="calls-info">2018-07-21 11:00:00 UTC</li>
+      <li class="calls-info">2018-07-21 12:00:00 UTC</li>
+      <li class="calls-info">2018-07-21 16:00:00 UTC</li>
+      <li class="calls-info">2018-07-22 09:00:00 UTC</li>
+      <li class="calls-info">2018-07-22 10:00:00 UTC</li>
+      <li class="calls-info">2018-07-22 18:00:00 UTC</li>
+</ul>
+
+<%#= content_tag :div, class: "calls_info", data: {calls_replier: @calls_of_replier} do %>
+<%# end %>
 
 

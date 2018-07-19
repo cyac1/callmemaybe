@@ -19,7 +19,7 @@
       <div class="header-left">
         <img src="<%= @question.user.avatar %>" class="avatar card-avatar">
         <div class="header-textbox">
-          <p class="user"><%= @question.user.email %></p>
+          <p class="user"><%= @question.user.first_name %> <%= @question.user.last_name %></p>
           <p class="created_at gray"><%= @question.created_at.strftime("Posted on: %d/%m/%Y") %> </p>
         </div>
       </div>
@@ -67,7 +67,7 @@
             <div class="header-left">
               <img src="<%= reply.user.avatar %>" class="avatar card-avatar">
               <div class="header-textbox">
-                <p class="user"><%= reply.user.email %></p>
+                <p class="user"><%= reply.user.first_name %> <%= reply.user.last_name %></p>
                 <p class="created_at gray"><%= reply.created_at.strftime("Replied on: %d/%m/%Y") %> </p>
                 <div class="rating-stars">
                   <%# Add Average Rating for this user %>
@@ -93,7 +93,9 @@
                 </div>
               </div>
             </div>
-            <div class="status-box">
+
+            <%# No functionality to change status, so do not display  %>
+<!--             <div class="status-box">
               <% if reply.reply_status == "pending" %>
                 <i class="far fa-dot-circle gray"></i>
                 <p class="status gray"><%= reply.reply_status%></p>
@@ -104,22 +106,35 @@
                 <i class="far fa-times-circle red"></i>
                 <p class="status red"><%= reply.reply_status%></p>
               <% end %>
-            </div>
-          </div>
+            </div> -->
 
+          </div>
 
           <div class="reply-content">
             <p class="description"><%= reply.description %></p>
           </div>
           <div class="reply-footer">
             <p class="offer gray"><%= reply.offer %> €</p>
+
+            <%# Find out whether each of those replies has a call already or not? %>
+            <% call_number = [] %>
+            <% @calls.each do |call| %>
+              <% if call.reply == reply %>
+                <% call_number << call %>
+              <% end %>
+            <% end %>
+
             <div class="button-container">
               <% if @question.user == current_user %>
-              <%= link_to "Send a Message", conversations_path(question_id: @question, reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
+                <%= link_to "Send a Message", conversations_path(question_id: @question, reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
+                <% if call_number.size > 0 %>
+                  <%= link_to "Show Call", question_call_path(question_id: @question, id: call_number.last), class:"btn btn-white btn-small" %>
+                <% else %>
+                  <%= render "calls/form", question: @question, call: @call, reply: reply %>
+                <% end %>
               <% else %>
               <%= link_to "Send a Message", conversations_path(reply_id: reply), method: :post, class:"btn btn-orange btn-small" %>
               <% end %>
-              <%= link_to "Book a Call", question_call_path(@question, reply), class:"btn btn-orange btn-small" %>
             </div>
           </div>
 
