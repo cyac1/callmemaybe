@@ -1,22 +1,72 @@
-<h1>Questions you asked</h1>
-
-<% @question_calls.each do |call| %>
-  <p>
-    Asking for help: <%= call.question_author.full_name %>
-  </p>
-  <p>
-    Offering help: <%= call.reply_author.full_name %>
-  </p>
-<% end %>
 
 
-<h1>Questions you helped with</h1>
+<div class="dash-box">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
+<%= render "pages/tabs" %>
+    <div class="tab">
+      <input id="tab-three" type="checkbox" name="tabs" checked>
+      <label class="align-middle" for="tab-three">Calls from Questions</label>
+      <% if @question_calls.empty? %>
+      <div class="question-card tab-content">
+        <p>You have no calls from your questions yet</p>
+      </div>
+      <% else %>
 
-<% @reply_calls.each do |call| %>
-  <p>
-    Asking for help: <%= call.question_author.full_name %>
-  </p>
-  <p>
-    Offering help: <%= call.reply_author.full_name %>
-  </p>
-<% end %>
+      <% @question_calls.each do |c|  %>
+      <div class="question-card tab-content">
+        <div class="header-left">
+         <!--      <p> <i class="fas fa-phone phone-icon-preconfirmation"></i> </p> -->
+         <img src="<%= c.reply_author.avatar %>" class="avatar card-avatar">
+         <div class="header-textbox">
+          <p class="user"><%= c.reply_author.full_name %></p>
+        </div>
+
+        <div class="replier-details datetime user margin-topp">
+          <p><i class="far fa-calendar-alt"></i></p>
+          <p class="padding-left"><%= l(c.datetime, format: :long) if c.datetime %></p>
+        </div>
+      </div>
+
+      <div class="text-left">
+        <p style="text-align: left;"><%= c.question.title %></p>
+        <p style="text-align: left; color:red;"><strong>€<%= c.price_cents %></strong></p>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+
+  <div class="tab">
+    <input id="tab-four" type="checkbox" name="tabs" checked>
+    <label class="align-middle" for="tab-four">Calls from Replies</label>
+    <% if @question_calls.empty? %>
+    <div class="question-card tab-content">
+      <p>You have no calls from your replies yet</p>
+    </div>
+    <% else %>
+
+    <% @reply_calls.each do |call|  %>
+    <div class="question-card tab-content">
+      <div class="header-left">
+       <!--      <p> <i class="fas fa-phone phone-icon-preconfirmation"></i> </p> -->
+       <img src="<%= call.question_author.avatar %>" class="avatar card-avatar">
+       <div class="header-textbox">
+        <p class="user"><%= call.question_author.full_name %></p>
+      </div>
+
+      <div class="replier-details datetime user margin-topp">
+        <p><i class="far fa-calendar-alt"></i></p>
+        <p class="padding-left"><%= l(call.datetime, format: :long) if call.datetime %></p>
+      </div>
+    </div>
+
+    <div class="text-left">
+      <p style="text-align: left;"><%= call.question.title %></p>
+      <p style="text-align: left; color:green;"><strong>€<%= call.price_cents %></strong></p>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+</div>
+</div>
+</div>

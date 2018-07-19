@@ -155,11 +155,9 @@
                   <p class="category text-center">Your Call with</p>
                   <p class="caller-name"><%= @call.reply.user.first_name %> <%= @call.reply.user.last_name %></p>
                   <p class="caller-name red">Call <%= @call.call_status.capitalize %></p>
-                  <p class="category">Call Details</p>
                   <p class="call-details"><strong>Date: </strong><%= @call.datetime.strftime("%d/%m/%Y") %></p>
                   <p class="call-details"><strong>Time: </strong><%= @call.datetime.strftime("%H:%M") %>h</p>
-                  <p class="call-details"><strong>Price:</strong>€ <%= @call.price_cents %></p>
-                  <p class="call-details"><strong>Call Status: </strong><%= @call.call_status.capitalize %></p>
+                  <p class="call-details"><strong>Price:</strong> € <%= @call.price_cents %></p>
                 </div>
               </div>
             </div>
@@ -220,18 +218,17 @@
                       <%= @call.reply.user.first_name %><%= @call.reply.user.last_name %></p>
                     <p class="caller-name green">Call <%= @call.call_status.capitalize %></p>
                     <br>
-                    <p class="category text-center">Call Details</p>
                     <p class="call-details"><strong>Phone number: </strong><%= @call.reply.user.phone_number %></p>
                     <p class="call-details"><strong>Skype: </strong><%= @call.reply.user.skype_username %></p>
                     <p class="call-details"><strong>Email: </strong><%= @call.reply.user.email %></p>
                   <br>
                     <p class="call-details"><strong>Date: </strong><%= @call.datetime.strftime("%d/%m/%Y") %></p>
                     <p class="call-details"><strong>Time: </strong><%= @call.datetime.strftime("%H:%M") %>h</p>
-                    <p class="call-details"><strong>Price:</strong> €<%= @call.price_cents %></p>
+                    <p class="call-details"><strong>Price:</strong> € <%= @call.price_cents %></p>
 
                   <%# Link to Dashboard  %>
                   <div class="center-text padding-top-double">
-                    <p class="call-details">View call in your personal dashboard</p>
+                    <p class="button-details">View call in your personal dashboard</p>
                   </div>
                   <%= link_to "Go to Dashboard", dashboard_path, class:"btn btn-big btn-white" %>
 
@@ -239,7 +236,7 @@
                   <% if @reviews.count == 0 && @call.datetime < Date.today %>
                     <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-big btn-orange"%>
                   <% else %>
-                    <p class="call-details center-text padding-top">Write a review after your call</p>
+                    <p class="button-details center-text padding-top">Write a review after your call</p>
                     <%= link_to "Write a Review", new_call_review_path(@call), class:"btn btn-big btn-orange disabled"%>
                   <% end %>
                   </div>

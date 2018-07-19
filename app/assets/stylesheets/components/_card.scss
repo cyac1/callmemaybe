@@ -49,6 +49,14 @@
   opacity: 0.6;
 }
 
+.datetime.user {
+  top: 0px;
+  opacity: 0.4;
+  p {
+    margin: 0 !important;
+  }
+}
+
 .replies {
   font-size: 16px;
   color: $font_color;
@@ -149,7 +157,23 @@
   margin-bottom: 10px;
 }
 
+.date-tag {
+  position: absolute;
+  top: 0px;
+  right: 30px;
+}
 
+.padding-left {
+  padding-left: 10px;
+}
+
+.padding-top {
+  padding-top: 20px;
+}
+
+.margin-topp {
+  margin-top: 10px;
+}
 // @media only screen and (max-width: 600px) {
 //   .question-card {
 //     border-radius: 0px;
