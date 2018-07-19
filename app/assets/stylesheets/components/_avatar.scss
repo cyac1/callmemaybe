@@ -3,6 +3,8 @@
   height: 35px;
   width: 35px;
   border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
 }
 
 
@@ -11,4 +13,6 @@
   width: 80px;
   border-radius: 50%;
   margin: 5px;
+  object-fit: cover;
+  object-position: center;
 }
