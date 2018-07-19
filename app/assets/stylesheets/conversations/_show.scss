@@ -1,6 +1,9 @@
 .question-title {
   flex: 1 1 auto;
   padding-left: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
 }
 
 .flex-start {
@@ -10,5 +13,67 @@
 }
 
 .col-xs-12.col-md-8.col-md-offset-2.white-box.reply-card.convo {
+  margin-bottom: 0px;
   margin-top: 0px;
+}
+
+#conversation_offer {
+  flex: 1 1 auto;
+  text-align: center;
+  max-width: 150px;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 30;
+}
+
+.conversation_offer {
+  border-radius: 30;
+}
+
+#message_content {
+  flex: 1 1 auto;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 30;
+  @media only screen and (max-width: 600px) {
+    max-width: 150px;
+  }
+}
+
+.flex-ends.no-padding {
+  .conversation_offer {
+    margin: 0px;
+  }
+  .message_content {
+    margin: 0px;
+  }
+}
+
+.flex-ends {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-bubble-left {
+  background: red;
+  border-radius: 12px;
+  text-align: left;
+  margin-right: 60px;
+}
+
+.message-bubble-right {
+  background: blue;
+  border-radius: 12px;
+  text-align: left;
+  margin-left: 60px;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.rounded {
+  border-radius: 40px;
 }
