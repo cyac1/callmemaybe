@@ -114,7 +114,7 @@
             <p class="description"><%= reply.description %></p>
           </div>
           <div class="reply-footer">
-            <p class="offer gray"><%= reply.offer %> €</p>
+            <p class="offer gray"><%= humanized_money_with_symbol(reply.offer) %></p>
 
             <%# Find out whether each of those replies has a call already or not? %>
             <% call_number = [] %>

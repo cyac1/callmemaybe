@@ -41,7 +41,7 @@
       <div class="text-left">
         <p style="text-align: left;"><%= c.question.title %></p>
         <div class="price-call-container">
-          <p style="text-align: left;"><strong><%= c.price_cents %>.00 €</strong></p>
+          <p style="text-align: left;"><strong><%= humanized_money_with_symbol(c.price_call) %></strong></p>
           <div class="button-container">
             <%= link_to "Show Call", question_call_path(question_id: c.question.id, id: c.id), class:"btn btn-orange btn-small" %>
           </div>
@@ -78,7 +78,8 @@
         <div class="text-left">
           <p style="text-align: left;"><%= call.question.title %></p>
           <div class="price-call-container">
-            <p style="text-align: left;"><strong><%= call.price_cents %>.00 €</strong></p>
+
+            <p style="text-align: left;"><strong><%= humanized_money_with_symbol(call.price_call) %></strong></p>
             <div class="button-container">
               <%= link_to "Show Call", question_call_path(question_id: call.question, id: call), class:"btn btn-orange btn-small" %>
             </div>
