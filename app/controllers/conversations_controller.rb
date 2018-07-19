@@ -4,17 +4,28 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    @conversation = Conversation.new(conversation_params)
-    if params[:question_id].nil?
-    else
-      @question = Question.find(params[:question_id])
-      @conversation.question = @question
-    end
 
+    @conversation = Conversation.new
     if params[:reply_id].nil?
     else
       @reply = Reply.find(params[:reply_id])
-      @conversation.offer = @reply.offer
+
+    end
+
+    if params[:question_id].nil?
+      @question = @reply.question
+    else
+      @question = Question.find(params[:question_id])
+    end
+
+    @conversation.offer = @reply.offer
+    @conversation.question = @question
+
+    current_user.conversations.each do |c|
+      @other_user = c.messages.first.receiver
+      if @other_user == @reply.user
+        @conversation = c
+      end
     end
 
     @conversation.save!
