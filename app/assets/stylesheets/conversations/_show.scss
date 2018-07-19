@@ -1,6 +1,9 @@
 .question-title {
   flex: 1 1 auto;
   padding-left: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
 }
 
 .flex-start {
@@ -10,5 +13,92 @@
 }
 
 .col-xs-12.col-md-8.col-md-offset-2.white-box.reply-card.convo {
+  margin-bottom: 0px;
   margin-top: 0px;
 }
+
+#conversation_offer {
+  flex: 1 1 auto;
+  text-align: center;
+  max-width: 150px;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 30;
+}
+
+.conversation_offer {
+  border-radius: 30;
+}
+
+
+
+.flex-ends.no-padding {
+  .conversation_offer {
+    margin: 0px;
+  }
+  .message_content {
+    flex: 1 1 auto;
+  text-align: left;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 30;
+  font-size: 16px;
+  @media only screen and (max-width: 600px) {
+    max-width: 150px;
+  }
+  }
+}
+
+.flex-ends {
+  display: flex;
+  justify-content: flex-left;
+  align-items: center;
+  width: 100%;
+}
+
+.message-bubble-left {
+  background: white;
+  color: $font_color;
+  border-radius: 12px;
+  text-align: left;
+  margin-right: 60px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid $medium_gray;
+}
+
+.message-bubble-right {
+  border: 1px solid $medium_gray;
+  background: #d3e1fa;
+  color: white;
+  border-radius: 12px;
+  text-align: left;
+  margin-left: 60px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  p {
+    color: $font_color;
+  }
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.rounded {
+  border-radius: 40px;
+}
+
+.input-footer {
+  position: fixed;
+  bottom: 0px;
+  margin-bottom: 0px;
+  border-top: 1px solid $medium_gray;
+}
+
+.message-box {
+  width: 75%;
+}
+
