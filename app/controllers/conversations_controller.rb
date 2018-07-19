@@ -51,4 +51,12 @@ class ConversationsController < ApplicationController
     @message.content = "You sent a new offer"
   end
 
+  # def self.other_user
+  #   message = current_user.conversations.last.messages.last
+  #   if message.sender == current_user
+  #     @other_user = message.receiver
+  #   else
+  #     @other_user = message.sender
+  # end
+
 end
