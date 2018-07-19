@@ -2,7 +2,20 @@
 
 <div class="dash-box">
   <div class="col-xs-12 col-md-8 col-md-offset-2">
-<%= render "pages/tabs" %>
+
+    <div class="dir-button-tabs">
+      <div class="tabs">
+        <a class="tab" href="/inbox">
+          <h3>Inbox</h3>
+        </a>
+        <a class="tab right" href="/calls">
+          <h3>Calls</h3>
+        </a>
+        <a class="tab active" href="/dashboard">
+          <h3>Posts</h3>
+        </a>
+      </div>
+    </div>
 
     <div class="tab">
       <input id="tab-one" type="checkbox" name="tabs" checked>

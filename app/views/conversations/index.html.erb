@@ -2,11 +2,24 @@
 <div class="dash-box">
   <div class="col-xs-12 col-md-8 col-md-offset-2">
 
-    <%= render "pages/tabs"%>
+    <div class="dir-button-tabs">
+      <div class="tabs">
+        <a class="tab active" href="/inbox">
+          <h3>Inbox</h3>
+        </a>
+        <a class="tab" href="/calls">
+          <h3>Calls</h3>
+        </a>
+        <a class="tab right" href="/dashboard">
+          <h3>Posts</h3>
+        </a>
+      </div>
+    </div>
 
 <% if @conversations.count == 0 %>
-<br>
-<span class="inbox-name"> You have no conversations yet. You can start one through a reply on your question. </span>
+      <div class="padding-all">
+        <p>You have no conversations yet.</p>
+      </div>
 
 <% else %>
 
