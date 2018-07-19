@@ -1,5 +1,5 @@
 class Call < ApplicationRecord
-  monetize :price_cents
+  monetize :price_cents , as: "price_call"
   belongs_to :reply, optional: true
   belongs_to :question, optional: true
   belongs_to :conversation, optional: true
