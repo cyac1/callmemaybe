@@ -19,7 +19,7 @@
       <div class="header-left">
         <img src="<%= @question.user.avatar %>" class="avatar card-avatar">
         <div class="header-textbox">
-          <p class="user"><%= @question.user.email %></p>
+          <p class="user"><%= @question.user.first_name %> <%= @question.user.last_name %></p>
           <p class="created_at gray"><%= @question.created_at.strftime("Posted on: %d/%m/%Y") %> </p>
         </div>
       </div>
@@ -67,7 +67,7 @@
             <div class="header-left">
               <img src="<%= reply.user.avatar %>" class="avatar card-avatar">
               <div class="header-textbox">
-                <p class="user"><%= reply.user.email %></p>
+                <p class="user"><%= reply.user.first_name %> <%= reply.user.last_name %></p>
                 <p class="created_at gray"><%= reply.created_at.strftime("Replied on: %d/%m/%Y") %> </p>
                 <div class="rating-stars">
                   <%# Add Average Rating for this user %>
