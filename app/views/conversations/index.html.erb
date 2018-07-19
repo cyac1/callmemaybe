@@ -1,50 +1,73 @@
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
+<div class="dash-box">
+  <div class="col-xs-12 col-md-8 col-md-offset-2">
 
-      <%= render "pages/tabs"%>
-      <% @conversations.each do |conversation| %>
-        <%#= conversation.id %>
-        <% message = conversation.messages.first %>
-          <% other_user = message.receiver %>
+    <div class="dir-button-tabs">
+      <div class="tabs">
+        <a class="tab active" href="/inbox">
+          <h3>Inbox</h3>
+        </a>
+        <a class="tab" href="/calls">
+          <h3>Calls</h3>
+        </a>
+        <a class="tab right" href="/dashboard">
+          <h3>Posts</h3>
+        </a>
+      </div>
+    </div>
 
-        <div class="conversation-card ">
-          <div class="flex-inline message-header">
-            <div class="user">
-              <img src="<%= other_user.avatar %>" class="avatar card-avatar">
-              <span class="inbox-name"> <%= other_user.full_name%> </span>
-            </div>
-            <div class="date">
-              <span class="created_at gray"><%= message.created_at.strftime("%d/%m/%Y") %> </span>
-            </div>
-              </div>
-                <div>
-                  <div class="message-footer">
-                    <p class="created_at gray"> <%= conversation.question.title.truncate(90) %> </p>
+<% if @conversations.count == 0 %>
+      <div class="padding-all">
+        <p>You have no conversations yet.</p>
+      </div>
 
-                    <%# Loop over all replies of the question corresponding to this
-                    conversation and find the reply that belongs to the user
-                    we are having a conversation with. Store this reply object inside
-                    of array and since it is only one, send "first" element of array
-                    to show page.  %>
-                    <% user_reply = [] %>
-                    <% conversation.question.replies.each do |reply| %>
-                      <% if reply.user == other_user %>
-                        <%  user_reply << reply %>
-                      <% end %>
-                    <% end %>
-                  <div>
-                  <%= link_to "Show", conversation_path(conversation, reply_id: user_reply.first), class:"btn btn-orange btn-small" %>
-              </div>
-            </div>
+<% else %>
+
+    <% @conversations.each do |conversation| %>
+    <%#= conversation.id %>
+    <% message = conversation.messages.first %>
+    <% other_user = message.receiver %>
+
+
+    <div class="conversation-card ">
+      <div class="flex-inline message-header">
+        <div class="user">
+          <img src="<%= other_user.avatar %>" class="avatar card-avatar">
+          <span class="inbox-name"> <%= other_user.full_name%> </span>
+        </div>
+        <div class="date">
+          <span class="created_at gray"><%= message.created_at.strftime("%d/%m/%Y") %> </span>
+        </div>
+      </div>
+      <div>
+        <div class="message-footer">
+          <p class="created_at gray"> <%= conversation.question.title.truncate(90) %> </p>
+
+          <%# Loop over all replies of the question corresponding to this
+          conversation and find the reply that belongs to the user
+          we are having a conversation with. Store this reply object inside
+          of array and since it is only one, send "first" element of array
+          to show page.  %>
+          <% user_reply = [] %>
+          <% conversation.question.replies.each do |reply| %>
+          <% if reply.user == other_user %>
+          <%  user_reply << reply %>
+          <% end %>
+          <% end %>
+          <div>
+            <%= link_to "Show", conversation_path(conversation, reply_id: user_reply.first), class:"btn btn-orange btn-small" %>
           </div>
         </div>
-      <% end %>
-
+      </div>
     </div>
+    <% end %>
+
   </div>
 </div>
+
+<% end %>
+
+
 
 
 
