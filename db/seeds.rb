@@ -484,7 +484,7 @@ Question.create!(qp_attributes)
 
 reply_attributes = {
   description: "I am originally from the US, but I might be helpful introducing you to German wines.",
-  user_id: User.third.id,
+  user_id: User.last.id,
   question_id: Question.last.id,
   offer: rand(5.0...40.0).round(1)
   }
