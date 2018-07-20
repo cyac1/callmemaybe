@@ -32,7 +32,7 @@
           <p class="user"><%= c.reply_author.full_name %></p>
         </div>
 
-        <div class="replier-details datetime user margin-topp">
+        <div class="replier-details datetime user datetime-margin">
           <p class="padding-left"><%= l(c.datetime, format: :long) if c.datetime %></p>
         </div>
       </div>
@@ -68,7 +68,7 @@
             <p class="user"><%= call.question_author.full_name %></p>
           </div>
 
-          <div class="replier-details datetime user margin-top">
+          <div class="replier-details datetime user datetime-margin">
             <p class="padding-left"><%= l(call.datetime, format: :long) if call.datetime %></p>
           </div>
         </div>
