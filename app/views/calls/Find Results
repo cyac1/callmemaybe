@@ -1,0 +1,209 @@
+Searching 245 files for "margin-top"
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/calls/_show.scss:
+   52    align-items: center;
+   53    width: 150px;
+   54:   margin-top: 20px;
+   55  }
+   56
+   ..
+   93    box-shadow: 0 1px 1px 0 #bdbdbd;
+   94    margin-bottom: 30px;
+   95:   margin-top: -10px;
+   96    box-shadow: 0 1px 1px 0 #bdbdbd;
+   97    margin-left: -30px;
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/components/_banner.scss:
+   34    font-size: 28px;
+   35    margin: 0px;
+   36:   margin-top: 25px;
+   37    color: white;
+   38  }
+   ..
+   53    font-size: 20px;
+   54    margin: 0px;
+   55:   margin-top: 25px;
+   56    color: white;
+   57    }
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/components/_box.scss:
+    3    padding: 10px 30px;
+    4    margin-bottom: 10px;
+    5:   margin-top: 10px;
+    6    box-shadow: 0 1px 1px 0 $medium_gray;
+    7  }
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/components/_button.scss:
+   79    display: flex;
+   80    justify-content: flex-end;
+   81:   margin-top: 15px;
+   82    margin-bottom: 10px;
+   83  }
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/components/_card.scss:
+    4    padding: 10px 30px;
+    5    margin-bottom: 10px;
+    6:   margin-top: 10px;
+    7    box-shadow: 0 1px 1px 0 $medium_gray;
+    8    position: relative;
+    .
+   86    padding: 15px 30px;
+   87    margin-bottom: 10px;
+   88:   margin-top: 10px;
+   89    box-shadow: 0 1px 1px 0 $medium_gray;
+   90  }
+   ..
+  172  }
+  173
+  174: .margin-topp {
+  175:   margin-top: 10px;
+  176  }
+  177  // @media only screen and (max-width: 600px) {
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/components/_navbar.scss:
+   37  /* Dropdown menu */
+   38  .navbar-dropdown-menu {
+   39:   margin-top: 15px;
+   40    box-shadow: 1px 1px 2px $background_gray;
+   41    border-color: $blue;
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/components/_phonenavbar.scss:
+    2    /* Dropdown menu FOR THE PHONE*/
+    3    .navbar-dropdown-menu {
+    4:     margin-top: 15px;
+    5      box-shadow: 1px 1px 2px $background_gray;
+    6      border-color: $blue;
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/config/_bootstrap_variables.scss:
+   30    display: none;
+   31    width: 100%;
+   32:   margin-top: 0.25rem;
+   33    font-size: 80%;
+   34    color: $red;
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/conversations/_list.scss:
+   25    display: flex;
+   26    justify-content: space-between;
+   27:   margin-top: 5px;
+   28  }
+   29
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/conversations/_show.scss:
+   15  .col-xs-12.col-md-8.col-md-offset-2.white-box.reply-card.convo {
+   16    margin-bottom: 0px;
+   17:   margin-top: 0px;
+   18  }
+   19
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/pages/_form.scss:
+    3  }
+    4
+    5: .margin-top {
+    6:  margin-top:20px;
+    7  }
+    8
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/pages/_home.scss:
+   13
+   14  .icons-card {
+   15:   margin-top: 20px;
+   16    font-size: 30px;
+   17    background: white;
+   ..
+   37
+   38  .categories {
+   39:   margin-top: 50px;
+   40  }
+   41
+   ..
+   52    p {
+   53      color: $font_color;
+   54:     margin-top: 0px;
+   55      padding-top: 0px;
+   56      font-size: 22px;
+
+/Users/jan/code/jan2319/callmemaybe/app/assets/stylesheets/questions/_form.scss:
+   15  }
+   16
+   17: .margin-top {
+   18:  margin-top: 40px;
+   19  }
+   20
+
+/Users/jan/code/jan2319/callmemaybe/app/views/calls/index.html.erb:
+   33          </div>
+   34
+   35:         <div class="replier-details datetime user margin-top">
+   36            <p class="padding-left"><%= l(c.datetime, format: :long) if c.datetime %></p>
+   37          </div>
+   ..
+   69            </div>
+   70
+   71:           <div class="replier-details datetime user margin-top">
+   72              <p class="padding-left"><%= l(call.datetime, format: :long) if call.datetime %></p>
+   73            </div>
+
+/Users/jan/code/jan2319/callmemaybe/app/views/categories/_form.html.erb:
+    3      <%= simple_form_for [@category] do |f| %>
+    4        <div class="margin-bottom"><%= f.association :category, label: "Pick a category", include_hidden: false%></div>
+    5:       <div class="margin-bottom"><%= f.submit "Submit Question", class: "btn btn-orange btn-big margin-top" %></div>
+    6      <% end %>
+    7    </div>
+
+/Users/jan/code/jan2319/callmemaybe/app/views/devise/registrations/edit.html.erb:
+    1  <div class="banner-form" style="background-image: linear-gradient(-225deg, rgba(4, 43, 104, 0.7) 30%, rgba(4, 43, 104, 0.5) 50%), url(https://images.unsplash.com/photo-1525857332689-4b3110c2d3f3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=64092aab3ca44d0dd8f1314166dba348&auto=format&fit=crop&w=2770&q=80); background-size: cover;background-position: center;">
+    2      <div class="container">
+    3:       <div class="col-xs-12 col-md-6 col-md-offset-3 white-box form-box padding-all margin-top mar-bottom">
+    4          <h1 class="text-center">Edit <%= resource_name.to_s.humanize %></h1>
+    5
+
+/Users/jan/code/jan2319/callmemaybe/app/views/devise/registrations/new.html.erb:
+    2  <div class="banner-form" style="background-image: linear-gradient(-225deg, rgba(4, 43, 104, 0.7) 30%, rgba(4, 43, 104, 0.5) 50%), url('<%= asset_path('background-question-login.jpeg') %>'); background-size: cover;background-position: center;">
+    3    <div class="container">
+    4:     <div class="col-xs-12 col-md-6 col-md-offset-3 white-box form-box padding-all margin-top mar-bottom">
+    5      <h1 class="text-center white-header">Sign Up</h1>
+    6        <%= render "devise/registrations/form" %>
+
+/Users/jan/code/jan2319/callmemaybe/app/views/devise/sessions/new.html.erb:
+    1  <div class="banner-form" style="background-image: linear-gradient(-225deg, rgba(4, 43, 104, 0.7) 30%, rgba(4, 43, 104, 0.5) 50%), url('<%= asset_path('background-question-login.jpeg') %>'); background-size: cover;background-position: center;">
+    2    <div class="container">
+    3:       <div class="col-xs-12 col-md-6 col-md-offset-3 white-box form-box padding-all margin-top">
+    4        <h1 class="text-center white-header">Log in</h1>
+    5
+
+/Users/jan/code/jan2319/callmemaybe/app/views/questions/_form.html.erb:
+    6        <div class="margin-bottom"><%= f.input :description, label: "Question Details (optional)" %></div>
+    7        <div class="text-center margin-bottom">
+    8:         <div><%= f.submit "Submit Question", class: "btn btn-orange btn-big margin-top" %>
+    9          </div>
+   10          <div>
+
+/Users/jan/code/jan2319/callmemaybe/app/views/questions/edit.html.erb:
+    3      <div class="row">
+    4        <%# Add simple form with input fields to create a question %>
+    5:       <div class="col-xs-12 col-md-6 col-md-offset-3 white-box padding-all margin-top">
+    6        <h1 class="text-center white-header">Edit your question</h1>
+    7          <%= render "questions/form", question: @question%>
+
+/Users/jan/code/jan2319/callmemaybe/app/views/questions/new.html.erb:
+    3      <div class="row">
+    4        <%# Add simple form with input fields to create a question %>
+    5:       <div class="col-xs-12 col-md-6 col-md-offset-3 white-box padding-all margin-top">
+    6        <h1 class="text-center white-header">Type your question</h1>
+    7          <%= render "questions/form", question: @question%>
+
+/Users/jan/code/jan2319/callmemaybe/app/views/replies/new.html.erb:
+    3      <div class="row">
+    4        <%# Add simple form with input fields to create a question %>
+    5:       <div class="col-xs-12 col-md-6 col-md-offset-3 white-box padding-all margin-top">
+    6        <h1 class="text-center white-header">Type your Reply</h1>
+    7          <%= render "replies/form", question: @question%>
+
+/Users/jan/code/jan2319/callmemaybe/app/views/reviews/new.html.erb:
+    3      <div class="row">
+    4        <%# Add simple form with input fields to create a question %>
+    5:       <div class="col-xs-12 col-md-6 col-md-offset-3 white-box margin-top form-info">
+    6        <h1 class="text-center white-header">Write a Review</h1>
+    7          <%= render "reviews/form", call: @call%>
+
+33 matches across 23 files
